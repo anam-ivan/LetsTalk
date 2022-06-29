@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Let\'s Talk</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="enter_cr_number">Enter CR No.</string>
+    <string name="help"> <u>Help</u></string>
+    <string name="enter_mobile_number">Enter your mobile number</string>
+    <string name="confirm_mobile_number">Confirm mobile number</string>
+    <string name="i_accept_all_the">I accept all the</string>
+    <string name="terms_conditions">Terms &amp; Conditions</string>
+    <string name="login">Login</string>
+    <string name="update_number">Update Number ?</string>
+    <string name="request_update">Request Update</string>
+    <string name="cancel">Cancel</string>
+    <string name="otp_text">OTP has been sent to</string>
+    <string name="did_not_receive">Did n\'t Receive ?</string>
+    <string name="edit_mobile_number">Edit Mobile Number</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="do_not_have_otp">Don\'t have an OTP?</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="see_all">See All</string>
+    <string name="top_alk_side_effects">Top ALK Side Effects</string>
+</resources>
