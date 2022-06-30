@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_8sdp"
+    android:elevation="@dimen/_8sdp"
+    android:layout_margin="@dimen/_8sdp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tv_side_effect_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:fontFamily="@font/gilroy_semi_bold"
+            android:text="Nausea"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_13ssp" />
+
+        <TextView
+            android:id="@+id/tv_side_effect_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_side_effect_name"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying of stomach contents through the mouth."
+            android:textColor="@color/dark_grey" />
+
+        <TextView
+            android:id="@+id/tv_side_effect_symptoms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gilroy_semi_bold"
+            android:text="Symptoms: Vomiting"
+            android:paddingBottom="@dimen/_8sdp"
+            android:layout_below="@+id/tv_side_effect_desc"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:textColor="@color/black" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

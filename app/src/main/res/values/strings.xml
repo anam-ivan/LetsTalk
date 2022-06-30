@@ -19,4 +19,21 @@
     <string name="resend_otp">Resend OTP</string>
     <string name="see_all">See All</string>
     <string name="top_alk_side_effects">Top ALK Side Effects</string>
+    <string name="know_your_side_effects">Know Your Side Effects</string>
+    <string name="what_our_doctor_say">What our doctors say</string>
+    <string name="did_you_know">Did you know?</string>
+    <string name="learn_more">LEARN MORE</string>
+    <string name="side_effects">Know Your Side Effects</string>
+    <string name="glossary">Glossary</string>
+    <string name="start_alk_chat">Start ALK Chat</string>
+    <string name="all_symptoms">All Symptoms</string>
+    <string name="marked">Marked (03)</string>
+    <string name="showing_results">Showing Results: 02</string>
+    <string name="patient_profile">Patient Profile</string>
+    <string name="age">Age</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="view_health_card">VIEW HEALTH CARD</string>
+    <string name="my_health_vitals">My Health Vitals</string>
+    <string name="my_side_effect_history">My Side Effect History</string>
 </resources>

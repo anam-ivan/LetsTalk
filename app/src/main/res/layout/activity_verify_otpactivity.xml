@@ -69,7 +69,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rr_otp_layout"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginStart="@dimen/_45sdp"
             android:layout_marginEnd="@dimen/_45sdp"
             android:layout_height="wrap_content">
@@ -103,7 +103,7 @@
                 android:textSize="@dimen/_12ssp" />
         </RelativeLayout>
 
-        <com.ivan.letstalk.ui.helper.EditTextOtp
+        <com.ivan.letstalk.helper.EditTextOtp
             android:id="@+id/otpBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

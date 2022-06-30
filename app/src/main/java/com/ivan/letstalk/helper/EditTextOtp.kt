@@ -1,4 +1,4 @@
-package com.ivan.letstalk.ui.helper
+package com.ivan.letstalk.helper
 
 import android.content.Context
 import android.text.Editable

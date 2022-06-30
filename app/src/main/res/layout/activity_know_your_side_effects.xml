@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ui.KnowYourSideEffectsActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tb_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_90sdp"
+        android:background="@color/white"
+        android:elevation="@dimen/_1sdp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/ll_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:orientation="horizontal">
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/btn_back"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:gravity="center"
+                    android:src="@drawable/ic_back"
+                    android:textAllCaps="false"
+                    app:tint="@android:color/black" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:fontFamily="@font/gilroy_medium"
+                android:gravity="center"
+                android:text="@string/know_your_side_effects"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/btn_logout2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textAllCaps="false" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_total_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/showing_results"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:fontFamily="@font/gilroy_medium"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintTop_toBottomOf="@+id/tb_header"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <!--<androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_side_effects"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@+id/tv_total_result"
+        tools:itemCount="2"
+        tools:layout_editor_absoluteX="41dp"
+        tools:listitem="@layout/side_effects_row" />-->
+
+    <in.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView
+        android:id="@+id/rv_side_effects"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_total_result" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
