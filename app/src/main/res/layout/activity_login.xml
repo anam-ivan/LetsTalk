@@ -1,158 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".ui.LoginActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/iv_login_header"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_220sdp"
-        android:scaleType="fitXY"
-        android:src="@drawable/login_header"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_cr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/enter_cr_number"
-        android:textColor="@color/black"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:layout_marginStart="@dimen/_16sdp"
-        android:fontFamily="@font/gilroy_medium"
-        android:textSize="@dimen/_14ssp"
-        app:layout_constraintTop_toBottomOf="@+id/iv_login_header"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            tools:context=".ui.LoginActivity">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_help"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/help"
-        android:textColor="@color/blue"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:layout_marginEnd="@dimen/_16sdp"
-        android:fontFamily="@font/gilroy_medium"
-        android:selectAllOnFocus="false"
-        android:linksClickable="false"
-        android:textSize="@dimen/_14ssp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_login_header" />
+            <ImageView
+                android:id="@+id/iv_login_header"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_220sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/login_header"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_enter_your_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/enter_mobile_number"
-        android:textColor="@color/black"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:layout_marginStart="@dimen/_16sdp"
-        android:fontFamily="@font/gilroy_medium"
-        android:textSize="@dimen/_14ssp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cr"
-        app:layout_constraintLeft_toLeftOf="parent" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_cr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_cr_number"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:fontFamily="@font/gilroy_medium"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintTop_toBottomOf="@+id/iv_login_header"
+                app:layout_constraintLeft_toLeftOf="parent" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edt_mobile"
-        app:layout_constraintTop_toBottomOf="@+id/tv_enter_your_number"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:layout_width="match_parent"
-        android:inputType="number"
-        android:maxLength="10"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:background="@drawable/edit_text_border"
-        android:layout_marginStart="@dimen/_16sdp"
-        android:layout_marginEnd="@dimen/_16sdp"
-        android:layout_height="@dimen/_48sdp"/>
+            <com.ivan.letstalk.helper.EditTextOtp
+                android:id="@+id/otpBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/sp_20"
+                app:layout_constraintTop_toBottomOf="@+id/tv_cr"/>
 
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/checkbox"
-        android:buttonTint="@color/blue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:layout_marginStart="@dimen/_12sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_mobile" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/help"
+                android:textColor="@color/blue"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:fontFamily="@font/gilroy_medium"
+                android:selectAllOnFocus="false"
+                android:linksClickable="false"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_login_header" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_i_accept"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/i_accept_all_the"
-        android:textColor="@color/black"
-        android:fontFamily="@font/montserrat_semi_bold"
-        android:layout_marginStart="@dimen/_4sdp"
-        android:textSize="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_32sdp"
-        app:layout_constraintTop_toBottomOf="@+id/edt_mobile"
-        app:layout_constraintStart_toEndOf="@+id/checkbox" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_enter_your_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_mobile_number"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:fontFamily="@font/gilroy_medium"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintTop_toBottomOf="@+id/otpBox"
+                app:layout_constraintLeft_toLeftOf="parent" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_terms_conditions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/terms_conditions"
-        android:textColor="@color/blue"
-        android:fontFamily="@font/montserrat_semi_bold"
-        android:layout_marginStart="@dimen/_8sdp"
-        android:textSize="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_32sdp"
-        app:layout_constraintTop_toBottomOf="@+id/edt_mobile"
-        app:layout_constraintStart_toEndOf="@+id/tv_i_accept" />
+            <!--    <com.google.android.material.textfield.TextInputEditText-->
+            <!--        android:id="@+id/edt_mobile"-->
+            <!--        app:layout_constraintTop_toBottomOf="@+id/tv_enter_your_number"-->
+            <!--        android:layout_marginTop="@dimen/_16sdp"-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:inputType="number"-->
+            <!--        android:maxLength="10"-->
+            <!--        android:maxLines="1"-->
+            <!--        android:singleLine="true"-->
+            <!--        android:background="@drawable/edit_text_border"-->
+            <!--        android:layout_marginStart="@dimen/_16sdp"-->
+            <!--        android:layout_marginEnd="@dimen/_16sdp"-->
+            <!--        android:layout_height="@dimen/_48sdp"/>-->
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_login"
-        style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_48sdp"
-        android:layout_marginStart="@dimen/_24sdp"
-        android:layout_marginEnd="@dimen/_24sdp"
-        android:text="@string/login"
-        android:fontFamily="@font/gilroy_regular"
-        app:cornerRadius="@dimen/_8sdp"
-        android:textSize="@dimen/_14ssp"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:backgroundTint="@color/blue"
-        android:textAllCaps="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbox" />
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llEmail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:background="@drawable/edit_text_border"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                app:layout_constraintTop_toBottomOf="@+id/tv_enter_your_number">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_update_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/update_number"
-        android:textColor="@color/black"
-        android:fontFamily="@font/montserrat_semi_bold"
-        android:layout_marginStart="@dimen/_4sdp"
-        android:textSize="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+                <RelativeLayout
+                    android:id="@+id/ivEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.2"
+                    android:background="@drawable/country_code_back">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_country_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="@dimen/_6sdp"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:text="+91"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13ssp" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_settings"
+                        android:layout_width="@dimen/_28sdp"
+                        android:layout_height="@dimen/_22sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/tv_country_code"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_arrow_down" />
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etBoxEmail"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/sp_12"
+                    android:layout_marginEnd="@dimen/sp_2"
+                    android:background="@null"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:hint="Enter mobile number"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:textSize="@dimen/sp_14" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/checkbox"
+                android:buttonTint="@color/blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_22sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llEmail" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_i_accept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/i_accept_all_the"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_32sdp"
+                app:layout_constraintTop_toBottomOf="@+id/llEmail"
+                app:layout_constraintStart_toEndOf="@+id/checkbox" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_terms_conditions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/terms_conditions"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_32sdp"
+                app:layout_constraintTop_toBottomOf="@+id/llEmail"
+                app:layout_constraintStart_toEndOf="@+id/tv_i_accept" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_login"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_48sdp"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:text="@string/login"
+                android:fontFamily="@font/gilroy_regular"
+                app:cornerRadius="@dimen/_8sdp"
+                android:textSize="@dimen/_14ssp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:backgroundTint="@color/blue"
+                android:textAllCaps="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkbox" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_update_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/update_number"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_version"
+                app:layout_constraintTop_toBottomOf="@+id/btn_login"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_version"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Version 1.5.0"
-        android:textColor="@color/grey"
-        android:fontFamily="@font/gilroy_regular"
-        android:layout_marginStart="@dimen/_4sdp"
-        android:textSize="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_16sdp"
-        android:layout_marginBottom="@dimen/_16sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Version 1.5.0"
+                android:textColor="@color/greyy"
+                android:fontFamily="@font/gilroy_regular"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

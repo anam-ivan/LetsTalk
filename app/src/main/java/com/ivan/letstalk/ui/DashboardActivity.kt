@@ -98,6 +98,7 @@ class DashboardActivity : AppCompatActivity() {
             bottomIvChat.visibility =  View.INVISIBLE
             bottomIvPerson.visibility =  View.INVISIBLE
             bottomIvHamburger.visibility =  View.VISIBLE
+            navigateToMenu()
         }
     }
 
@@ -125,6 +126,11 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun navigateToProfile() {
         val intent = Intent(this, ProfileActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToMenu() {
+        val intent = Intent(this, MenuActivity::class.java)
         startActivity(intent)
     }
 }
