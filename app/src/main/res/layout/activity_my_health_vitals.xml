@@ -19,7 +19,7 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/tb_header"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_90sdp"
+                android:layout_height="@dimen/_45sdp"
                 android:background="@color/white"
                 android:elevation="@dimen/_1sdp"
                 app:layout_constraintTop_toTopOf="parent">
@@ -38,8 +38,8 @@
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/btn_back"
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
+                            android:layout_width="@dimen/_16sdp"
+                            android:layout_height="@dimen/_16sdp"
                             android:layout_gravity="center"
                             android:layout_marginStart="@dimen/_15sdp"
                             android:gravity="center"
@@ -55,8 +55,8 @@
                         android:gravity="center"
                         android:layout_marginStart="@dimen/_16sdp"
                         android:text="@string/my_health_vitals"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_16ssp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
 
@@ -86,9 +86,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="07 Jun 22"
-                android:textColor="@color/blue"
+                android:textColor="@color/navy_blue"
                 android:layout_marginTop="@dimen/_24sdp"
-                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_6sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
                 android:fontFamily="@font/gilroy_semi_bold"
                 android:selectAllOnFocus="false"
@@ -98,12 +98,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/tb_header" />
 
             <androidx.cardview.widget.CardView
-                android:layout_width="@dimen/_36sdp"
-                android:layout_height="@dimen/_36sdp"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
                 android:elevation="@dimen/_8sdp"
-                app:cardCornerRadius="@dimen/_6sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tb_header">
 
@@ -112,8 +112,8 @@
                     android:layout_height="match_parent">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="@dimen/_18sdp"
-                        android:layout_height="@dimen/_18sdp"
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
                         android:layout_centerInParent="true"
                         android:padding="@dimen/_2sdp"
                         android:scaleType="fitXY"
@@ -156,7 +156,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_marginStart="@dimen/_12sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/gilroy_medium"
+                            android:fontFamily="@font/gilroy_semi_bold"
                             android:text="@string/time"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12ssp" />
@@ -168,7 +168,7 @@
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_toEndOf="@+id/tv_time_header"
-                            android:fontFamily="@font/gilroy_medium"
+                            android:fontFamily="@font/gilroy_semi_bold"
                             android:text="2:41 PM"
                             android:textColor="@color/blue"
                             android:textSize="@dimen/_12ssp" />
@@ -266,7 +266,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/_6sdp"
+                                android:layout_marginStart="@dimen/_4sdp"
                                 android:layout_marginEnd="@dimen/_8sdp"
                                 android:layout_toEndOf="@+id/iv_body_weight_header"
                                 android:fontFamily="@font/gilroy_semi_bold"
@@ -283,7 +283,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/rr_body_weight"
                             android:layout_marginStart="@dimen/_4sdp"
-                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_14sdp"
                             android:layout_marginEnd="@dimen/_4sdp"
                             android:orientation="horizontal"
                             android:paddingTop="@dimen/sp_4"
@@ -319,7 +319,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/_6sdp"
+                                android:layout_marginStart="@dimen/_4sdp"
                                 android:layout_marginEnd="@dimen/_8sdp"
                                 android:layout_toEndOf="@+id/iv_blood_pressure_header"
                                 android:fontFamily="@font/gilroy_semi_bold"
@@ -336,7 +336,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/rr_blood_pressure"
                             android:layout_marginStart="@dimen/_4sdp"
-                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_14sdp"
                             android:layout_marginEnd="@dimen/_4sdp"
                             android:orientation="horizontal"
                             android:paddingTop="@dimen/sp_4"
@@ -372,7 +372,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/_6sdp"
+                                android:layout_marginStart="@dimen/_4sdp"
                                 android:layout_marginEnd="@dimen/_8sdp"
                                 android:layout_toEndOf="@+id/iv_blood_sugar_header"
                                 android:fontFamily="@font/gilroy_semi_bold"
@@ -389,7 +389,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/rr_blood_sugar_pp"
                             android:layout_marginStart="@dimen/_4sdp"
-                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_14sdp"
                             android:layout_marginEnd="@dimen/_4sdp"
                             android:orientation="horizontal"
                             android:paddingTop="@dimen/sp_4"
@@ -425,7 +425,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:layout_marginStart="@dimen/_6sdp"
+                                android:layout_marginStart="@dimen/_4sdp"
                                 android:layout_marginEnd="@dimen/_8sdp"
                                 android:layout_toEndOf="@+id/iv_blood_sugar_fasting_header"
                                 android:fontFamily="@font/gilroy_semi_bold"
@@ -442,7 +442,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/rr_blood_sugar_fasting"
                             android:layout_marginStart="@dimen/_4sdp"
-                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginTop="@dimen/_14sdp"
                             android:layout_marginEnd="@dimen/_4sdp"
                             android:orientation="horizontal"
                             android:paddingTop="@dimen/sp_4"
@@ -526,13 +526,13 @@
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_12sdp"
                             android:layout_marginBottom="@dimen/_10sdp"
-                            android:drawableStart="@drawable/ic_delete"
+                            android:drawableStart="@drawable/ic_edit"
                             android:drawablePadding="@dimen/_6ssp"
                             android:fontFamily="@font/gilroy_semi_bold"
                             android:gravity="center_horizontal"
-                            android:text="@string/delete"
+                            android:text="Edit Info"
                             android:textAllCaps="false"
-                            android:textColor="@color/red"
+                            android:textColor="@color/hex_blue"
                             android:textSize="@dimen/_10ssp" />
 
 

@@ -49,6 +49,7 @@ import java.util.*
         } */
         val sections: MutableList<String> = ArrayList(27)
         val alphabetFull = ArrayList<String>()
+        // alphabetFull.toArray(alphabetFull.toTypedArray())
         mSectionPositions = ArrayList()
         run {
             var i = 0
@@ -67,7 +68,8 @@ import java.util.*
             alphabetFull.add(mSections[i].toString())
         }
         sectionsTranslator = Helpers.Companion.sectionsHelper(sections, alphabetFull)
-        return arrayOf(alphabetFull.toTypedArray<String>())
+        // return arrayOf(alphabetFull.toTypedArray<String>())
+        return sections.toTypedArray() as Array<Any>
     }
 
     override fun getPositionForSection(sectionIndex: Int): Int {

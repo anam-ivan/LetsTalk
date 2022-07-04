@@ -1,12 +1,11 @@
 package com.ivan.letstalk.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.google.android.material.button.MaterialButton
 import com.ivan.letstalk.R
 import com.ivan.letstalk.databinding.ActivityVerifyOtpactivityBinding
 

@@ -14,6 +14,20 @@
         android:theme="@style/Theme.LetsTalk"
         tools:targetApi="31">
         <activity
+            android:name=".ui.FaqActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SetNewReminderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MedicineReminderActivity"
+            android:exported="false" />
+        <!--
+<activity
+            android:name=".ui.ExistingSideEffects"
+            android:exported="false" />
+        -->
+        <activity
             android:name=".ui.MyHealthCard"
             android:exported="false" />
         <activity
@@ -48,6 +62,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.LoginActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"

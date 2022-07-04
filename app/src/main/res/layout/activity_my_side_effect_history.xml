@@ -55,7 +55,7 @@
                         android:gravity="center"
                         android:layout_marginStart="@dimen/_16sdp"
                         android:text="@string/my_side_effect_history"
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/_16ssp"
                         android:textStyle="bold" />
 
@@ -96,6 +96,329 @@
                 android:textSize="@dimen/_12ssp"
                 app:layout_constraintStart_toEndOf="@+id/tv_existing_side_effects"
                 app:layout_constraintTop_toBottomOf="@+id/tb_header" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_existing_side_effects"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:textAppearance="@style/chipText"
+                app:chipSpacingHorizontal="4dp"
+                android:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@+id/tv_existing_side_effects"
+                app:singleSelection="true" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_previous_side_effects"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:textAppearance="@style/chipText"
+                app:chipSpacingHorizontal="4dp"
+                android:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@+id/tv_existing_side_effects"
+                app:singleSelection="true"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_side_effect_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:fontFamily="@font/gilroy_medium"
+                android:gravity="center"
+                android:text="@string/side_effect"
+                android:textColor="@color/greyy"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chip_existing_side_effects" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_side_effect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:fontFamily="@font/gilroy_bold"
+                android:gravity="center"
+                android:text="@string/side_effect"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toEndOf="@+id/tv_side_effect_header"
+                app:layout_constraintTop_toBottomOf="@+id/chip_existing_side_effects" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_first"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:gravity="center"
+                android:weightSum="2"
+                android:padding="@dimen/_2sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_side_effect_header">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tb_header">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_3sdp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:scaleType="fitXY"
+                        android:layout_alignParentStart="true"
+                        android:visibility="visible"
+                        android:tint="@color/black"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:layout_marginBottom="@dimen/_4sdp"
+                        android:src="@drawable/bottom_nav_dot" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:text="12 Jan 22 to 02 Feb 22"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:layout_constraintLeft_toLeftOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:gravity="end"
+                        android:text="20 Days"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/_12ssp" />
+
+                </RelativeLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:gravity="center"
+                android:weightSum="2"
+                android:padding="@dimen/_2sdp"
+                app:layout_constraintTop_toBottomOf="@id/ll_first">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tb_header">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_3sdp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:scaleType="fitXY"
+                        android:layout_alignParentStart="true"
+                        android:visibility="visible"
+                        android:tint="@color/black"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:layout_marginBottom="@dimen/_4sdp"
+                        android:src="@drawable/bottom_nav_dot" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:text="14 Mar 22 to 09 Apr 22"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:layout_constraintLeft_toLeftOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:gravity="end"
+                        android:text="25 Days"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/_12ssp" />
+
+                </RelativeLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_third"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:gravity="center"
+                android:weightSum="2"
+                android:padding="@dimen/_2sdp"
+                app:layout_constraintTop_toBottomOf="@id/ll_second">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tb_header">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_3sdp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:scaleType="fitXY"
+                        android:layout_alignParentStart="true"
+                        android:visibility="visible"
+                        android:tint="@color/black"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:layout_marginBottom="@dimen/_4sdp"
+                        android:src="@drawable/bottom_nav_dot" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:text="30 May 22 to 23 Jun 22"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:layout_constraintLeft_toLeftOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:gravity="end"
+                        android:text="24 Days"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/_12ssp" />
+
+                </RelativeLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_fourth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:paddingBottom="@dimen/_16sdp"
+                android:gravity="center"
+                android:padding="@dimen/_2sdp"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@id/ll_third">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tb_header">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_3sdp"
+                        android:layout_height="@dimen/_3sdp"
+                        android:scaleType="fitXY"
+                        android:layout_alignParentStart="true"
+                        android:visibility="visible"
+                        android:tint="@color/black"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:layout_marginBottom="@dimen/_4sdp"
+                        android:src="@drawable/bottom_nav_dot" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:text="01 Jul to Till Date"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:layout_constraintLeft_toLeftOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:layout_marginBottom="@dimen/_2sdp"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:gravity="end"
+                        android:text="Continuing"
+                        android:textColor="@color/yellow"
+                        android:textSize="@dimen/_12ssp" />
+
+                </RelativeLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

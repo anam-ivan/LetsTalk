@@ -13,11 +13,11 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_otp1"
-            android:layout_width="@dimen/dp_70"
+            android:layout_width="@dimen/dp_72"
             android:layout_height="@dimen/dp_50"
             android:layout_marginStart="@dimen/sp_10"
-            android:layout_marginTop="@dimen/sp_20"
-            android:layout_marginEnd="@dimen/sp_10"
+            android:layout_marginTop="@dimen/sp_10"
+            android:layout_marginEnd="@dimen/sp_6"
             android:layout_marginBottom="@dimen/sp_20"
             android:layout_weight="1"
             android:background="@drawable/otp_border_bottom"
@@ -30,15 +30,15 @@
             android:nextFocusLeft="@+id/et_otp1"
             android:nextFocusRight="@+id/et_otp2"
             android:textColor="@color/black"
-            android:textSize="@dimen/_24ssp" />
+            android:textSize="@dimen/_18ssp" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_otp2"
-            android:layout_width="@dimen/dp_70"
+            android:layout_width="@dimen/dp_72"
             android:layout_height="@dimen/dp_50"
-            android:layout_marginStart="@dimen/sp_10"
-            android:layout_marginTop="@dimen/sp_20"
-            android:layout_marginEnd="@dimen/sp_10"
+            android:layout_marginStart="@dimen/sp_4"
+            android:layout_marginTop="@dimen/sp_10"
+            android:layout_marginEnd="@dimen/sp_6"
             android:layout_weight="1"
             android:background="@drawable/otp_border_bottom"
             android:fontFamily="@font/gilroy_regular"
@@ -50,14 +50,14 @@
             android:nextFocusLeft="@+id/et_otp1"
             android:nextFocusRight="@+id/et_otp3"
             android:textColor="@color/black"
-            android:textSize="@dimen/dp_24" />
+            android:textSize="@dimen/_18ssp" />
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_otp3"
-            android:layout_width="@dimen/dp_70"
+            android:layout_width="@dimen/dp_72"
             android:layout_height="@dimen/dp_50"
-            android:layout_marginStart="@dimen/sp_10"
-            android:layout_marginTop="@dimen/sp_20"
-            android:layout_marginEnd="@dimen/sp_10"
+            android:layout_marginStart="@dimen/sp_4"
+            android:layout_marginTop="@dimen/sp_10"
+            android:layout_marginEnd="@dimen/sp_6"
             android:layout_weight="1"
             android:background="@drawable/otp_border_bottom"
             android:fontFamily="@font/gilroy_regular"
@@ -69,15 +69,15 @@
             android:nextFocusLeft="@+id/et_otp2"
             android:nextFocusRight="@+id/et_otp4"
             android:textColor="@color/black"
-            android:textSize="@dimen/dp_24" />
+            android:textSize="@dimen/_18ssp" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_otp4"
-            android:layout_width="@dimen/dp_70"
+            android:layout_width="@dimen/dp_72"
             android:layout_height="@dimen/dp_50"
-            android:layout_marginStart="@dimen/sp_10"
-            android:layout_marginTop="@dimen/sp_20"
-            android:layout_marginEnd="@dimen/sp_10"
+            android:layout_marginStart="@dimen/sp_4"
+            android:layout_marginTop="@dimen/sp_10"
+            android:layout_marginEnd="@dimen/sp_6"
             android:layout_weight="1"
             android:background="@drawable/otp_border_bottom"
             android:fontFamily="@font/gilroy_regular"
@@ -89,15 +89,15 @@
             android:nextFocusLeft="@+id/et_otp3"
             android:nextFocusRight="@+id/et_otp5"
             android:textColor="@color/black"
-            android:textSize="@dimen/dp_24" />
+            android:textSize="@dimen/_18ssp" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_otp5"
-            android:layout_width="@dimen/dp_70"
+            android:layout_width="@dimen/dp_72"
             android:layout_height="@dimen/dp_50"
-            android:layout_marginStart="@dimen/sp_10"
-            android:layout_marginTop="@dimen/sp_20"
-            android:layout_marginEnd="@dimen/sp_10"
+            android:layout_marginStart="@dimen/sp_4"
+            android:layout_marginTop="@dimen/sp_10"
+            android:layout_marginEnd="@dimen/sp_6"
             android:layout_weight="1"
             android:background="@drawable/otp_border_bottom"
             android:fontFamily="@font/gilroy_regular"
@@ -109,14 +109,14 @@
             android:nextFocusLeft="@+id/et_otp4"
             android:nextFocusRight="@+id/et_otp6"
             android:textColor="@color/black"
-            android:textSize="@dimen/dp_24" />
+            android:textSize="@dimen/_18ssp" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_otp6"
-            android:layout_width="@dimen/dp_70"
+            android:layout_width="@dimen/dp_72"
             android:layout_height="@dimen/dp_50"
-            android:layout_marginStart="@dimen/sp_10"
-            android:layout_marginTop="@dimen/sp_20"
+            android:layout_marginStart="@dimen/sp_4"
+            android:layout_marginTop="@dimen/sp_10"
             android:layout_marginEnd="@dimen/sp_10"
             android:layout_weight="1"
             android:background="@drawable/otp_border_bottom"
@@ -129,6 +129,6 @@
             android:nextFocusLeft="@+id/et_otp5"
             android:nextFocusRight="@+id/et_otp6"
             android:textColor="@color/black"
-            android:textSize="@dimen/dp_24" />
+            android:textSize="@dimen/_18ssp" />
     </LinearLayout>
 </layout>

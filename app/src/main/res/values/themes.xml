@@ -21,4 +21,9 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowIsTranslucent">true</item>
     </style>
+
+    <style name="chipText" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:fontFamily">@font/gilroy_medium</item>
+    </style>
 </resources>

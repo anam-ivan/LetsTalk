@@ -52,28 +52,28 @@ open class KnowYourSideEffectsActivity : AppCompatActivity() {
     protected open fun initialiseData() {
         movieList = ArrayList()
         (movieList as ArrayList<SideEffectsModel>).add(
-            SideEffectsModel("Nausea","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
+            SideEffectsModel("A","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
         )
         (movieList as ArrayList<SideEffectsModel>).add(
-            SideEffectsModel("Nausea","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
+            SideEffectsModel("B","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
         )
         (movieList as ArrayList<SideEffectsModel>).add(
-            SideEffectsModel("Nausea","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
+            SideEffectsModel("C","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
         )
         (movieList as ArrayList<SideEffectsModel>).add(
-            SideEffectsModel("Nausea","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
+            SideEffectsModel("D","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
         )
         (movieList as ArrayList<SideEffectsModel>).add(
-            SideEffectsModel("Nausea","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
+            SideEffectsModel("E","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
         )
         (movieList as ArrayList<SideEffectsModel>).add(
-            SideEffectsModel("Nausea","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
+            SideEffectsModel("F","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
         )
         (movieList as ArrayList<SideEffectsModel>).add(
-            SideEffectsModel("Nausea","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
+            SideEffectsModel("G","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
         )
         (movieList as ArrayList<SideEffectsModel>).add(
-            SideEffectsModel("Nausea","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
+            SideEffectsModel("H","Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying (\"throwing up\") of stomach contents through the mouth.","Symptoms: Vomiting")
         )
         dummyArray = ArrayList<String>()
         for (i in (movieList as ArrayList<SideEffectsModel>).indices) {
