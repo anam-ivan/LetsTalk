@@ -14,7 +14,7 @@ internal class AlkSideEffectsAdapter(private var alkSideEffectsModel: List<AlkSi
     @NonNull
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.alk_side_effetcs_row, parent, false)
+            .inflate(R.layout.alk_side_effects_row, parent, false)
         return MyViewHolder(itemView)
     }
 

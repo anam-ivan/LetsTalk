@@ -78,7 +78,7 @@ open class KnowYourSideEffectsActivity : AppCompatActivity() {
         dummyArray = ArrayList<String>()
         for (i in (movieList as ArrayList<SideEffectsModel>).indices) {
             (movieList as ArrayList<SideEffectsModel>)[i].getAlkTitle()?.let { (dummyArray as ArrayList<String>).add(it) }
-            Toast.makeText(this, dummyArray.toString() + "", Toast.LENGTH_SHORT).show()
+            // Toast.makeText(this, dummyArray.toString() + "", Toast.LENGTH_SHORT).show()
             Log.d("dummyArray", dummyArray.toString() + "")
         }
         //Recycler view full data

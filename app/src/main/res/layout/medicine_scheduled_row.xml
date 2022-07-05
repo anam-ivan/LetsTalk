@@ -49,10 +49,11 @@
 
 
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="12dp"
             android:layout_marginStart="@dimen/_24sdp"
             app:cardElevation="4dp"
@@ -275,7 +276,7 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

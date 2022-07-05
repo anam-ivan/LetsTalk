@@ -90,4 +90,9 @@
     <string name="sound">Sound</string>
     <string name="push_notifications">Push Notifications</string>
     <string name="set_reminder">Set Reminder</string>
+    <string name="alk_chat">ALK CHAT</string>
+    <string name="my_chats">My Chats</string>
+    <string name="today">Today</string>
+    <string name="completed">Completed</string>
+    <string name="archived">Archived</string>
 </resources>

@@ -84,6 +84,7 @@ class DashboardActivity : AppCompatActivity() {
             bottomIvPerson.visibility =  View.INVISIBLE
             bottomIvHamburger.visibility =  View.INVISIBLE
             bottomIvChat.visibility =  View.VISIBLE
+            navigateToChat()
         }
         bottomNavPerson.setOnClickListener{
             bottomIvHome.visibility =  View.INVISIBLE
@@ -131,6 +132,11 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun navigateToMenu() {
         val intent = Intent(this, MenuActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToChat() {
+        val intent = Intent(this, ALKChatActivity::class.java)
         startActivity(intent)
     }
 }

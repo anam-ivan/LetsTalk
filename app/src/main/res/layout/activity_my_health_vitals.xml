@@ -97,13 +97,14 @@
                 app:layout_constraintStart_toEndOf="@+id/tv_health_vitals"
                 app:layout_constraintTop_toBottomOf="@+id/tb_header" />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
                 android:elevation="@dimen/_8sdp"
                 app:cardCornerRadius="@dimen/_5sdp"
+                app:cardBackgroundColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tb_header">
 
@@ -122,7 +123,7 @@
 
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/ll_health_section"
@@ -134,12 +135,13 @@
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/tv_health_vitals">
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/white"
                     app:cardUseCompatPadding="true">
 
                     <RelativeLayout
@@ -537,7 +539,7 @@
 
 
                     </RelativeLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
 

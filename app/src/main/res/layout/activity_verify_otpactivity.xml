@@ -86,7 +86,7 @@
                 android:layout_marginTop="@dimen/_4sdp"
                 android:layout_marginEnd="@dimen/_4sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
-                android:fontFamily="@font/gilroy_medium"
+                android:fontFamily="@font/gilroy_semi_bold"
                 android:text="@string/did_not_receive"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12ssp" />
@@ -100,9 +100,9 @@
                 android:layout_marginEnd="@dimen/_4sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
                 android:layout_toEndOf="@+id/tv_did_not_receive"
-                android:fontFamily="@font/gilroy_medium"
+                android:fontFamily="@font/gilroy_semi_bold"
                 android:text="@string/edit_mobile_number"
-                android:textColor="@color/blue"
+                android:textColor="@color/navy_blue"
                 android:textSize="@dimen/_12ssp" />
         </RelativeLayout>
 
@@ -112,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginEnd="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/sp_20"
+            android:layout_marginTop="@dimen/sp_10"
             app:layout_constraintTop_toBottomOf="@+id/rr_mobile_number_layout"/>
 
 
@@ -122,16 +122,17 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_48sdp"
             android:layout_marginStart="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_24sdp"
             android:layout_marginEnd="@dimen/_24sdp"
-            android:text="@string/verify_otp"
-            app:layout_constraintTop_toBottomOf="@+id/otpBox"
-            android:fontFamily="@font/gilroy_regular"
-            app:cornerRadius="@dimen/_8sdp"
-            android:textSize="@dimen/_14ssp"
-            android:layout_marginTop="@dimen/_32sdp"
             android:backgroundTint="@color/blue"
+            android:fontFamily="@font/gilroy_regular"
+            android:text="@string/verify_otp"
             android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            app:cornerRadius="@dimen/_8sdp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otpBox"
             tools:ignore="MissingConstraints" />
 
 
@@ -169,7 +170,7 @@
                 android:layout_marginEnd="@dimen/_4sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
                 android:layout_toEndOf="@+id/tv_not_have_otp"
-                android:fontFamily="@font/gilroy_medium"
+                android:fontFamily="@font/gilroy_semi_bold"
                 android:text="@string/resend_otp"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/_12ssp" />

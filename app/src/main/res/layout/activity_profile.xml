@@ -60,7 +60,7 @@
                         android:layout_marginEnd="@dimen/_22sdp"
                         android:layout_toStartOf="@+id/iv_notifications"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_notification" />
+                        android:src="@drawable/ic_setting" />
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/iv_notifications"
@@ -229,7 +229,7 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/ll_age"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/_90sdp"
                     android:layout_marginStart="@dimen/_4sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginBottom="@dimen/_8sdp"
@@ -246,7 +246,7 @@
                         android:fontFamily="@font/gilroy_semi_bold"
                         android:text="45Y 5M"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_18ssp" />
+                        android:textSize="@dimen/_14ssp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -269,7 +269,7 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/ll_weight"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/_90sdp"
                     android:layout_marginStart="@dimen/_4sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_4sdp"
@@ -287,7 +287,7 @@
                         android:fontFamily="@font/gilroy_semi_bold"
                         android:text="62 kg"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_18ssp" />
+                        android:textSize="@dimen/_14ssp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -308,7 +308,7 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/ll_height"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/_90sdp"
                     android:layout_marginStart="@dimen/_4sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_8sdp"
@@ -326,7 +326,7 @@
                         android:fontFamily="@font/gilroy_semi_bold"
                         android:text="162 cm"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_18ssp" />
+                        android:textSize="@dimen/_14ssp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
@@ -346,10 +346,10 @@
             <RelativeLayout
                 android:id="@+id/rl_health_card"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_marginStart="@dimen/_56sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_60sdp"
                 android:layout_marginTop="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_56sdp"
+                android:layout_marginEnd="@dimen/_60sdp"
                 android:background="@drawable/health_card_bg"
                 app:layout_constraintTop_toBottomOf="@+id/ll_patient_details">
 
@@ -360,7 +360,7 @@
                     android:fontFamily="@font/gilroy_medium"
                     android:text="@string/view_health_card"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_14ssp" />
+                    android:textSize="@dimen/_12ssp" />
 
             </RelativeLayout>
 
@@ -388,8 +388,8 @@
                     android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="@dimen/_32sdp"
-                        android:layout_height="@dimen/_32sdp"
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
                         android:layout_marginTop="@dimen/_16sdp"
                         android:scaleType="fitXY"
                         android:src="@drawable/ic_health" />
@@ -427,8 +427,8 @@
                     android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="@dimen/_32sdp"
-                        android:layout_height="@dimen/_32sdp"
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
                         android:layout_marginTop="@dimen/_16sdp"
                         android:scaleType="fitXY"
                         android:src="@drawable/ic_violet_head" />
@@ -451,7 +451,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_120sdp"
                 android:layout_marginStart="@dimen/_14sdp"
-                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_marginEnd="@dimen/_14sdp"
                 android:weightSum="2.08"
                 app:layout_constraintTop_toBottomOf="@+id/ll_doctor_section_one">
@@ -470,8 +470,8 @@
                     android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="@dimen/_28sdp"
-                        android:layout_height="@dimen/_32sdp"
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_28sdp"
                         android:layout_marginTop="@dimen/_16sdp"
                         android:scaleType="fitXY"
                         android:src="@drawable/ic_documents" />
@@ -509,8 +509,8 @@
                     android:orientation="vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="@dimen/_32sdp"
-                        android:layout_height="@dimen/_32sdp"
+                        android:layout_width="@dimen/_28sdp"
+                        android:layout_height="@dimen/_28sdp"
                         android:layout_marginTop="@dimen/_16sdp"
                         android:scaleType="fitXY"
                         android:src="@drawable/ic_reminder" />

@@ -22,4 +22,7 @@
     <color name="green">#20C799</color>
     <color name="light_yellow">#FFF6DC</color>
     <color name="light_red">#FFDBE0</color>
+    <color name="m_grey">#B2B2B2</color>
+    <color name="chat_answer_select">#FF7789</color>
+    <color name="edt_error">#AF3B3D</color>
 </resources>

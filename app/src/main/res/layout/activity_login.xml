@@ -13,7 +13,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@drawable/gradient"
             tools:context=".ui.LoginActivity">
 
             <ImageView
@@ -92,7 +92,7 @@
                     android:layout_height="@dimen/_48sdp"/>-->
 
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/llEmail"
+                android:id="@+id/llPhone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_45sdp"
                 android:layout_marginStart="@dimen/_16sdp"
@@ -104,7 +104,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_enter_your_number">
 
                 <RelativeLayout
-                    android:id="@+id/ivEmail"
+                    android:id="@+id/rr_phone"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
@@ -136,7 +136,7 @@
                 </RelativeLayout>
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/etBoxEmail"
+                    android:id="@+id/et_phone"
                     android:layout_width="0dp"
                     android:layout_weight="0.8"
                     android:layout_height="match_parent"
@@ -145,11 +145,13 @@
                     android:background="@null"
                     android:inputType="number"
                     android:maxLength="10"
+                    android:textColorHint="@color/light_grey"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_semi_bold"
                     android:hint="Enter mobile number"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/_14ssp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <com.google.android.material.checkbox.MaterialCheckBox
@@ -160,7 +162,7 @@
                 android:layout_marginTop="@dimen/_22sdp"
                 android:layout_marginStart="@dimen/_12sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/llEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/llPhone" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_i_accept"
@@ -171,7 +173,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textSize="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_34sdp"
-                app:layout_constraintTop_toBottomOf="@+id/llEmail"
+                app:layout_constraintTop_toBottomOf="@+id/llPhone"
                 app:layout_constraintStart_toEndOf="@+id/checkbox" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -184,7 +186,7 @@
                 android:layout_marginStart="@dimen/_6sdp"
                 android:textSize="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_34sdp"
-                app:layout_constraintTop_toBottomOf="@+id/llEmail"
+                app:layout_constraintTop_toBottomOf="@+id/llPhone"
                 app:layout_constraintStart_toEndOf="@+id/tv_i_accept" />
 
             <com.google.android.material.button.MaterialButton
@@ -193,14 +195,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_48sdp"
                 android:layout_marginStart="@dimen/_24sdp"
-                android:layout_marginEnd="@dimen/_24sdp"
-                android:text="@string/login"
-                android:fontFamily="@font/gilroy_regular"
-                app:cornerRadius="@dimen/_8sdp"
-                android:textSize="@dimen/_14ssp"
                 android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
                 android:backgroundTint="@color/blue"
+                android:fontFamily="@font/gilroy_regular"
+                android:text="@string/login"
                 android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                app:cornerRadius="@dimen/_8sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/checkbox" />
 
