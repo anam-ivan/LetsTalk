@@ -3,6 +3,7 @@ package com.ivan.letstalk.ui
 import `in`.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,9 +16,6 @@ import java.util.*
 
 open class KnowYourSideEffectsActivity : AppCompatActivity() {
     private lateinit var rvSideEffects: IndexFastScrollRecyclerView
-    // private lateinit var knowYourSideEffectsAdapter : KnowYourSideEffectsAdapter
-
-    // var mRecyclerView: IndexFastScrollRecyclerView? = null
     private var mDataArray: List<String>? = null
     private var mAlphabetItems: List<AlphabetItem>? = null
 
@@ -31,6 +29,10 @@ open class KnowYourSideEffectsActivity : AppCompatActivity() {
         rvSideEffects = findViewById(R.id.rv_side_effects)
         initialiseData()
         initialiseUI()
+
+        findViewById<ImageView>(R.id.btn_back).setOnClickListener {
+            onBackPressed()
+        }
         // knowYourSideEffectsAdapter = KnowYourSideEffectsAdapter(sideEffectsModel)
         /*rvSideEffects.layoutManager = LinearLayoutManager(
             this,

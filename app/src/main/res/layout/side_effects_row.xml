@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_side_effect_name"
             android:layout_marginStart="@dimen/_4sdp"
-            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_8sdp"
             android:fontFamily="@font/gilroy_medium"
             android:text="Nausea is an uneasiness of the stomach that often comes before vomiting. Vomiting is the forcible voluntary or involuntary emptying of stomach contents through the mouth."
@@ -42,13 +42,13 @@
             android:id="@+id/tv_side_effect_symptoms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/gilroy_semi_bold"
-            android:text="Symptoms: Vomiting"
-            android:paddingBottom="@dimen/_8sdp"
             android:layout_below="@+id/tv_side_effect_desc"
             android:layout_marginStart="@dimen/_4sdp"
-            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_8sdp"
+            android:fontFamily="@font/gilroy_semi_bold"
+            android:paddingBottom="@dimen/_8sdp"
+            android:text="Symptoms: Vomiting"
             android:textColor="@color/black" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -13,12 +13,13 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/gradient"
             tools:context=".ui.SetNewReminderActivity">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/tb_header"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_90sdp"
+                android:layout_height="@dimen/_45sdp"
                 android:background="@color/white"
                 android:elevation="1dp"
                 app:layout_constraintTop_toTopOf="parent">

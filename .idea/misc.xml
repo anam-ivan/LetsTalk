@@ -5,9 +5,12 @@
       <map>
         <entry key="..\:/Users/user/.gradle/caches/transforms-3/a10c0a63eb67389ec96e93e492ed6b19/transformed/Collapsible-Calendar-View-Android-v1.0.3/res/drawable/circle_white_solid_background.xml" value="0.1625" />
         <entry key="..\:/Users/user/.gradle/caches/transforms-3/a10c0a63eb67389ec96e93e492ed6b19/transformed/Collapsible-Calendar-View-Android-v1.0.3/res/drawable/circle_white_stroke_background.xml" value="0.1625" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/bottom_dialog_corner_modal.xml" value="0.118" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/bottom_dot.xml" value="0.1345" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/bottom_nav_dot.xml" value="0.1625" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/calender_layout_back.xml" value="0.118" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/chat_child_blue_back.xml" value="0.129" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/chat_send_back.xml" value="0.13" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/country_code_back.xml" value="0.128" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/country_code_error_back.xml" value="0.118" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/edit_text_border.xml" value="0.132" />
@@ -28,35 +31,44 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/ic_notification.xml" value="0.102" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/ic_remove.xml" value="0.128" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/ic_search.xml" value="0.102" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/ic_upload.xml" value="0.118" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/layout_blue_back.xml" value="0.1135" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/logout_back.xml" value="0.128" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/menu_item_back.xml" value="0.128" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/otp_border_bottom.xml" value="0.1625" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/search_back.xml" value="0.118" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/update_mobile_number_back.xml" value="0.118" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_add_health_vitals.xml" value="0.14666666666666667" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_alkchat.xml" value="0.18927862342819324" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_dashboard.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_alkchat.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_dashboard.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_existing_side_effects.xml" value="0.14895833333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_faq.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_know_your_side_effects.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_glossary.xml" value="0.12" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_know_your_side_effects.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_main.xml" value="0.14895833333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_medicine_reminder.xml" value="0.13333333333333333" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_menu.xml" value="0.22" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_my_alkchat.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_menu.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_my_alkchat.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_my_documents.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_my_health_card.xml" value="0.22" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_my_health_vitals.xml" value="0.29006085192697767" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_my_health_vitals.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_my_side_effect_history.xml" value="0.22" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_profile.xml" value="0.22" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_profile.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_set_new_reminder.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_splash.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_top_alkside_effects.xml" value="0.22" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_update_mobile_confirmation.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_update_phone_number.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/activity_verify_otpactivity.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/alk_side_effects_row.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/alk_side_effetcs_row.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/chat_send_back.xml" value="0.13317479191438764" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/faq_row.xml" value="0.22" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/fragment_upload_document.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/layout_otp.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/medicine_scheduled_row.xml" value="0.22" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/my_documents_row.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/otp_border_bottom.xml" value="0.14895833333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/side_effects_row.xml" value="0.14666666666666667" />
       </map>

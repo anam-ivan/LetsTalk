@@ -133,33 +133,34 @@
         android:id="@+id/rr_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_18sdp"
         android:layout_marginEnd="@dimen/_15sdp"
         android:layout_marginBottom="@dimen/_8sdp"
-        app:layout_constraintLeft_toRightOf="@+id/tv_archived"
-        android:background="@drawable/edit_text_border"
+        android:padding="@dimen/_8sdp"
+        android:background="@drawable/calender_layout_back"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tb_header">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:fontFamily="@font/gilroy_medium"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:fontFamily="@font/gilroy_semi_bold"
             android:gravity="center"
-            android:text="@string/my_chats"
-            android:textColor="@color/hex_blue"
+            android:text="08 Jun 22"
+            android:textColor="@color/black"
             android:textSize="@dimen/_12ssp" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/_12sdp"
-            android:layout_height="@dimen/_12sdp"
+            android:layout_width="@dimen/_14sdp"
+            android:layout_height="@dimen/_14sdp"
             android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/_15sdp"
             android:layout_marginEnd="@dimen/_8sdp"
             android:layout_toEndOf="@+id/tv_date"
-            android:src="@drawable/ic_msg"
+            android:src="@drawable/calender_icon"
             android:textAllCaps="false" />
 
         <!--<View
@@ -174,10 +175,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:id="@+id/rr_first"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_48sdp"
+        android:layout_height="@dimen/_45sdp"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_12sdp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_completed"
+        app:layout_constraintTop_toBottomOf="@+id/rr_date"
         android:layout_marginEnd="@dimen/_20sdp"
         android:background="@drawable/menu_item_back"
         android:paddingTop="@dimen/sp_4"
@@ -212,7 +213,7 @@
     <RelativeLayout
         android:id="@+id/rr_second"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_48sdp"
+        android:layout_height="@dimen/_45sdp"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_12sdp"
         android:layout_marginEnd="@dimen/_20sdp"
@@ -252,7 +253,7 @@
     <RelativeLayout
         android:id="@+id/rr_third"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_48sdp"
+        android:layout_height="@dimen/_45sdp"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_12sdp"
         android:layout_marginEnd="@dimen/_20sdp"

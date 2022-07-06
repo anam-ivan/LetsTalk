@@ -64,4 +64,17 @@
         <item name="android:textSize">@dimen/_11ssp</item>
     </style>
 
+    <style name="ChatSendItem" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/chat_sender_custom_corners</item>
+    </style>
+
+    <style name="chat_sender_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">8dp</item>
+        <item name="cornerSizeTopLeft">8dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+
+    </style>
+
 </resources>

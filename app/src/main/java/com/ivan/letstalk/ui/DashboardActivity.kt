@@ -20,6 +20,7 @@ class DashboardActivity : AppCompatActivity() {
     private val alkSideEffectsModel = ArrayList<AlkSideEffectsModel>()
     private lateinit var alkSideEffectsAdapter: AlkSideEffectsAdapter
     private lateinit var  llSideEffects : LinearLayoutCompat
+    private lateinit var  llGlossary : LinearLayoutCompat
 
     private lateinit var  bottomNavHome : LinearLayoutCompat
     private lateinit var  bottomNavChat : LinearLayoutCompat
@@ -45,9 +46,10 @@ class DashboardActivity : AppCompatActivity() {
         bottomIvPerson = findViewById(R.id.bottom_dot_person)
         bottomIvHamburger = findViewById(R.id.bottom_dot_hamburger)
 
-        bottomIvHome.visibility = View.VISIBLE;
+        bottomIvHome.visibility = View.VISIBLE
 
         llSideEffects = findViewById(R.id.ll_side_effects)
+        llGlossary = findViewById(R.id.ll_glossary)
         tvSeeAll = findViewById(R.id.tv_see_all)
         tvSeeAll.paint?.isUnderlineText = true
         tvSeeAll.setOnClickListener {
@@ -72,11 +74,17 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        llGlossary.setOnClickListener {
+            val intent = Intent(this, GlossaryActivity::class.java)
+            startActivity(intent)
+        }
+
         bottomNavHome.setOnClickListener{
             bottomIvPerson.visibility =  View.INVISIBLE
             bottomIvHamburger.visibility =  View.INVISIBLE
             bottomIvChat.visibility =  View.INVISIBLE
             bottomIvHome.visibility =  View.VISIBLE
+            navigateToDashboard()
         }
 
         bottomNavChat.setOnClickListener{
@@ -137,6 +145,11 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun navigateToChat() {
         val intent = Intent(this, ALKChatActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToDashboard() {
+        val intent = Intent(this, DashboardActivity::class.java)
         startActivity(intent)
     }
 }

@@ -15,6 +15,8 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -91,8 +93,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_30sdp">
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_16sdp">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_side_effect"
@@ -119,9 +121,6 @@
                     android:textSize="@dimen/_12ssp" />
 
             </RelativeLayout>
-
-
-
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -164,9 +163,9 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="4dp"
-                    app:cardBackgroundColor="@color/white"
                     app:cardUseCompatPadding="true">
 
                     <RelativeLayout
@@ -277,7 +276,7 @@
                     android:layout_weight=".08" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/farm_events_layout"
+                    android:id="@+id/ll_glossary"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_4sdp"
@@ -316,9 +315,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_48sdp"
                 android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginBottom="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
                 android:backgroundTint="@color/red"
                 android:fontFamily="@font/gilroy_regular"
                 android:text="@string/start_alk_chat"
@@ -338,9 +337,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_42sdp"
         android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
         android:elevation="@dimen/_8sdp"
         app:cardBackgroundColor="@color/blue"
         app:cardCornerRadius="@dimen/_8sdp"

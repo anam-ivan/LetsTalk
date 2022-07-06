@@ -10,8 +10,8 @@ import com.ivan.letstalk.R
 import com.ivan.letstalk.helper.Helpers
 import java.util.*
 
- class DummyAdapter(private val mDataArray: List<String>?) :
-    RecyclerView.Adapter<DummyAdapter.ViewHolder>(), SectionIndexer {
+class MedicalTermsAdapter(private val mDataArray: List<String>?) :
+    RecyclerView.Adapter<MedicalTermsAdapter.ViewHolder>(), SectionIndexer {
     private val mSections = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#"
     private var sectionsTranslator = HashMap<Int, Int>()
     private var mSectionPositions: ArrayList<Int>? = null
@@ -69,7 +69,6 @@ import java.util.*
         }
         sectionsTranslator = Helpers.Companion.sectionsHelper(sections, alphabetFull)
         // return arrayOf(alphabetFull.toTypedArray<String>())
-        //  return sections.toTypedArray() as Array<Any>
         return alphabetFull.toTypedArray() as Array<Any>
     }
 

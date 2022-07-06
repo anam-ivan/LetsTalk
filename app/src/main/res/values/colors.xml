@@ -25,4 +25,10 @@
     <color name="m_grey">#B2B2B2</color>
     <color name="chat_answer_select">#FF7789</color>
     <color name="edt_error">#AF3B3D</color>
+    <color name="m_yellow">#F9EED7</color>
+    <color name="brown">#9E6503</color>
+    <color name="n_grey">#E5E5E5</color>
+    <color name="black_mat">#646464</color>
+    <color name="light_green">#2FC584</color>
+    <color name="chat_send">#F6F6F6</color>
 </resources>
