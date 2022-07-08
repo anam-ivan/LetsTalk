@@ -14,24 +14,24 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.40"/>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/welcome_to"
-        android:textColor="@color/light_grey"
+        android:textColor="@color/splash_text"
         android:fontFamily="@font/gilroy_medium"
-        android:textSize="@dimen/_22ssp"
+        android:textSize="@dimen/_18ssp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline" />
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_80sdp"
+        android:layout_height="@dimen/_65sdp"
         android:layout_marginStart="@dimen/_48sdp"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_48sdp"
         android:scaleType="fitXY"
         android:src="@drawable/splash_logo"

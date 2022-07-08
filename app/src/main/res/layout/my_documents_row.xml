@@ -15,6 +15,19 @@
         android:layout_marginTop="@dimen/_4sdp"
         android:orientation="vertical">
 
+        <!--<androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+        </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkBox"
+            android:buttonTint="@color/blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -193,30 +206,6 @@
                     android:textSize="@dimen/_12ssp" />
 
             </RelativeLayout>
-
-            <!--<androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/_4sdp"
-                android:fontFamily="@font/gilroy_medium"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-                android:text="Date:"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12ssp" />
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="1.5dp"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:layout_toEndOf="@+id/tv_time"
-                android:background="@color/divider_color" />-->
         </RelativeLayout>
 
     </androidx.appcompat.widget.LinearLayoutCompat>

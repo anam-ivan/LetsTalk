@@ -106,8 +106,8 @@
                                 android:layout_marginStart="@dimen/_10sdp"
                                 android:layout_marginTop="@dimen/_10sdp"
                                 android:src="@drawable/ic_user_img"
-                                app:civ_border_color="@color/red"
-                                app:civ_border_width="@dimen/_4sdp"
+                                app:civ_border_color="#FF7789"
+                                app:civ_border_width="@dimen/_2sdp"
                                 tools:ignore="ContentDescription" />
 
                             <androidx.appcompat.widget.AppCompatTextView
@@ -249,7 +249,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_4sdp"
-                            android:layout_marginTop="@dimen/_12sdp"
+                            android:layout_marginTop="@dimen/_6sdp"
+                            android:layout_marginBottom="@dimen/_16sdp"
                             android:layout_marginEnd="@dimen/_4sdp"
                             android:fontFamily="@font/gilroy_medium"
                             android:text="@string/age"
@@ -289,7 +290,8 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_12sdp"
+                            android:layout_marginTop="@dimen/_6sdp"
+                            android:layout_marginBottom="@dimen/_16sdp"
                             android:fontFamily="@font/gilroy_medium"
                             android:text="@string/weight"
                             android:textColor="@color/black"
@@ -329,7 +331,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_4sdp"
-                            android:layout_marginTop="@dimen/_12sdp"
+                            android:layout_marginTop="@dimen/_6sdp"
+                            android:layout_marginBottom="@dimen/_12ssp"
                             android:layout_marginEnd="@dimen/_4sdp"
                             android:fontFamily="@font/gilroy_medium"
                             android:text="@string/height"
@@ -357,7 +360,7 @@
                         android:fontFamily="@font/gilroy_medium"
                         android:text="@string/view_health_card"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_12ssp" />
+                        android:textSize="@dimen/_11ssp" />
 
                 </RelativeLayout>
 
@@ -561,11 +564,12 @@
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iv_home"
                             android:layout_width="@dimen/_12sdp"
                             android:layout_height="@dimen/_14sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/ic_home" />
+                            android:src="@drawable/ic_home"/>
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/bottom_dot_home"
@@ -574,7 +578,8 @@
                             android:layout_marginTop="@dimen/_6sdp"
                             android:layout_marginBottom="@dimen/_4sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/bottom_nav_dot"
+                            app:tint="@color/white"
+                            android:src="@drawable/ic_black_dot"
                             android:visibility="invisible" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -593,7 +598,7 @@
                             android:layout_height="@dimen/_18sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/ic_chatbot" />
+                            android:src="@drawable/ic_chat_bot"/>
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/bottom_dot_chat"
@@ -602,7 +607,8 @@
                             android:layout_marginTop="@dimen/_6sdp"
                             android:layout_marginBottom="@dimen/_4sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/bottom_nav_dot"
+                            app:tint="@color/white"
+                            android:src="@drawable/ic_black_dot"
                             android:visibility="invisible" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -616,21 +622,47 @@
                         android:gravity="center"
                         android:orientation="vertical">
 
-                        <androidx.appcompat.widget.AppCompatImageView
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/iv_person"
+                                android:layout_width="@dimen/_12sdp"
+                                android:layout_height="@dimen/_14sdp"
+                                android:layout_centerInParent="true"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_person" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/iv_person_fill"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_centerInParent="true"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_person_fill"
+                                android:visibility="invisible" />
+
+                        </RelativeLayout>
+
+                        <!--<androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iv_person"
                             android:layout_width="@dimen/_12sdp"
                             android:layout_height="@dimen/_14sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/ic_person" />
+                            android:src="@drawable/ic_person" />-->
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/bottom_dot_person"
                             android:layout_width="@dimen/_2sdp"
                             android:layout_height="@dimen/_2sdp"
                             android:layout_marginTop="@dimen/_6sdp"
-                            android:layout_marginBottom="@dimen/_4sdp"
+                            android:layout_marginBottom="@dimen/_6sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/bottom_nav_dot"
+                            app:tint="@color/white"
+                            android:src="@drawable/ic_black_dot"
                             android:visibility="invisible" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -658,7 +690,8 @@
                             android:layout_marginTop="@dimen/_6sdp"
                             android:layout_marginBottom="@dimen/_4sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/bottom_nav_dot"
+                            app:tint="@color/white"
+                            android:src="@drawable/ic_black_dot"
                             android:visibility="invisible" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -92,6 +92,7 @@
     <string name="set_reminder">Set Reminder</string>
     <string name="alk_chat">ALK CHAT</string>
     <string name="my_chats">My Chats</string>
+    <string name="mark_all">Mark All</string>
     <string name="today">Today</string>
     <string name="completed">Completed</string>
     <string name="archived">Archived</string>
@@ -109,4 +110,7 @@
     <string name="upload">Upload</string>
     <string name="medical_terms">Medical Terms</string>
     <string name="prescription_abbreviations">Prescription Abbreviations</string>
+    <string name="notifications">Notifications</string>
+    <string name="i_accept_all_the_terms_amp_conditions"><![CDATA[I Accept All the Terms & Conditions]]></string>
+    <string name="yesterday">Yesterday</string>
 </resources>

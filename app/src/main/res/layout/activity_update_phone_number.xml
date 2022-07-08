@@ -42,7 +42,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginEnd="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/sp_20"
             app:layout_constraintTop_toBottomOf="@+id/tv_cr"/>
 
         <TextView
@@ -126,11 +125,15 @@
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/sp_2"
                 android:background="@null"
-                android:fontFamily="@font/gilroy_medium"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColorHint="@color/light_grey"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gilroy_semi_bold"
                 android:hint="Enter mobile number"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
-                android:textSize="@dimen/sp_14" />
+                android:textSize="@dimen/_14ssp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <com.google.android.material.textview.MaterialTextView
@@ -197,11 +200,15 @@
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/sp_2"
                 android:background="@null"
-                android:fontFamily="@font/gilroy_medium"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textColorHint="@color/light_grey"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gilroy_semi_bold"
                 android:hint="Enter mobile number"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
-                android:textSize="@dimen/sp_14" />
+                android:textSize="@dimen/_14ssp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <!--<com.google.android.material.textview.MaterialTextView
@@ -232,19 +239,20 @@
             android:layout_height="@dimen/_48sdp"/>-->
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_update"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_56sdp"
+            android:layout_height="@dimen/_48sdp"
             android:layout_marginStart="@dimen/_18sdp"
-            android:layout_marginEnd="@dimen/_18sdp"
-            android:text="@string/request_update"
-            android:fontFamily="@font/gilroy_regular"
-            app:cornerRadius="@dimen/_10sdp"
-            android:textSize="@dimen/_14ssp"
             android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_18sdp"
             android:backgroundTint="@color/blue"
+            android:fontFamily="@font/gilroy_regular"
+            android:text="@string/request_update"
             android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            app:cornerRadius="@dimen/_10sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ll_confirm_mobile" />
 
@@ -260,7 +268,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_48sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_login"
+            app:layout_constraintTop_toBottomOf="@+id/btn_update"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 

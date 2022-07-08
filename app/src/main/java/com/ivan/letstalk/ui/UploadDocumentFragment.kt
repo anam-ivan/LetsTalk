@@ -10,6 +10,11 @@ import com.ivan.letstalk.R
 
 class UploadDocumentFragment : BottomSheetDialogFragment() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(STYLE_NORMAL, R.style.AppBottomSheetDialogTheme);
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -20,4 +25,8 @@ class UploadDocumentFragment : BottomSheetDialogFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
     }
+
+    /*override fun getTheme(): Int {
+        return R.style.CustomBottomSheetDialog
+    }*/
 }

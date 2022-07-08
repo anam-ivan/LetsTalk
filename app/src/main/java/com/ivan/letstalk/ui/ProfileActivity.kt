@@ -26,6 +26,10 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var  bottomIvPerson : AppCompatImageView
     private lateinit var  bottomIvHamburger : AppCompatImageView
 
+    private lateinit var ivPerson: AppCompatImageView
+    private lateinit var ivPersonFill: AppCompatImageView
+    private lateinit var ivHome: AppCompatImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
@@ -67,11 +71,22 @@ class ProfileActivity : AppCompatActivity() {
 
         bottomIvPerson.visibility = View.VISIBLE
 
+        ivHome = findViewById(R.id.iv_home)
+        ivHome.setBackgroundResource(R.drawable.ic_home)
+
+        ivPerson = findViewById(R.id.iv_person)
+        ivPerson.visibility = View.GONE
+        // ivPerson.setBackgroundResource(R.drawable.ic_person_fill)
+
+        ivPersonFill = findViewById(R.id.iv_person_fill)
+        ivPersonFill.visibility = View.VISIBLE
+        ivPerson.setBackgroundResource(R.drawable.ic_person_fill)
+
         bottomNavHome.setOnClickListener{
-            bottomIvPerson.visibility =  View.INVISIBLE
+            /*bottomIvPerson.visibility =  View.INVISIBLE
             bottomIvHamburger.visibility =  View.INVISIBLE
             bottomIvChat.visibility =  View.INVISIBLE
-            bottomIvHome.visibility =  View.VISIBLE
+            bottomIvHome.visibility =  View.VISIBLE*/
             navigateToDashboard()
         }
 
@@ -79,23 +94,23 @@ class ProfileActivity : AppCompatActivity() {
             bottomIvHome.visibility =  View.INVISIBLE
             bottomIvPerson.visibility =  View.INVISIBLE
             bottomIvHamburger.visibility =  View.INVISIBLE
-            bottomIvChat.visibility =  View.VISIBLE
+            //bottomIvChat.visibility =  View.VISIBLE
             navigateToChat()
         }
 
-        bottomNavPerson.setOnClickListener{
+        /*bottomNavPerson.setOnClickListener{
             bottomIvHome.visibility =  View.INVISIBLE
             bottomIvHamburger.visibility =  View.INVISIBLE
             bottomIvChat.visibility =  View.INVISIBLE
             bottomIvPerson.visibility =  View.VISIBLE
             navigateToProfile()
-        }
+        }*/
 
         bottomNavHamburger.setOnClickListener{
-            bottomIvHome.visibility =  View.INVISIBLE
+            /*bottomIvHome.visibility =  View.INVISIBLE
             bottomIvChat.visibility =  View.INVISIBLE
             bottomIvPerson.visibility =  View.INVISIBLE
-            bottomIvHamburger.visibility =  View.VISIBLE
+            bottomIvHamburger.visibility =  View.VISIBLE*/
             navigateToMenu()
         }
     }
@@ -142,5 +157,10 @@ class ProfileActivity : AppCompatActivity() {
     private fun navigateToDashboard() {
         val intent = Intent(this, DashboardActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        bottomIvPerson.visibility = View.VISIBLE
     }
 }

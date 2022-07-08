@@ -31,4 +31,9 @@
     <color name="black_mat">#646464</color>
     <color name="light_green">#2FC584</color>
     <color name="chat_send">#F6F6F6</color>
+    <color name="pink">#ff65b2</color>
+    <color name="login_error">#F9D7E0</color>
+    <color name="faq_divider">#E3E1E1</color>
+    <color name="pill_color">#EBECF0</color>
+    <color name="splash_text">#E9EAEB</color>
 </resources>

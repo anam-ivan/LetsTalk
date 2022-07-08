@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ivan.letstalk.R
@@ -14,6 +16,7 @@ import com.ivan.letstalk.model.MedicalTermsModel
 import java.util.*
 
 class GlossaryActivity : AppCompatActivity() {
+    private lateinit var tvMedicalTerms: AppCompatTextView
     private lateinit var rvMedicalTerms: IndexFastScrollRecyclerView
     private var mDataArray: List<String>? = null
     private var mAlphabetItems: List<AlphabetItem>? = null
@@ -25,8 +28,11 @@ class GlossaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_glossary)
         rvMedicalTerms = findViewById(R.id.rv_medical_terms)
-        /*initialiseData()
-        initialiseUI()*/
+        tvMedicalTerms = findViewById(R.id.tv_medical_terms)
+        tvMedicalTerms.paint?.isUnderlineText = true
+        tvMedicalTerms.setTextColor(ContextCompat.getColor(this, R.color.blue))
+        initialiseData()
+        initialiseUI()
         findViewById<ImageView>(R.id.btn_back).setOnClickListener {
             onBackPressed()
         }

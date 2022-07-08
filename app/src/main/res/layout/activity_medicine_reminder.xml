@@ -19,7 +19,7 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/tb_header"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_90sdp"
+                android:layout_height="?attr/actionBarSize"
                 android:background="@color/white"
                 android:elevation="@dimen/_1sdp"
                 app:layout_constraintTop_toTopOf="parent">

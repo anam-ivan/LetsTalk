@@ -7,8 +7,73 @@
         android:layout_height="match_parent"
         android:background="@drawable/gradient"
         android:animateLayoutChanges="true"
-        android:paddingBottom="@dimen/_12sdp"
+
         tools:context=".ui.DashboardActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tb_header"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70sdp"
+        android:background="@color/white"
+        android:elevation="@dimen/_1sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/_12sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_search"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:padding="2dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_search" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_toEndOf="@+id/iv_search"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="Greetings, Shahnaz!"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_18ssp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_last_update_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_username"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_toEndOf="@+id/iv_search"
+                android:fontFamily="@font/gilroy_medium"
+                android:text="Last Interaction was on 08 May 22 at 19:08"
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/_10ssp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_notifications"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="@dimen/_16sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_notification" />
+
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.MaterialToolbar>
 
 
     <androidx.core.widget.NestedScrollView
@@ -18,7 +83,7 @@
         android:layout_marginBottom="@dimen/_8sdp"
         android:overScrollMode="never"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/tb_header">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -26,7 +91,7 @@
             android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.appbar.MaterialToolbar
+            <!--<com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/tb_header"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_70sdp"
@@ -76,6 +141,7 @@
                         android:textSize="@dimen/_10ssp" />
 
                     <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_notifications"
                         android:layout_width="@dimen/_14sdp"
                         android:layout_height="@dimen/_16sdp"
                         android:layout_alignParentEnd="true"
@@ -87,7 +153,7 @@
 
                 </RelativeLayout>
 
-            </com.google.android.material.appbar.MaterialToolbar>
+            </com.google.android.material.appbar.MaterialToolbar>-->
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -337,7 +403,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_42sdp"
         android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:elevation="@dimen/_8sdp"
         app:cardBackgroundColor="@color/blue"
@@ -364,6 +430,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_home"
                     android:layout_width="@dimen/_12sdp"
                     android:layout_height="@dimen/_14sdp"
                     android:layout_marginTop="@dimen/_4sdp"
@@ -377,7 +444,8 @@
                     android:layout_marginTop="@dimen/_6sdp"
                     android:layout_marginBottom="@dimen/_4sdp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/bottom_nav_dot"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_black_dot"
                     android:visibility="invisible" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -392,11 +460,12 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_chat"
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ic_chatbot" />
+                    android:src="@drawable/ic_chat_bot" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/bottom_dot_chat"
@@ -405,7 +474,8 @@
                     android:layout_marginTop="@dimen/_6sdp"
                     android:layout_marginBottom="@dimen/_4sdp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/bottom_nav_dot"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_black_dot"
                     android:visibility="invisible" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -420,6 +490,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_person"
                     android:layout_width="@dimen/_12sdp"
                     android:layout_height="@dimen/_14sdp"
                     android:layout_marginTop="@dimen/_4sdp"
@@ -433,7 +504,8 @@
                     android:layout_marginTop="@dimen/_6sdp"
                     android:layout_marginBottom="@dimen/_4sdp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/bottom_nav_dot"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_black_dot"
                     android:visibility="invisible" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -448,6 +520,7 @@
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_menu"
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
                     android:layout_marginTop="@dimen/_4sdp"
@@ -461,7 +534,8 @@
                     android:layout_marginTop="@dimen/_6sdp"
                     android:layout_marginBottom="@dimen/_4sdp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/bottom_nav_dot"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_black_dot"
                     android:visibility="invisible" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>

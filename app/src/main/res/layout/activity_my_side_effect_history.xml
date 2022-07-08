@@ -19,7 +19,7 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/tb_header"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_90sdp"
+                android:layout_height="?attr/actionBarSize"
                 android:background="@color/white"
                 android:elevation="@dimen/_1sdp"
                 app:layout_constraintTop_toTopOf="parent">
@@ -28,7 +28,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:id="@+id/ll_header"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal">
 
 
@@ -56,8 +56,7 @@
                         android:layout_marginStart="@dimen/_16sdp"
                         android:text="@string/my_side_effect_history"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_16ssp"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/_16ssp" />
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -168,13 +167,13 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_3sdp"
                         android:layout_height="@dimen/_3sdp"
-                        android:scaleType="fitXY"
                         android:layout_alignParentStart="true"
-                        android:visibility="visible"
-                        android:tint="@color/black"
                         android:layout_marginTop="@dimen/_6sdp"
                         android:layout_marginBottom="@dimen/_4sdp"
-                        android:src="@drawable/bottom_nav_dot" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_black_dot"
+                        android:tint="@color/black"
+                        android:visibility="visible" />
 
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -236,13 +235,13 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_3sdp"
                         android:layout_height="@dimen/_3sdp"
-                        android:scaleType="fitXY"
                         android:layout_alignParentStart="true"
-                        android:visibility="visible"
-                        android:tint="@color/black"
                         android:layout_marginTop="@dimen/_6sdp"
                         android:layout_marginBottom="@dimen/_4sdp"
-                        android:src="@drawable/bottom_nav_dot" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_black_dot"
+                        android:tint="@color/black"
+                        android:visibility="visible" />
 
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -304,13 +303,13 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/_3sdp"
                         android:layout_height="@dimen/_3sdp"
-                        android:scaleType="fitXY"
                         android:layout_alignParentStart="true"
-                        android:visibility="visible"
-                        android:tint="@color/black"
                         android:layout_marginTop="@dimen/_6sdp"
                         android:layout_marginBottom="@dimen/_4sdp"
-                        android:src="@drawable/bottom_nav_dot" />
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_black_dot"
+                        android:tint="@color/black"
+                        android:visibility="visible" />
 
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -379,7 +378,7 @@
                         android:tint="@color/black"
                         android:layout_marginTop="@dimen/_6sdp"
                         android:layout_marginBottom="@dimen/_4sdp"
-                        android:src="@drawable/bottom_nav_dot" />
+                        android:src="@drawable/ic_black_dot" />
 
 
                     <androidx.appcompat.widget.AppCompatTextView

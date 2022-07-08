@@ -109,14 +109,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginStart="@dimen/_16sdp"
+                            android:layout_marginStart="@dimen/_12sdp"
                             android:layout_toEndOf="@+id/iv_nav_person_icon"
                             android:fontFamily="@font/gilroy_semi_bold"
                             android:gravity="center_vertical"
                             android:maxLines="1"
                             android:text="@string/my_profile"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_14ssp" />
+                            android:textSize="@dimen/_13ssp" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_nav_person_arrow"
@@ -161,14 +161,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginStart="@dimen/_16sdp"
+                            android:layout_marginStart="@dimen/_12sdp"
                             android:layout_toEndOf="@+id/iv_nav_health_icon"
                             android:fontFamily="@font/gilroy_semi_bold"
                             android:gravity="center_vertical"
                             android:maxLines="1"
                             android:text="@string/my_health_vitals"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_14ssp" />
+                            android:textSize="@dimen/_13ssp" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_nav_health_arrow"
@@ -213,14 +213,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginStart="@dimen/_16sdp"
+                            android:layout_marginStart="@dimen/_12sdp"
                             android:layout_toEndOf="@+id/iv_nav_side_effect_icon"
                             android:fontFamily="@font/gilroy_semi_bold"
                             android:gravity="center_vertical"
                             android:maxLines="1"
                             android:text="@string/my_side_effect_history"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_14ssp" />
+                            android:textSize="@dimen/_13ssp" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_nav_side_effect_arrow"
@@ -265,14 +265,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginStart="@dimen/_16sdp"
+                            android:layout_marginStart="@dimen/_12sdp"
                             android:layout_toEndOf="@+id/iv_nav_document_icon"
                             android:fontFamily="@font/gilroy_semi_bold"
                             android:gravity="center_vertical"
                             android:maxLines="1"
                             android:text="@string/my_documents"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_14ssp" />
+                            android:textSize="@dimen/_13ssp" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_nav_document_arrow"
@@ -317,14 +317,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginStart="@dimen/_16sdp"
+                            android:layout_marginStart="@dimen/_12sdp"
                             android:layout_toEndOf="@+id/iv_nav_medicine_icon"
                             android:fontFamily="@font/gilroy_semi_bold"
                             android:gravity="center_vertical"
                             android:maxLines="1"
                             android:text="@string/medicine_reminder"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_14ssp" />
+                            android:textSize="@dimen/_13ssp" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_nav_medicine_arrow"
@@ -369,14 +369,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginStart="@dimen/_16sdp"
+                            android:layout_marginStart="@dimen/_12sdp"
                             android:layout_toEndOf="@+id/iv_nav_know_effect_icon"
                             android:fontFamily="@font/gilroy_semi_bold"
                             android:gravity="center_vertical"
                             android:maxLines="1"
                             android:text="@string/know_your_side_effects"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_14ssp" />
+                            android:textSize="@dimen/_13ssp" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_nav_know_effect_arrow"
@@ -421,14 +421,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginStart="@dimen/_16sdp"
+                            android:layout_marginStart="@dimen/_12sdp"
                             android:layout_toEndOf="@+id/iv_nav_glossary_icon"
                             android:fontFamily="@font/gilroy_semi_bold"
                             android:gravity="center_vertical"
                             android:maxLines="1"
                             android:text="@string/glossary"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_14ssp" />
+                            android:textSize="@dimen/_13ssp" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_nav_glossary_arrow"
@@ -465,7 +465,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="@dimen/_16sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/ic_reminder"
+                            android:src="@drawable/ic_faq"
                             tools:ignore="ContentDescription" />
 
                         <TextView
@@ -473,15 +473,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginStart="@dimen/_16sdp"
-                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:layout_marginStart="@dimen/_12sdp"
+                            android:layout_marginEnd="@dimen/_8sdp"
                             android:layout_toEndOf="@+id/iv_nav_faq_icon"
                             android:fontFamily="@font/gilroy_semi_bold"
                             android:gravity="center_vertical"
                             android:maxLines="1"
                             android:text="@string/faq"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_14ssp" />
+                            android:textSize="@dimen/_13ssp" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/iv_nav_faq_arrow"
@@ -513,7 +513,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:layout_gravity="center|center_horizontal"
-                            android:drawableStart="@drawable/ic_notification"
+                            android:drawableStart="@drawable/ic_logout"
                             android:drawablePadding="@dimen/_9sdp"
                             android:drawableTint="@color/red"
                             android:fontFamily="@font/gilroy_medium"
@@ -521,7 +521,7 @@
                             android:text="@string/logout"
                             android:textAllCaps="false"
                             android:textColor="@color/red"
-                            android:textSize="@dimen/_14ssp" />
+                            android:textSize="@dimen/_13ssp" />
                     </RelativeLayout>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -573,7 +573,8 @@
                             android:layout_marginTop="@dimen/_6sdp"
                             android:layout_marginBottom="@dimen/_4sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/bottom_nav_dot"
+                            app:tint="@color/white"
+                            android:src="@drawable/ic_black_dot"
                             android:visibility="invisible" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -592,7 +593,7 @@
                             android:layout_height="@dimen/_18sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/ic_chatbot" />
+                            android:src="@drawable/ic_chat_bot" />
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/bottom_dot_chat"
@@ -601,7 +602,8 @@
                             android:layout_marginTop="@dimen/_6sdp"
                             android:layout_marginBottom="@dimen/_4sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/bottom_nav_dot"
+                            app:tint="@color/white"
+                            android:src="@drawable/ic_black_dot"
                             android:visibility="invisible" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -629,7 +631,8 @@
                             android:layout_marginTop="@dimen/_6sdp"
                             android:layout_marginBottom="@dimen/_4sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/bottom_nav_dot"
+                            app:tint="@color/white"
+                            android:src="@drawable/ic_black_dot"
                             android:visibility="invisible" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -644,11 +647,12 @@
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iv_menu"
                             android:layout_width="@dimen/_18sdp"
                             android:layout_height="@dimen/_18sdp"
                             android:layout_marginTop="@dimen/_4sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/ic_menu" />
+                            android:src="@drawable/ic_menu"/>
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/bottom_dot_hamburger"
@@ -657,7 +661,8 @@
                             android:layout_marginTop="@dimen/_6sdp"
                             android:layout_marginBottom="@dimen/_4sdp"
                             android:scaleType="fitXY"
-                            android:src="@drawable/bottom_nav_dot"
+                            app:tint="@color/white"
+                            android:src="@drawable/ic_black_dot"
                             android:visibility="invisible" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,5 +1,6 @@
 package com.ivan.letstalk.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -12,5 +13,9 @@ class UpdateMobileConfirmationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_update_mobile_confirmation)
         tvContactHelpline = findViewById(R.id.tv_contact_helpline)
         tvContactHelpline.paint?.isUnderlineText = true
+        tvContactHelpline.setOnClickListener {
+            val intent = Intent(this, VerifyOTPActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

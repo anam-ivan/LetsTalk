@@ -11,6 +11,7 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import com.ivan.letstalk.R
 import com.ivan.letstalk.adapter.AlkSideEffectsAdapter
 import com.ivan.letstalk.model.AlkSideEffectsModel
@@ -21,6 +22,9 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var alkSideEffectsAdapter: AlkSideEffectsAdapter
     private lateinit var  llSideEffects : LinearLayoutCompat
     private lateinit var  llGlossary : LinearLayoutCompat
+
+    private lateinit var ivHome: AppCompatImageView
+    private lateinit var ivNotifications: AppCompatImageView
 
     private lateinit var  bottomNavHome : LinearLayoutCompat
     private lateinit var  bottomNavChat : LinearLayoutCompat
@@ -36,6 +40,8 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
+        ivNotifications = findViewById(R.id.iv_notifications)
+
         bottomNavHome =  findViewById(R.id.bottom_nav_home)
         bottomNavChat =  findViewById(R.id.bottom_nav_chat)
         bottomNavPerson =  findViewById(R.id.bottom_nav_person)
@@ -46,7 +52,10 @@ class DashboardActivity : AppCompatActivity() {
         bottomIvPerson = findViewById(R.id.bottom_dot_person)
         bottomIvHamburger = findViewById(R.id.bottom_dot_hamburger)
 
+        ivHome = findViewById(R.id.iv_home)
+
         bottomIvHome.visibility = View.VISIBLE
+        ivHome.setBackgroundResource(R.drawable.ic_home_fill)
 
         llSideEffects = findViewById(R.id.ll_side_effects)
         llGlossary = findViewById(R.id.ll_glossary)
@@ -79,35 +88,39 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        bottomNavHome.setOnClickListener{
+        /*bottomNavHome.setOnClickListener{
             bottomIvPerson.visibility =  View.INVISIBLE
             bottomIvHamburger.visibility =  View.INVISIBLE
             bottomIvChat.visibility =  View.INVISIBLE
             bottomIvHome.visibility =  View.VISIBLE
             navigateToDashboard()
-        }
+        }*/
 
         bottomNavChat.setOnClickListener{
             bottomIvHome.visibility =  View.INVISIBLE
             bottomIvPerson.visibility =  View.INVISIBLE
             bottomIvHamburger.visibility =  View.INVISIBLE
-            bottomIvChat.visibility =  View.VISIBLE
+            // bottomIvChat.visibility =  View.VISIBLE
             navigateToChat()
         }
         bottomNavPerson.setOnClickListener{
-            bottomIvHome.visibility =  View.INVISIBLE
+            /*bottomIvHome.visibility =  View.INVISIBLE
             bottomIvHamburger.visibility =  View.INVISIBLE
             bottomIvChat.visibility =  View.INVISIBLE
-            bottomIvPerson.visibility =  View.VISIBLE
+            bottomIvPerson.visibility =  View.VISIBLE*/
             navigateToProfile()
         }
 
         bottomNavHamburger.setOnClickListener{
-            bottomIvHome.visibility =  View.INVISIBLE
+            /*bottomIvHome.visibility =  View.INVISIBLE
             bottomIvChat.visibility =  View.INVISIBLE
             bottomIvPerson.visibility =  View.INVISIBLE
-            bottomIvHamburger.visibility =  View.VISIBLE
+            bottomIvHamburger.visibility =  View.VISIBLE*/
             navigateToMenu()
+        }
+
+        ivNotifications.setOnClickListener {
+            navigateToNotifications()
         }
     }
 
@@ -151,5 +164,18 @@ class DashboardActivity : AppCompatActivity() {
     private fun navigateToDashboard() {
         val intent = Intent(this, DashboardActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun navigateToNotifications() {
+        val intent = Intent(this, NotificationsActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        bottomIvHome.visibility = View.VISIBLE
+        bottomIvPerson.visibility =  View.INVISIBLE
+        bottomIvHamburger.visibility =  View.INVISIBLE
+        bottomIvChat.visibility =  View.INVISIBLE
     }
 }

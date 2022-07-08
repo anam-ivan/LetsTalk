@@ -36,8 +36,8 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="@dimen/_16sdp"
                 android:layout_marginStart="@dimen/_16sdp"
-                android:fontFamily="@font/gilroy_semi_bold"
-                android:textSize="@dimen/_14ssp"
+                android:fontFamily="@font/gilroy_medium"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintTop_toBottomOf="@+id/iv_login_header"
                 app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -47,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_cr"/>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -72,8 +73,8 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="@dimen/_14sdp"
                 android:layout_marginStart="@dimen/_16sdp"
-                android:fontFamily="@font/gilroy_semi_bold"
-                android:textSize="@dimen/_14ssp"
+                android:fontFamily="@font/gilroy_medium"
+                android:textSize="@dimen/_12ssp"
                 app:layout_constraintTop_toBottomOf="@+id/otpBox"
                 app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -96,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_45sdp"
                 android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
                 android:background="@drawable/edit_text_border"
                 android:orientation="horizontal"
@@ -122,17 +123,6 @@
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_13ssp" />
-
-                    <!--<androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/iv_settings"
-                        android:layout_width="@dimen/_28sdp"
-                        android:layout_height="@dimen/_22sdp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_marginEnd="@dimen/_4sdp"
-                        android:layout_toEndOf="@+id/tv_country_code"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_arrow_down" />-->
                 </RelativeLayout>
 
                 <androidx.appcompat.widget.AppCompatEditText
@@ -152,7 +142,73 @@
                     android:imeOptions="actionNext"
                     android:maxLines="1"
                     android:textSize="@dimen/_14ssp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_login_error"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:visibility="invisible"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_login_error" />
+
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <RelativeLayout
+                android:id="@+id/rr_error_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:padding="@dimen/_6sdp"
+                android:visibility="gone"
+                android:background="@drawable/update_mobile_number_back"
+                android:backgroundTint="@color/login_error"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llPhone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_error_first_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:lineSpacingExtra="@dimen/_4sdp"
+                    android:padding="@dimen/_4sdp"
+                    android:text="Your mobile number doesn't match with your CR No. Please enter the correct"
+                    android:textColor="@color/edt_error"
+                    android:textSize="@dimen/_13ssp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_error_second_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_error_first_text"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="-4dp"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:text="number or"
+                    android:textColor="@color/edt_error"
+                    android:textSize="@dimen/_13ssp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_error_third_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_error_first_text"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="-4dp"
+                    android:layout_toEndOf="@+id/tv_error_second_text"
+                    android:fontFamily="@font/gilroy_semi_bold"
+                    android:text="update number"
+                    android:textColor="@color/edt_error"
+                    android:textSize="@dimen/_13ssp" />
+
+            </RelativeLayout>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox"
@@ -162,7 +218,7 @@
                 android:layout_marginTop="@dimen/_22sdp"
                 android:layout_marginStart="@dimen/_12sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/llPhone" />
+                app:layout_constraintTop_toBottomOf="@+id/rr_error_layout" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_i_accept"
@@ -173,7 +229,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textSize="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_34sdp"
-                app:layout_constraintTop_toBottomOf="@+id/llPhone"
+                app:layout_constraintTop_toBottomOf="@+id/rr_error_layout"
                 app:layout_constraintStart_toEndOf="@+id/checkbox" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -186,7 +242,7 @@
                 android:layout_marginStart="@dimen/_6sdp"
                 android:textSize="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_34sdp"
-                app:layout_constraintTop_toBottomOf="@+id/llPhone"
+                app:layout_constraintTop_toBottomOf="@+id/rr_error_layout"
                 app:layout_constraintStart_toEndOf="@+id/tv_i_accept" />
 
             <com.google.android.material.button.MaterialButton

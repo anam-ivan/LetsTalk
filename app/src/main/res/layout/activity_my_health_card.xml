@@ -3,13 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:overScrollMode="never"
-        android:scrollbars="none">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -19,7 +12,7 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/tb_header"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_90sdp"
+                android:layout_height="?attr/actionBarSize"
                 android:background="@color/white"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -27,7 +20,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:id="@+id/ll_header"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal">
 
 
@@ -54,9 +47,8 @@
                         android:gravity="center"
                         android:layout_marginStart="@dimen/_16sdp"
                         android:text="@string/my_health_card"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_16ssp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14ssp" />
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -1016,8 +1008,5 @@
                 </RelativeLayout>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 </layout>
