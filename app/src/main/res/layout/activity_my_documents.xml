@@ -21,7 +21,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:id="@+id/ll_header"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal">
 
 
@@ -171,44 +171,6 @@
 
                     </RelativeLayout>
 
-                    <!--<androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_total_documents"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_16sdp"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:fontFamily="@font/gilroy_medium"
-                        android:gravity="center"
-                        android:text="@string/total_documents_18"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_13ssp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ll_search" />
-
-                    <RelativeLayout
-                        android:id="@+id/ll_select_all"
-                        android:layout_width="@dimen/_65sdp"
-                        android:layout_height="@dimen/_20sdp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_56sdp"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:layout_marginEnd="@dimen/_16sdp"
-                        android:background="@drawable/health_card_bg"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ll_search">
-
-                        <androidx.appcompat.widget.AppCompatCheckedTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:fontFamily="@font/gilroy_medium"
-                            android:padding="@dimen/_2sdp"
-                            android:text="@string/select_all"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/_9ssp" />
-
-                    </RelativeLayout>-->
-
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_my_documents"
                         android:layout_width="match_parent"
@@ -221,24 +183,6 @@
                         tools:itemCount="2"
                         tools:layout_editor_absoluteX="41dp"
                         tools:listitem="@layout/my_documents_row" />
-
-                    <!--<com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_upload_doc"
-                        style="@style/Widget.MaterialComponents.Button"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_48sdp"
-                        android:layout_marginStart="@dimen/_24sdp"
-                        android:layout_marginTop="@dimen/_16sdp"
-                        android:layout_marginEnd="@dimen/_24sdp"
-                        android:backgroundTint="@color/blue"
-                        android:fontFamily="@font/gilroy_medium"
-                        android:text="@string/upload_new"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_14ssp"
-                        app:cornerRadius="@dimen/_8sdp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rv_my_documents" />-->
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 

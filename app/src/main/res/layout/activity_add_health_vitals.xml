@@ -20,7 +20,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:id="@+id/ll_header"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal">
 
 
@@ -48,7 +48,7 @@
                         android:layout_marginStart="@dimen/_16sdp"
                         android:text="@string/add_health_vitals"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_16ssp" />
+                        android:textSize="@dimen/_14ssp" />
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -715,12 +715,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
                     android:background="@color/divider_color"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:layout_marginBottom="@dimen/_8sdp"
                     android:gravity="center"
                     app:layout_constraintTop_toBottomOf="@id/ll_blood_sugar_fasting">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/btn_delete"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/view_two"
@@ -758,6 +759,7 @@
                 android:fontFamily="@font/gilroy_regular"
                 android:text="@string/save"
                 android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="@dimen/_14ssp"
                 app:cornerRadius="@dimen/_8sdp"
                 app:layout_constraintBottom_toBottomOf="parent"

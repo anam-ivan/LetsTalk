@@ -9,9 +9,10 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.Window
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.chip.Chip
@@ -19,10 +20,14 @@ import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.chip.ChipGroup
 import com.ivan.letstalk.R
 
+
 class ALKChatActivity : AppCompatActivity() {
     private lateinit var cgExistingSideEffects: ChipGroup
     private lateinit var rrMyChats: RelativeLayout
     private lateinit var ivMenu: ImageView
+    private lateinit var ivCross: ImageView
+    private lateinit var dialog: Dialog
+    private var isButtonClicked = false
     // private lateinit var ivHome: AppCompatImageView
     private var existingSideEffectsList = arrayOf(
         "Abdominal Pain", "Constipation", "Dyspepsia", "Dysphagia", "Electrocardiogram QT prlonged",
@@ -36,6 +41,7 @@ class ALKChatActivity : AppCompatActivity() {
         setContentView(R.layout.activity_alkchat)
         rrMyChats = findViewById(R.id.rr_my_chats)
         ivMenu = findViewById(R.id.iv_menu)
+        ivCross = findViewById(R.id.iv_cross)
         /*ivHome = findViewById(R.id.iv_home)
         ivHome.setBackgroundResource(R.drawable.ic_home)*/
 
@@ -50,6 +56,14 @@ class ALKChatActivity : AppCompatActivity() {
         ivMenu.setOnClickListener {
             showChatDialog()
         }
+
+        /*if (ivCross.visibility == View.VISIBLE) {
+            ivCross.setOnClickListener {
+                ivCross.visibility = View.GONE
+                dialog.dismiss()
+                ivMenu.visibility = View.VISIBLE
+            }
+        }*/
     }
 
     private fun initExistingSideEffectsData() {
@@ -57,7 +71,6 @@ class ALKChatActivity : AppCompatActivity() {
             cgExistingSideEffects = findViewById(R.id.chip_existing_side_effects)
             val entryChip2: Chip = getChip(existingSideEffectsList[i])
             entryChip2.id = i
-
             //set default selected language
             //entryChip2.setChecked(true);
             cgExistingSideEffects.addView(entryChip2)
@@ -103,15 +116,21 @@ class ALKChatActivity : AppCompatActivity() {
     }
 
     private fun showChatDialog() {
-        val dialog = Dialog(this)
+        dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window?.setGravity(Gravity.BOTTOM)
+        dialog.window?.setGravity(Gravity.LEFT)
+        dialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        dialog.window?.attributes!!.verticalMargin = 0.2F
+        dialog.window?.attributes!!.horizontalMargin = 0.1F
         val params = this.window.attributes
         // this.setCanceledOnTouchOutside(true)
-        params.x = -100
+        // params.x = -100
         this.window.attributes = params
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.chat_dialog)
         dialog.show()
+        isButtonClicked = dialog.isShowing
+        ivMenu.setBackgroundResource(if (isButtonClicked) R.drawable.ic_menu else R.drawable.ic_cross)
     }
 }

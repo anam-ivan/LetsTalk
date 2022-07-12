@@ -56,17 +56,16 @@
             <RelativeLayout
                 android:id="@+id/rr_chat"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_15sdp">
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_4sdp">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_my_chats"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/_16sdp"
                     android:fontFamily="@font/gilroy_medium"
                     android:gravity="center"
@@ -78,11 +77,104 @@
                     android:id="@+id/iv_my_chat"
                     android:layout_width="@dimen/_12sdp"
                     android:layout_height="@dimen/_12sdp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginStart="@dimen/_6sdp"
                     android:layout_marginEnd="@dimen/_8sdp"
                     android:layout_toEndOf="@+id/tv_my_chats"
                     android:src="@drawable/ic_msg"
+                    android:textAllCaps="false" />
+
+                <View
+                    android:layout_width="@dimen/_64sdp"
+                    android:layout_height="2dp"
+                    android:layout_below="@+id/tv_my_chats"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:background="@color/hex_blue" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:overScrollMode="never"
+        android:layout_marginBottom="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb_header">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_completed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:fontFamily="@font/gilroy_medium"
+                android:linksClickable="false"
+                android:selectAllOnFocus="false"
+                android:text="@string/completed"
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/_12ssp" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_archived"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_toEndOf="@+id/tv_completed"
+                android:fontFamily="@font/gilroy_medium"
+                android:linksClickable="false"
+                android:selectAllOnFocus="false"
+                android:text="@string/archived"
+                android:textColor="@color/dark_grey"
+                android:textSize="@dimen/_12ssp" />
+
+            <RelativeLayout
+                android:id="@+id/rr_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:padding="@dimen/_8sdp"
+                android:background="@drawable/calender_layout_back">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:fontFamily="@font/gilroy_semi_bold"
+                    android:gravity="center"
+                    android:text="08 Jun 22"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="@dimen/_12sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_toEndOf="@+id/tv_date"
+                    android:src="@drawable/ic_calender"
                     android:textAllCaps="false" />
 
                 <!--<View
@@ -95,199 +187,127 @@
 
         </RelativeLayout>
 
-    </com.google.android.material.appbar.MaterialToolbar>
+        <RelativeLayout
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/rr_first"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@+id/rr_date"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@drawable/menu_item_back"
+            android:paddingTop="@dimen/sp_4"
+            android:paddingBottom="@dimen/sp_4">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_completed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/completed"
-        android:textColor="@color/dark_grey"
-        android:layout_marginTop="@dimen/_24sdp"
-        android:layout_marginStart="@dimen/_16sdp"
-        android:layout_marginEnd="@dimen/_16sdp"
-        android:fontFamily="@font/gilroy_medium"
-        android:selectAllOnFocus="false"
-        android:linksClickable="false"
-        android:textSize="@dimen/_12ssp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tb_header" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:fontFamily="@font/gilroy_semi_bold"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="08 Jun 22 at 08:12 pm"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:rotation="270"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_arrow_down"
+                android:tint="@color/black"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_archived"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_24sdp"
-        android:fontFamily="@font/gilroy_medium"
-        android:linksClickable="false"
-        android:selectAllOnFocus="false"
-        android:text="@string/archived"
-        android:textColor="@color/dark_grey"
-        android:textSize="@dimen/_12ssp"
-        app:layout_constraintStart_toEndOf="@+id/tv_completed"
-        app:layout_constraintTop_toBottomOf="@+id/tb_header" />
+        <RelativeLayout
+            android:id="@+id/rr_second"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@drawable/menu_item_back"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/sp_4"
+            android:paddingBottom="@dimen/sp_4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rr_first">
 
-    <RelativeLayout
-        android:id="@+id/rr_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_18sdp"
-        android:layout_marginEnd="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:padding="@dimen/_8sdp"
-        android:background="@drawable/calender_layout_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tb_header">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:fontFamily="@font/gilroy_semi_bold"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="08 Jun 22 at 04:36 pm"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:fontFamily="@font/gilroy_semi_bold"
-            android:gravity="center"
-            android:text="08 Jun 22"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12ssp" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:rotation="270"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_arrow_down"
+                android:tint="@color/black"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/_14sdp"
-            android:layout_height="@dimen/_14sdp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:layout_toEndOf="@+id/tv_date"
-            android:src="@drawable/calender_icon"
-            android:textAllCaps="false" />
+        <RelativeLayout
+            android:id="@+id/rr_third"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@drawable/menu_item_back"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/sp_4"
+            android:paddingBottom="@dimen/sp_4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rr_second">
 
-        <!--<View
-            android:layout_width="@dimen/_32sdp"
-            android:layout_height="2dp"
-            android:layout_below="@+id/tv_my_chats"
-            android:layout_marginBottom="@dimen/_16sdp"
-            android:background="@color/hex_blue" />-->
-    </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:fontFamily="@font/gilroy_semi_bold"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="08 Jun 22 at 02:51 pm"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp" />
 
-    <RelativeLayout
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:id="@+id/rr_first"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_12sdp"
-        app:layout_constraintTop_toBottomOf="@+id/rr_date"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:background="@drawable/menu_item_back"
-        android:paddingTop="@dimen/sp_4"
-        android:paddingBottom="@dimen/sp_4">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:rotation="270"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_arrow_down"
+                android:tint="@color/black"
+                tools:ignore="ContentDescription" />
+        </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:fontFamily="@font/gilroy_semi_bold"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:text="08 Jun 22 at 08:12 pm"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:rotation="270"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_arrow_down"
-            android:tint="@color/black"
-            tools:ignore="ContentDescription" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rr_second"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:background="@drawable/menu_item_back"
-        android:orientation="horizontal"
-        android:paddingTop="@dimen/sp_4"
-        android:paddingBottom="@dimen/sp_4"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rr_first">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:fontFamily="@font/gilroy_semi_bold"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:text="08 Jun 22 at 04:36 pm"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:rotation="270"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_arrow_down"
-            android:tint="@color/black"
-            tools:ignore="ContentDescription" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rr_third"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:background="@drawable/menu_item_back"
-        android:orientation="horizontal"
-        android:paddingTop="@dimen/sp_4"
-        android:paddingBottom="@dimen/sp_4"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rr_second">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:fontFamily="@font/gilroy_semi_bold"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:text="08 Jun 22 at 02:51 pm"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:rotation="270"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_arrow_down"
-            android:tint="@color/black"
-            tools:ignore="ContentDescription" />
-    </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

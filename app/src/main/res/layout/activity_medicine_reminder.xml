@@ -28,7 +28,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:id="@+id/ll_header"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal">
 
 
@@ -51,12 +51,12 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:fontFamily="@font/gilroy_bold"
+                        android:fontFamily="@font/gilroy_medium"
                         android:gravity="center"
                         android:layout_marginStart="@dimen/_16sdp"
                         android:text="@string/medicine_reminder"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_16ssp"/>
+                        android:textSize="@dimen/_14ssp"/>
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -68,8 +68,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/tb_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_8sdp"
                 app:primaryColor="@color/light_grey"
                 app:textColor="@android:color/white"
                 app:selectedItem_textColor="@color/black"

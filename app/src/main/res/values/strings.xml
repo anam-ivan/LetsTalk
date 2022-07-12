@@ -43,6 +43,7 @@
     <string name="faq">Frequently Asked Questions</string>
     <string name="logout">Log Out</string>
     <string name="health_vitals">Health Vitals as on</string>
+    <string name="health_vitals_">Health Vitals</string>
     <string name="time">Time:</string>
     <string name="body_weight">Body Weight:</string>
     <string name="body_weight_">Body Weight</string>
@@ -113,4 +114,23 @@
     <string name="notifications">Notifications</string>
     <string name="i_accept_all_the_terms_amp_conditions"><![CDATA[I Accept All the Terms & Conditions]]></string>
     <string name="yesterday">Yesterday</string>
+    <string name="mri_brain_reports">MRI Brain Reports</string>
+    <string name="mri_date">MRI Date</string>
+    <string name="cranial_rt">Cranial RT</string>
+    <string name="timing_of_cranial_rt">Timing of Cranial RT</string>
+    <string name="lm_mets">LM mets</string>
+    <string name="histiology">Histiology</string>
+    <string name="ttf1">TTF1</string>
+    <string name="pd_l1">PD L1</string>
+    <string name="tki_drug">TKI Drug</string>
+    <string name="date_of_start_tki">Date of Start of TKI</string>
+    <string name="best_resp_extra">Best Resp. Extra</string>
+    <string name="not_assessed">Not Assessed</string>
+    <string name="toxicity">Toxicity</string>
+    <string name="first_pfs">1st PFS</string>
+    <string name="add_value">Add Value</string>
+    <string name="add">Add</string>
+    <string name="export">EXPORT</string>
+    <string name="continue">Continue</string>
+    <string name="start_new_chat">Start New Chat</string>
 </resources>

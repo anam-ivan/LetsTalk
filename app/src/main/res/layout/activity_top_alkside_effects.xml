@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/tb_header"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="@dimen/_45sdp"
         android:background="@color/white"
         android:elevation="@dimen/_1sdp"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,46 +25,29 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_height="match_parent">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/btn_back"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
+                    android:layout_width="@dimen/_16sdp"
+                    android:layout_height="@dimen/_16sdp"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
                     android:gravity="center"
                     android:src="@drawable/ic_back"
-                    android:textAllCaps="false"
-                    app:tint="@android:color/black" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="9"
-                android:fontFamily="@font/gilroy_medium"
-                android:gravity="center"
-                android:text="@string/top_alk_side_effects"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_16ssp"/>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:id="@+id/btn_logout2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:gravity="center"
                     android:textAllCaps="false" />
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/gilroy_medium"
+                android:gravity="center"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:text="@string/top_alk_side_effects"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

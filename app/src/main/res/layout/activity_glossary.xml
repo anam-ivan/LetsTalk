@@ -18,7 +18,7 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll_header"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -46,7 +46,7 @@
                 android:gravity="center"
                 android:text="@string/glossary"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_13ssp" />
+                android:textSize="@dimen/_14ssp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

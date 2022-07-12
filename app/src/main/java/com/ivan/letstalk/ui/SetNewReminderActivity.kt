@@ -16,9 +16,11 @@ import java.util.*
 class SetNewReminderActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private lateinit var ivChooseTime: AppCompatImageView
     private lateinit var ivChooseDate: AppCompatImageView
+    private lateinit var ivDropdown: AppCompatImageView
     private lateinit var tvTime: TextView
     private lateinit var tvDate: TextView
     private lateinit var spRow: Spinner
+    private lateinit var reminderLayout: RelativeLayout
 
     private var reminderTime = arrayOf(
         "PC (After Breakfast)", "PC (After Lunch)",
@@ -29,6 +31,8 @@ class SetNewReminderActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_new_reminder)
+        reminderLayout = findViewById(R.id.reminder_layout)
+        ivDropdown = findViewById(R.id.iv_dropdown)
         ivChooseTime = findViewById(R.id.iv_choose_time)
         ivChooseDate = findViewById(R.id.iv_choose_date)
         tvTime = findViewById(R.id.tv_time)
@@ -73,6 +77,14 @@ class SetNewReminderActivity : AppCompatActivity(), AdapterView.OnItemSelectedLi
                     tvTime.text = String.format("%d : %d", hourOfDay, minute)
                 }
             }, hour, minute, false)*/
+
+            /*if (reminderLayout != null) {
+                reminderLayout.addView(spRow);
+            }*/
+
+            ivDropdown.setOnClickListener {
+                spRow.performClick()
+            }
         }
 
         ivChooseDate.setOnClickListener {

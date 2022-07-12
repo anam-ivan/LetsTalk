@@ -9,6 +9,7 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import com.ivan.letstalk.R
 
 class AddHealthVitals : AppCompatActivity() {
+    private lateinit var addNewVital: LinearLayoutCompat
     private lateinit var llOxygenSaturation: LinearLayoutCompat
     private lateinit var tvBodyWeight: AppCompatTextView
     private lateinit var tvBloodPressure: AppCompatTextView
@@ -58,6 +59,7 @@ class AddHealthVitals : AppCompatActivity() {
         tvBloodSugar.text = bloodSugar.toString()
         tvBloodSugarFasting.text = bloodSugarFasting.toString()
 
+        addNewVital = findViewById(R.id.ll_add_new_vital)
         llOxygenSaturation = findViewById(R.id.ll_oxygen_saturation)
         val isFromEdit = intent.getBooleanExtra("isFromEdit", false)
         // Toast.makeText(this@AddHealthVitals, isFromEdit.toString(), Toast.LENGTH_SHORT).show()
@@ -107,6 +109,12 @@ class AddHealthVitals : AppCompatActivity() {
         ivBloodSugarFastingDecrease.setOnClickListener {
             bloodSugarFasting -= 1
             tvBloodSugarFasting.text = bloodSugarFasting.toString()
+        }
+
+        addNewVital.setOnClickListener {
+            val addNewVitalFragment =
+                AddNewVitalFragment()
+            addNewVitalFragment.show(supportFragmentManager, "ddd")
         }
     }
 }

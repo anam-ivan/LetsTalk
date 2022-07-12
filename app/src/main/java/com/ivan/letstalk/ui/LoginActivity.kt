@@ -61,6 +61,14 @@ class LoginActivity : AppCompatActivity() {
                 ivLoginError.visibility = View.VISIBLE
             }
         }
+        etPhone.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                llPhone.setBackgroundResource(R.drawable.edit_text_border_focused)
+            } else {
+
+            }
+
+        }
         updateNumber.setOnClickListener {
             val intent = Intent(this, UpdatePhoneNumberActivity::class.java)
             startActivity(intent)
