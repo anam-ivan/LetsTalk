@@ -18,7 +18,6 @@
                 app:layout_constraintTop_toTopOf="parent">
 
 
-
                 <androidx.appcompat.widget.LinearLayoutCompat
                     app:layout_constraintTop_toTopOf="parent"
                     android:id="@+id/ll_header"
@@ -132,16 +131,17 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/_24sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:layout_height="wrap_content">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_side_effect_header"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_16sdp"
-                        android:layout_marginTop="@dimen/_16sdp"
                         android:layout_alignParentStart="true"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="@dimen/_16sdp"
                         android:fontFamily="@font/gilroy_medium"
                         android:gravity="center"
                         android:text="@string/side_effect"
@@ -152,6 +152,7 @@
                         android:id="@+id/tv_side_effect"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/_8sdp"
                         android:layout_marginTop="@dimen/_16sdp"
                         android:layout_toEndOf="@+id/tv_side_effect_header"
@@ -167,7 +168,7 @@
                     android:id="@+id/ll_first"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
                     android:gravity="center"
                     android:weightSum="2"
                     android:padding="@dimen/_2sdp"
@@ -235,7 +236,7 @@
                     android:id="@+id/ll_second"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
                     android:gravity="center"
                     android:weightSum="2"
                     android:padding="@dimen/_2sdp"
@@ -303,7 +304,7 @@
                     android:id="@+id/ll_third"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
                     android:gravity="center"
                     android:weightSum="2"
                     android:padding="@dimen/_2sdp"
@@ -371,7 +372,7 @@
                     android:id="@+id/ll_fourth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
                     android:paddingBottom="@dimen/_16sdp"
                     android:gravity="center"
                     android:padding="@dimen/_2sdp"
@@ -416,7 +417,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginStart="@dimen/_4sdp"
+                            android:layout_marginStart="@dimen/_2sdp"
                             android:layout_toEndOf="@+id/tv_first"
                             android:fontFamily="@font/gilroy_semi_bold"
                             android:gravity="center_vertical"

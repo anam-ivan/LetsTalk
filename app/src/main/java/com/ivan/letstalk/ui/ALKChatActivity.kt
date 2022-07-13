@@ -1,6 +1,7 @@
 package com.ivan.letstalk.ui
 
 import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -8,11 +9,11 @@ import android.os.Build
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.Gravity
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.RelativeLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.chip.Chip
@@ -53,17 +54,40 @@ class ALKChatActivity : AppCompatActivity() {
         findViewById<ImageView>(R.id.btn_back).setOnClickListener {
             onBackPressed()
         }
+
+        dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setOnCancelListener(DialogInterface.OnCancelListener {
+            ivMenu.visibility = View.VISIBLE
+            ivCross.visibility = View.INVISIBLE
+        })
+
         ivMenu.setOnClickListener {
             showChatDialog()
+            ivMenu.visibility = View.INVISIBLE
+            ivCross.visibility = View.VISIBLE
+        }
+
+        findViewById<ImageView>(R.id.btn_back).setOnClickListener {
+            onBackPressed()
         }
 
         /*if (ivCross.visibility == View.VISIBLE) {
             ivCross.setOnClickListener {
-                ivCross.visibility = View.GONE
+                ivCross.visibility = View.INVISIBLE
                 dialog.dismiss()
                 ivMenu.visibility = View.VISIBLE
             }
         }*/
+
+        if (ivCross.visibility == View.VISIBLE) {
+            ivCross.setOnClickListener {
+                // ivCross.visibility = View.INVISIBLE
+                // ivMenu.visibility = View.VISIBLE
+                dialog.dismiss()
+            }
+        }
+
     }
 
     private fun initExistingSideEffectsData() {
@@ -116,8 +140,11 @@ class ALKChatActivity : AppCompatActivity() {
     }
 
     private fun showChatDialog() {
-        dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        /*dialog = Dialog(this)
+        dialog.setOnCancelListener(DialogInterface.OnCancelListener {
+
+        })*/
+        // dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window?.setGravity(Gravity.BOTTOM)
         dialog.window?.setGravity(Gravity.LEFT)
         dialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
@@ -130,7 +157,7 @@ class ALKChatActivity : AppCompatActivity() {
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.chat_dialog)
         dialog.show()
-        isButtonClicked = dialog.isShowing
-        ivMenu.setBackgroundResource(if (isButtonClicked) R.drawable.ic_menu else R.drawable.ic_cross)
+        /*isButtonClicked = dialog.isShowing
+        ivMenu.setBackgroundResource(if (isButtonClicked) R.drawable.ic_menu else R.drawable.ic_cross)*/
     }
 }

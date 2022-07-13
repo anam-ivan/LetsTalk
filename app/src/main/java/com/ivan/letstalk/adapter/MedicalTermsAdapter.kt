@@ -15,6 +15,7 @@ class MedicalTermsAdapter(private val mDataArray: List<String>?) :
     private val mSections = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#"
     private var sectionsTranslator = HashMap<Int, Int>()
     private var mSectionPositions: ArrayList<Int>? = null
+
     override fun getItemCount(): Int {
         return mDataArray?.size ?: 0
     }

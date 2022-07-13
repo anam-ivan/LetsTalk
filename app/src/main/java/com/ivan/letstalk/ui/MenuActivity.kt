@@ -85,14 +85,6 @@ class MenuActivity : AppCompatActivity() {
             navigateToProfile()
         }
 
-        /*bottomNavHamburger.setOnClickListener{
-            bottomIvHome.visibility =  View.INVISIBLE
-            bottomIvChat.visibility =  View.INVISIBLE
-            bottomIvPerson.visibility =  View.INVISIBLE
-            bottomIvHamburger.visibility =  View.VISIBLE
-            navigateToMenu()
-        }*/
-
         rrProfile.setOnClickListener{
             navigateToProfile()
         }

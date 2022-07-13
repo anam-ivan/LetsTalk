@@ -94,7 +94,7 @@ class ProfileActivity : AppCompatActivity() {
             bottomIvHome.visibility =  View.INVISIBLE
             bottomIvPerson.visibility =  View.INVISIBLE
             bottomIvHamburger.visibility =  View.INVISIBLE
-            //bottomIvChat.visibility =  View.VISIBLE
+            // bottomIvChat.visibility =  View.VISIBLE
             navigateToChat()
         }
 

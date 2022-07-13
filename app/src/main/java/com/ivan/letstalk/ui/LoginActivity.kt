@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.core.content.ContextCompat
 import com.google.android.material.button.MaterialButton
 import com.ivan.letstalk.R
 
@@ -59,13 +60,15 @@ class LoginActivity : AppCompatActivity() {
                 }
                 rrErrorLayout.visibility = View.VISIBLE
                 ivLoginError.visibility = View.VISIBLE
+            } else {
+                navigateToVerifyOTP()
             }
         }
         etPhone.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 llPhone.setBackgroundResource(R.drawable.edit_text_border_focused)
             } else {
-
+                llPhone.setBackgroundResource(R.drawable.edit_text_border)
             }
 
         }
@@ -100,5 +103,11 @@ class LoginActivity : AppCompatActivity() {
         /*toast("PackageName = " + info.packageName + "\nVersionCode = "
                 + info.versionCode + "\nVersionName = "
                 + info.versionName + "\nPermissions = " + info.permissions)*/
+    }
+
+    private fun navigateToVerifyOTP() {
+        val intent = Intent(this, VerifyOTPActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 }

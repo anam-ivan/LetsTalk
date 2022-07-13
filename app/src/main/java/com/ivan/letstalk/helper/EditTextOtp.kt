@@ -7,9 +7,11 @@ import android.util.AttributeSet
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.lifecycle.MutableLiveData
 import com.ivan.letstalk.R
@@ -37,6 +39,7 @@ class EditTextOtp @JvmOverloads constructor(
         initFocusListener()
         initTextChangeListener()
         initKeyListener()
+        // initFocusChangeListener()
     }
 
     private fun initFocusListener() {
@@ -57,6 +60,20 @@ class EditTextOtp @JvmOverloads constructor(
         layoutOtpBinding.etOtp6.addTextChangedListener(this)
     }
 
+    private fun initFocusChangeListener() {
+        layoutOtpBinding.etOtp1.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                layoutOtpBinding.etOtp1.setBackgroundResource(
+                    R.drawable.otp_active_back
+                )
+            } else {
+                layoutOtpBinding.etOtp1.setBackgroundResource(
+                    R.drawable.otp_deactivate_back
+                )
+            }
+        }
+    }
+
     private fun initKeyListener() {
         layoutOtpBinding.etOtp1.setOnKeyListener(this)
         layoutOtpBinding.etOtp2.setOnKeyListener(this)
@@ -69,20 +86,22 @@ class EditTextOtp @JvmOverloads constructor(
     override fun onFocusChange(v: View?, hasFocus: Boolean) {
         etCurrentFocus = v as AppCompatEditText
         etCurrentFocus.text?.let { etCurrentFocus.setSelection(it.length) }
-//        if (hasFocus)
-//            v.background = AppCompatResources.getDrawable(
-//                context,
-//                R.drawable.otp_active_background
-//            )
-//        else if (etCurrentFocus.text!!.isNotEmpty())
-//            v.background = AppCompatResources.getDrawable(
-//                context,
-//                R.drawable.otp_deactive_background
-//            )
-//        else v.background = AppCompatResources.getDrawable(
-//            context,
-//            R.drawable.otp_active_background
-//        )
+        if (hasFocus)
+            v.background = AppCompatResources.getDrawable(
+                context,
+                R.drawable.otp_active_back
+            ) else
+            layoutOtpBinding.etOtp1.setBackgroundResource(
+                R.drawable.otp_deactivate_back
+            )
+        /*else if (etCurrentFocus.text!!.isNotEmpty())
+            v.background = AppCompatResources.getDrawable(
+                context,
+                R.drawable.otp_deactivate_back
+            ) else v.background = AppCompatResources.getDrawable(
+            context,
+            R.drawable.otp_active_back
+        )*/
     }
 
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {

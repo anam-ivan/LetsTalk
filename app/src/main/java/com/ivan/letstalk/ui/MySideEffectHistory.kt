@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
@@ -71,6 +72,10 @@ class MySideEffectHistory : AppCompatActivity() {
 
             tvPreviousSideEffects.setTextColor(ContextCompat.getColor(this, R.color.blue))
             tvPreviousSideEffects.paint?.isUnderlineText = true
+        }
+
+        findViewById<ImageView>(R.id.btn_back).setOnClickListener {
+            onBackPressed()
         }
     }
 

@@ -131,6 +131,5 @@
     <string name="add_value">Add Value</string>
     <string name="add">Add</string>
     <string name="export">EXPORT</string>
-    <string name="continue">Continue</string>
     <string name="start_new_chat">Start New Chat</string>
 </resources>

@@ -25,6 +25,7 @@ class DashboardActivity : AppCompatActivity() {
 
     private lateinit var ivHome: AppCompatImageView
     private lateinit var ivNotifications: AppCompatImageView
+    private lateinit var ivChat: AppCompatImageView
 
     private lateinit var  bottomNavHome : LinearLayoutCompat
     private lateinit var  bottomNavChat : LinearLayoutCompat
@@ -36,10 +37,15 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var  bottomIvPerson : AppCompatImageView
     private lateinit var  bottomIvHamburger : AppCompatImageView
 
+    private lateinit var  btnStartChat : MaterialButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
+        ivChat = findViewById(R.id.iv_chat)
+
+        btnStartChat = findViewById(R.id.btn_start_chat)
         ivNotifications = findViewById(R.id.iv_notifications)
 
         bottomNavHome =  findViewById(R.id.bottom_nav_home)
@@ -70,7 +76,7 @@ class DashboardActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(
             this,
             LinearLayoutManager.HORIZONTAL,
-            true
+            false
         )
         // val layoutManager = LinearLayoutManager(applicationContext)
         // recyclerView.layoutManager = layoutManager
@@ -122,6 +128,10 @@ class DashboardActivity : AppCompatActivity() {
         ivNotifications.setOnClickListener {
             navigateToNotifications()
         }
+
+        btnStartChat.setOnClickListener {
+            navigateToChat()
+        }
     }
 
     private fun prepareMovieData() {
@@ -158,11 +168,6 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun navigateToChat() {
         val intent = Intent(this, ALKChatActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun navigateToDashboard() {
-        val intent = Intent(this, DashboardActivity::class.java)
         startActivity(intent)
     }
 

@@ -3607,7 +3607,7 @@
             <RelativeLayout
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_32sdp"
+                android:layout_height="@dimen/_40sdp"
                 android:layout_marginStart="@dimen/_16sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
                 android:layout_marginBottom="@dimen/_16sdp"
@@ -3621,7 +3621,7 @@
                     android:layout_centerInParent="true"
                     android:layout_gravity="center|center_horizontal"
                     android:drawableStart="@drawable/ic_download"
-                    android:drawablePadding="@dimen/_8sdp"
+                    android:drawablePadding="@dimen/_10sdp"
                     android:drawableTint="@color/white"
                     android:fontFamily="@font/gilroy_medium"
                     android:gravity="center_horizontal"
@@ -3629,14 +3629,6 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_11ssp" />
-
-                <ProgressBar
-                    android:id="@+id/pLoader"
-                    android:layout_width="@dimen/sp_24"
-                    android:layout_height="@dimen/sp_24"
-                    android:layout_centerInParent="true"
-                    android:indeterminateTint="@color/white"
-                    android:visibility="gone" />
             </RelativeLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

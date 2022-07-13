@@ -79,6 +79,7 @@
                     android:layout_height="@dimen/_12sdp"
                     android:layout_marginStart="@dimen/_6sdp"
                     android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/tv_my_chats"
                     android:src="@drawable/ic_msg"
                     android:textAllCaps="false" />

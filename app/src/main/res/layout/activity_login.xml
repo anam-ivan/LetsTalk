@@ -45,9 +45,9 @@
                 android:id="@+id/otpBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_6sdp"
                 app:layout_constraintTop_toBottomOf="@+id/tv_cr"/>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -135,6 +135,7 @@
                     android:background="@null"
                     android:inputType="number"
                     android:maxLength="10"
+                    android:textCursorDrawable="@drawable/edit_text_black_cursor"
                     android:textColorHint="@color/light_grey"
                     android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_semi_bold"
@@ -270,14 +271,44 @@
                 android:layout_marginStart="@dimen/_4sdp"
                 android:layout_marginTop="@dimen/_32sdp"
                 android:layout_marginBottom="@dimen/_24sdp"
-                android:fontFamily="@font/montserrat_semi_bold"
+                android:fontFamily="@font/gilroy_medium"
                 android:text="@string/update_number"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/tv_version"
                 app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Version 1.5.0"
+                android:textColor="#B2B2B2"
+                android:fontFamily="@font/gilroy_regular"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:textSize="@dimen/_11sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Release Date: 02 June 2022"
+                android:textColor="#B2B2B2"
+                android:fontFamily="@font/gilroy_regular"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:textSize="@dimen/_11sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:layout_marginBottom="@dimen/_16sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
 
             <!--<com.google.android.material.textview.MaterialTextView

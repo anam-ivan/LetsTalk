@@ -54,6 +54,8 @@ class MyHealthVitals : AppCompatActivity() {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.my_health_vital_dialog)
+        val btnCancel = dialog.findViewById(R.id.btnCancel) as TextView
+        btnCancel.setOnClickListener { dialog.dismiss() }
         dialog.show()
         // val tvSecondPasswordTips = dialog.findViewById<TextView>(R.id.tv_second_password_tips)
     }
