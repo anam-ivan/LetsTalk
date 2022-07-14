@@ -3,8 +3,8 @@ package com.ivan.letstalk.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.LinearLayoutCompat
@@ -15,6 +15,11 @@ import com.google.android.material.button.MaterialButton
 import com.ivan.letstalk.R
 import com.ivan.letstalk.adapter.AlkSideEffectsAdapter
 import com.ivan.letstalk.model.AlkSideEffectsModel
+import smartdevelop.ir.eram.showcaseviewlib.GuideView
+import smartdevelop.ir.eram.showcaseviewlib.config.DismissType
+import smartdevelop.ir.eram.showcaseviewlib.config.Gravity
+import smartdevelop.ir.eram.showcaseviewlib.config.PointerType
+import smartdevelop.ir.eram.showcaseviewlib.listener.GuideListener
 
 class DashboardActivity : AppCompatActivity() {
     private lateinit var tvSeeAll: TextView
@@ -22,6 +27,7 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var alkSideEffectsAdapter: AlkSideEffectsAdapter
     private lateinit var  llSideEffects : LinearLayoutCompat
     private lateinit var  llGlossary : LinearLayoutCompat
+    private lateinit var  rrDoctorSay : RelativeLayout
 
     private lateinit var ivHome: AppCompatImageView
     private lateinit var ivNotifications: AppCompatImageView
@@ -39,10 +45,22 @@ class DashboardActivity : AppCompatActivity() {
 
     private lateinit var  btnStartChat : MaterialButton
 
+    var view1: View? = null
+    var view2: View? = null
+    var view3: View? = null
+    private lateinit var mGuideView: GuideView
+    private var builder: GuideView.Builder? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
+
+        view1 = findViewById(R.id.tv_username)
+        view2 = findViewById(R.id.rr_doctor_say)
+        view3 = findViewById(R.id.ll_side_effects)
+
+        // rrDoctorSay = findViewById(R.id.rr_doctor_say)
         ivChat = findViewById(R.id.iv_chat)
 
         btnStartChat = findViewById(R.id.btn_start_chat)
@@ -132,6 +150,33 @@ class DashboardActivity : AppCompatActivity() {
         btnStartChat.setOnClickListener {
             navigateToChat()
         }
+
+        /*builder = GuideView.Builder(this)
+            .setTitle("Greetings")
+            .setContentText("Here you can the greetings")
+            .setGravity(Gravity.center)
+            .setDismissType(DismissType.anywhere)
+            .setPointerType(PointerType.arrow)
+            .setTargetView(view1)
+            .setGuideListener(GuideListener { view ->
+                when (view.id) {
+                    R.id.tv_username -> {
+                        builder!!.setTargetView(view2).build()
+                        builder!!.setTitle("Doctor Say")
+                        builder!!.setContentText("Here you can find Doctor say")
+                    }
+                    R.id.rr_doctor_say -> {
+                        builder!!.setTargetView(view3).build()
+                        builder!!.setTitle("Glossary")
+                        builder!!.setContentText("Here you can find Glossary")
+                    }
+                    R.id.ll_side_effects -> return@GuideListener
+                }
+                mGuideView = builder!!.build()
+                mGuideView.show()
+            })
+        mGuideView = builder!!.build()
+        mGuideView.show()*/
     }
 
     private fun prepareMovieData() {

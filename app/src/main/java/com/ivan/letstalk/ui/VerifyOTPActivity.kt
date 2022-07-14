@@ -13,14 +13,21 @@ import com.ivan.letstalk.databinding.ActivityVerifyOtpactivityBinding
 class VerifyOTPActivity : AppCompatActivity() {
     lateinit var binding: ActivityVerifyOtpactivityBinding
     private lateinit var btnVerifyOTP: Button
-    private lateinit var tEditMobile: TextView
+    private lateinit var tvEditMobile: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // setContentView(R.layout.activity_verify_otpactivity)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_verify_otpactivity)
         btnVerifyOTP = findViewById(R.id.btn_verify_otp)
-        tEditMobile = findViewById(R.id.tv_edit_mobile)
-        tEditMobile.paint?.isUnderlineText = true
+        tvEditMobile = findViewById(R.id.tv_edit_mobile)
+        tvEditMobile.paint?.isUnderlineText = true
+
+        tvEditMobile.setOnClickListener {
+            val intent = Intent(this, UpdateMobileConfirmationActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
         binding.otpBox.otpValue.observe(this) {
             it?.let {

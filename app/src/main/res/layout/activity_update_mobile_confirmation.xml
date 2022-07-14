@@ -32,6 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_app_logo">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_update_mobile_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gilroy_medium"
@@ -40,7 +41,7 @@
             android:padding="@dimen/_6sdp"
             android:text="Your request for Mobile Number Update has sent to our team. It will take sometime to update in our system. You're requested to try later."
             android:textColor="@color/brown"
-            android:textSize="@dimen/_13ssp"/>
+            android:textSize="@dimen/_13ssp" />
 
     </RelativeLayout>
 

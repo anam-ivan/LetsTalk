@@ -132,4 +132,5 @@
     <string name="add">Add</string>
     <string name="export">EXPORT</string>
     <string name="start_new_chat">Start New Chat</string>
+    <string name="enter_email_others">Enter email others</string>
 </resources>

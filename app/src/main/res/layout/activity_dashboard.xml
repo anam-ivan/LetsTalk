@@ -235,6 +235,7 @@
                     app:cardUseCompatPadding="true">
 
                     <RelativeLayout
+                        android:id="@+id/rr_doctor_say"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/gradient">

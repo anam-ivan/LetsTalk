@@ -109,20 +109,40 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.30"
                     android:background="@drawable/country_code_back">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_country_code"
-                        android:layout_width="match_parent"
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/gilroy_medium"
-                        android:text="+91"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_13ssp" />
+                        android:layout_centerInParent="true">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_country_code"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="@dimen/_6sdp"
+                            android:fontFamily="@font/gilroy_medium"
+                            android:text="+91"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_11ssp" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iv_dropdown"
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_16sdp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/_6sdp"
+                            android:layout_marginEnd="@dimen/_4sdp"
+                            android:layout_toEndOf="@+id/tv_country_code"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_arrow_down" />
+
+                    </RelativeLayout>
+
                 </RelativeLayout>
 
                 <androidx.appcompat.widget.AppCompatEditText
@@ -138,11 +158,12 @@
                     android:textCursorDrawable="@drawable/edit_text_black_cursor"
                     android:textColorHint="@color/light_grey"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/gilroy_semi_bold"
-                    android:hint="Enter mobile number"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:hint="0000000000"
+                    android:letterSpacing="0.3"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:textSize="@dimen/_14ssp" />
+                    android:textSize="@dimen/_13ssp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/iv_login_error"
@@ -158,6 +179,80 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <RelativeLayout
+                android:id="@+id/rr_others"
+                android:layout_width="@dimen/_68sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginTop="-4dp"
+                android:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@+id/llPhone"
+                android:background="@drawable/others_back">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_others"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:text="Others"
+                    android:textColor="@color/greyy"
+                    android:textSize="@dimen/_11ssp" />
+
+
+               <!-- <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_others_dropdown"
+                    android:layout_width="@dimen/_32sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_toEndOf="@+id/tv_others"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_arrow_down" />-->
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_enter_your_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_email_others"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:fontFamily="@font/gilroy_medium"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintTop_toBottomOf="@+id/rr_others"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:inputType="textEmailAddress"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:padding="@dimen/_8sdp"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@+id/tv_enter_your_email"
+                android:textCursorDrawable="@drawable/edit_text_black_cursor"
+                android:textColorHint="@color/light_grey"
+                android:textColor="@color/black"
+                android:background="@drawable/edit_text_border"
+                android:fontFamily="@font/gilroy_medium"
+                android:hint="Enter your email here"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:textSize="@dimen/_13ssp" />
+
+            <RelativeLayout
                 android:id="@+id/rr_error_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -169,7 +264,7 @@
                 android:background="@drawable/update_mobile_number_back"
                 android:backgroundTint="@color/login_error"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/llPhone">
+                app:layout_constraintTop_toBottomOf="@+id/rr_others">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_error_first_text"
@@ -219,7 +314,7 @@
                 android:layout_marginTop="@dimen/_22sdp"
                 android:layout_marginStart="@dimen/_12sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rr_error_layout" />
+                app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_i_accept"
@@ -230,7 +325,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textSize="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_34sdp"
-                app:layout_constraintTop_toBottomOf="@+id/rr_error_layout"
+                app:layout_constraintTop_toBottomOf="@+id/et_email"
                 app:layout_constraintStart_toEndOf="@+id/checkbox" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -243,7 +338,7 @@
                 android:layout_marginStart="@dimen/_6sdp"
                 android:textSize="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_34sdp"
-                app:layout_constraintTop_toBottomOf="@+id/rr_error_layout"
+                app:layout_constraintTop_toBottomOf="@+id/et_email"
                 app:layout_constraintStart_toEndOf="@+id/tv_i_accept" />
 
             <com.google.android.material.button.MaterialButton
