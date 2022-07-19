@@ -81,7 +81,7 @@ class UpdatePhoneNumberActivity : AppCompatActivity() {
             )
             tvCountryCode.text = "Others"
             ivDropdown.rotation = 360f
-            edtMobile.hint = "Please enter mobile number along with country code"
+            edtMobile.hint = "Ex.442087599036"
             edtMobile.letterSpacing = 0.1F
             rrPhone.setBackgroundResource((R.drawable.country_code_back))
             /*tvEnterYourEmail.visibility = View.VISIBLE
@@ -171,7 +171,7 @@ class UpdatePhoneNumberActivity : AppCompatActivity() {
             )
             tvConfirmMobileCountryCode.text = "Others"
             ivSecondDropDown.rotation = 360f
-            edtConfirmMobile.hint = "Please enter confirm mobile number along with country code"
+            edtConfirmMobile.hint = "Ex.442087599036"
             edtConfirmMobile.letterSpacing = 0.1F
             rrConfirmPhone.setBackgroundResource((R.drawable.country_code_back))
             ivSecondDropDown.setColorFilter(ContextCompat.getColor(this, R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)

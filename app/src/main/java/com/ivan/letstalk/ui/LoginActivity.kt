@@ -2,25 +2,39 @@ package com.ivan.letstalk.ui
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.View
-import android.widget.ImageView
-import android.widget.RelativeLayout
+import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatEditText
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
-import com.google.android.material.button.MaterialButton
+import androidx.core.content.res.ResourcesCompat
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ObservableField
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.snackbar.Snackbar
 import com.ivan.letstalk.R
+import com.ivan.letstalk.api.ApiHelper
+import com.ivan.letstalk.api.RetrofitBuilder
+import com.ivan.letstalk.databinding.ActivityLoginBinding
+import com.ivan.letstalk.helper.Status
+import com.ivan.letstalk.helper.ViewModelFactory
+import com.ivan.letstalk.model.login.RequestBodies
+import com.ivan.letstalk.viewModel.LoginViewModel
 
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var tvHelp: TextView
+    lateinit var binding: ActivityLoginBinding
+    private lateinit var viewModel: LoginViewModel
+    /*private lateinit var tvHelp: TextView
     private lateinit var tvTermsConditions: TextView
     private lateinit var tvUpdateNumber: TextView
     private lateinit var btnLogin: MaterialButton
@@ -35,12 +49,14 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var tvCountryCode: TextView
     private lateinit var tvOthers: TextView
     private lateinit var tvEnterYourEmail: TextView
-    private lateinit var etEmail: AppCompatEditText
+    private lateinit var etEmail: AppCompatEditText*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        tvEnterYourEmail = findViewById(R.id.tv_enter_your_email)
+        // setContentView(R.layout.activity_login)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+
+        /*tvEnterYourEmail = findViewById(R.id.tv_enter_your_email)
         etEmail = findViewById(R.id.et_email)
         tvCountryCode = findViewById(R.id.tv_country_code)
         tvOthers = findViewById(R.id.tv_others)
@@ -59,46 +75,77 @@ class LoginActivity : AppCompatActivity() {
         tvHelp.paint?.isUnderlineText = true
         tvTermsConditions.paint?.isUnderlineText = true
         tvUpdateNumber.paint?.isUnderlineText = true
-        updateNumber.paint?.isUnderlineText = true
+        updateNumber.paint?.isUnderlineText = true*/
 
-        ivDropdown.setOnClickListener {
-            if (tvCountryCode.text.toString() == "Others") {
-                ivDropdown.rotation = 180f
-                tvCountryCode.text = "+91"
-                tvCountryCode.setTextColor(
+        setupViewModel()
+        // setupLoginObservers()
+        binding.tvHelp.paint?.isUnderlineText = true
+        binding.tvTermsConditions.paint?.isUnderlineText = true
+        binding.tvUpdateNumber.paint?.isUnderlineText = true
+        binding.tvUpdateNumber.paint?.isUnderlineText = true
+
+        /*binding.otpBox.otpValue.observe(this) {
+            it?.let {
+                if (it.isEmpty()) {
+                    showErrorMsg("Please enter CR Number",binding.root)
+                }
+            }
+        }*/
+
+        binding.ivDropdown.setOnClickListener {
+            if (binding.tvCountryCode.text.toString() == "Others") {
+                binding.ivDropdown.rotation = 180f
+                binding.tvCountryCode.text = "+91"
+                binding.tvCountryCode.setTextColor(
                     ContextCompat.getColor(
                         applicationContext,
                         R.color.greyy
                     )
                 )
-                rrPhone.setBackgroundResource((R.drawable.others_back))
-                rrOthers.visibility = View.VISIBLE
+                // rrPhone.setBackgroundResource((R.drawable.others_back))
+                binding.rrPhone.setBackgroundResource((R.drawable.country_code_focused))
+                binding.rrOthers.visibility = View.VISIBLE
                 /*etPhone.hint = "Please enter mobile number along with country code"
                 etPhone.letterSpacing = 0.2F*/
-                tvEnterYourEmail.visibility = View.GONE
-                etEmail.visibility = View.GONE
+                binding.tvEnterYourEmail.visibility = View.GONE
+                binding.etEmail.visibility = View.GONE
                 // ivDropdown.isClickable = false
-                ivDropdown.setColorFilter(ContextCompat.getColor(this, R.color.greyy), android.graphics.PorterDuff.Mode.SRC_IN)
-            } else {
-                ivDropdown.rotation = 180f
-                rrPhone.setBackgroundResource((R.drawable.others_back))
-                tvCountryCode.setTextColor(
-                    ContextCompat.getColor(
-                        applicationContext,
-                        R.color.greyy
-                    )
-                )
-                ivDropdown.setColorFilter(
+                binding.ivDropdown.setColorFilter(
                     ContextCompat.getColor(this, R.color.greyy),
                     android.graphics.PorterDuff.Mode.SRC_IN
                 )
-                rrOthers.visibility = View.VISIBLE
+            } else {
+                binding.ivDropdown.rotation = 180f
+                // rrPhone.setBackgroundResource((R.drawable.others_back))
+                binding.rrPhone.setBackgroundResource((R.drawable.country_code_focused))
+                binding.tvCountryCode.setTextColor(
+                    ContextCompat.getColor(
+                        applicationContext,
+                        R.color.greyy
+                    )
+                )
+                binding.ivDropdown.setColorFilter(
+                    ContextCompat.getColor(this, R.color.greyy),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+                )
+                binding.rrOthers.visibility = View.VISIBLE
             }
         }
 
-        tvCountryCode.setOnClickListener {
-            rrOthers.visibility = View.GONE
-            ivDropdown.rotation = 360f
+        binding.tvCountryCode.setOnClickListener {
+            binding.rrPhone.setBackgroundResource((R.drawable.country_code_back))
+            binding.tvCountryCode.setTextColor(
+                ContextCompat.getColor(
+                    applicationContext,
+                    R.color.white
+                )
+            )
+            binding.ivDropdown.setColorFilter(
+                ContextCompat.getColor(this, R.color.white),
+                android.graphics.PorterDuff.Mode.SRC_IN
+            )
+            binding.rrOthers.visibility = View.GONE
+            binding.ivDropdown.rotation = 360f
         }
 
         /*ivDropdown.setOnClickListener {
@@ -106,56 +153,90 @@ class LoginActivity : AppCompatActivity() {
             ivDropdown.rotation = 180f
         }*/
 
-        rrOthers.setOnClickListener {
+        binding.rrOthers.setOnClickListener {
             // ivDropdown.isClickable = true
-            rrOthers.visibility = View.GONE
-            tvCountryCode.setTextColor(
+            binding.rrOthers.visibility = View.GONE
+            binding.tvCountryCode.setTextColor(
                 ContextCompat.getColor(
                     applicationContext,
                     R.color.white
                 )
             )
-            tvCountryCode.text = "Others"
-            ivDropdown.rotation = 360f
-            etPhone.hint = "Please enter mobile number along with country code"
-            etPhone.letterSpacing = 0.1F
-            rrPhone.setBackgroundResource((R.drawable.country_code_back))
-            tvEnterYourEmail.visibility = View.VISIBLE
-            etEmail.visibility = View.VISIBLE
-            ivDropdown.setColorFilter(ContextCompat.getColor(this, R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
+            binding.tvCountryCode.text = "Others"
+            binding.ivDropdown.rotation = 360f
+            binding.etPhone.hint = "Ex.442087599036"
+            binding.etPhone.letterSpacing = 0.1F
+            binding.rrPhone.setBackgroundResource((R.drawable.country_code_back))
+            binding.tvEnterYourEmail.visibility = View.VISIBLE
+            binding.etEmail.visibility = View.VISIBLE
+            binding.ivDropdown.setColorFilter(
+                ContextCompat.getColor(this, R.color.white),
+                android.graphics.PorterDuff.Mode.SRC_IN
+            )
         }
 
-        tvUpdateNumber.setOnClickListener{
+        binding.tvUpdateNumber.setOnClickListener {
             val intent = Intent(this, UpdatePhoneNumberActivity::class.java)
             startActivity(intent)
         }
-        btnLogin.setOnClickListener {
-            if (etPhone.text.toString() == "8888888888") {
-                llPhone.setBackgroundResource(R.drawable.edit_text_error_border)
+        /*binding.btnLogin.setOnClickListener {
+            if (binding.etPhone.text.toString() == "8888888888") {
+                binding.llPhone.setBackgroundResource(R.drawable.edit_text_error_border)
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    rrPhone.setBackgroundResource(R.drawable.country_code_error_back)
+                    binding.rrPhone.setBackgroundResource(R.drawable.country_code_error_back)
                 }
-                rrErrorLayout.visibility = View.VISIBLE
-                ivLoginError.visibility = View.VISIBLE
+                binding.rrErrorLayout.visibility = View.VISIBLE
+                binding.ivLoginError.visibility = View.VISIBLE
             } else {
                 navigateToVerifyOTP()
             }
+        }*/
+        binding.otpBox.otpValue.observe(this) {
+            it?.let {
+                if (it.length == 6) {
+                    binding.etPhone.requestFocus()
+                }
+            }
         }
-        etPhone.setOnFocusChangeListener { _, hasFocus ->
+        binding.btnLogin.setOnClickListener {
+            if (binding.otpBox.otpValue.value?.isEmpty() == true || binding.otpBox.otpValue.value!!.length != 6) {
+                /*binding.otpBox.otpValue.observe(this) {
+                    it?.let {
+                        if (it.length == 6) {
+                            binding.etPhone.requestFocus()
+                        }
+                    }
+                }*/
+                showErrorMsg("Please enter CR Number", binding.root)
+            } else {
+                if (isValidUserData()) {
+                    navigateToVerifyOTP()
+                }
+            }
+        }
+
+        /*etPhone.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 llPhone.setBackgroundResource(R.drawable.edit_text_border_focused)
             } else {
                 llPhone.setBackgroundResource(R.drawable.edit_text_border)
             }
 
+        }*/
+        binding.etPhone.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.llPhone.setBackgroundResource(R.drawable.edit_text_border_focused)
+            } else {
+                binding.llPhone.setBackgroundResource(R.drawable.edit_text_border)
+            }
         }
-        updateNumber.setOnClickListener {
+        binding.tvUpdateNumber.setOnClickListener {
             val intent = Intent(this, UpdatePhoneNumberActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
         }
 
-        etPhone.addTextChangedListener(object : TextWatcher {
+        binding.etPhone.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
             }
 
@@ -165,12 +246,14 @@ class LoginActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val strText: String = s.toString()
                 if (strText.isEmpty()) {
-                    llPhone.setBackgroundResource(R.drawable.edit_text_border)
-                    rrPhone.setBackgroundResource(R.drawable.country_code_back)
-                    if (ivLoginError.visibility == View.VISIBLE) {
-                        ivLoginError.visibility = View.GONE
+                    binding.llPhone.setBackgroundResource(R.drawable.edit_text_border)
+                    binding.rrPhone.setBackgroundResource(R.drawable.country_code_back)
+                    if (binding.ivLoginError.visibility == View.VISIBLE) {
+                        binding.ivLoginError.visibility = View.GONE
                     }
-                    rrErrorLayout.visibility = View.GONE
+                    binding.rrErrorLayout.visibility = View.GONE
+                } else {
+                    binding.llPhone.setBackgroundResource(R.drawable.edit_text_border_focused)
                 }
             }
         })
@@ -186,5 +269,72 @@ class LoginActivity : AppCompatActivity() {
         val intent = Intent(this, VerifyOTPActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
+    }
+
+    private fun setupViewModel() {
+        viewModel = ViewModelProviders.of(
+            this,
+            ViewModelFactory(ApiHelper(RetrofitBuilder.apiService))
+        ).get(LoginViewModel::class.java)
+    }
+
+    private fun setupLoginObservers() {
+        val body = RequestBodies.LoginBody(
+            email_id = "ivahl4ud7r@yopmail.com",
+            password = "A@123456"
+        )
+        viewModel.getLogin(body).observe(this, Observer { it ->
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        resource.data?.let {
+                            Toast.makeText(this, it.body()?.message, Toast.LENGTH_LONG).show()
+                            // it.body()?.data!!.Token?.let { it1 -> sessionManager.saveAuthToken(it1) }
+                        }
+                    }
+                    Status.ERROR -> {
+                        Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+                    }
+                    Status.LOADING -> {
+                        Toast.makeText(this, "Loading", Toast.LENGTH_LONG).show()
+                    }
+                }
+
+            }
+        })
+    }
+
+    protected fun showErrorMsg(msg: String, view: View) {
+        val snackbar = Snackbar.make(
+            view,
+            msg,
+            Snackbar.LENGTH_LONG
+        )
+
+        val snack_root_view = snackbar.view
+        snackbar.view.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+        val snack_text_view = snack_root_view
+            .findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+        //val snack_action_view = snack_root_view
+        // .findViewById<Button>(com.google.android.material.R.id.snackbar_action)
+        snack_root_view.setBackgroundColor(ContextCompat.getColor(this, R.color.chat_answer_select))
+        snack_text_view.setTextColor(Color.WHITE)
+        snack_text_view.textSize = 12.2f
+        val tf = ResourcesCompat.getFont(this, R.font.gilroy_medium)
+        snack_text_view.typeface = tf
+//    snack_action_view.typeface = tf
+//    snack_action_view.setTextColor(ContextCompat.getColor(this, R.color.Sunglow))
+//    snackbar.setAction("Retry") {
+//
+//    }
+        snackbar.show()
+    }
+
+    private fun isValidUserData(): Boolean {
+        if (TextUtils.isEmpty(binding.etPhone.text.toString().trim())) {
+            showErrorMsg("Please enter Mobile Number",binding.root)
+            return false
+        }
+        return true
     }
 }

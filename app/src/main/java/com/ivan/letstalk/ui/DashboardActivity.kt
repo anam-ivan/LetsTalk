@@ -8,17 +8,13 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.LinearLayoutCompat
-import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.button.MaterialButton
 import com.ivan.letstalk.R
 import com.ivan.letstalk.adapter.AlkSideEffectsAdapter
+import com.ivan.letstalk.helper.PageAdapter
 import com.ivan.letstalk.model.AlkSideEffectsModel
 import smartdevelop.ir.eram.showcaseviewlib.GuideView
-import smartdevelop.ir.eram.showcaseviewlib.config.DismissType
-import smartdevelop.ir.eram.showcaseviewlib.config.Gravity
-import smartdevelop.ir.eram.showcaseviewlib.config.PointerType
 import smartdevelop.ir.eram.showcaseviewlib.listener.GuideListener
 
 class DashboardActivity : AppCompatActivity() {
@@ -50,12 +46,14 @@ class DashboardActivity : AppCompatActivity() {
     var view3: View? = null
     private lateinit var mGuideView: GuideView
     private var builder: GuideView.Builder? = null
+    private lateinit var viewPager: ViewPager
+    private lateinit var pagerAdapter: PageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
-
+        viewPager = findViewById(R.id.view_pager)
         view1 = findViewById(R.id.tv_username)
         view2 = findViewById(R.id.rr_doctor_say)
         view3 = findViewById(R.id.ll_side_effects)
@@ -89,18 +87,16 @@ class DashboardActivity : AppCompatActivity() {
             val intent = Intent(this, TopALKSideEffectsActivity::class.java)
             startActivity(intent)
         }
-        val recyclerView: RecyclerView = findViewById(R.id.rv_alk)
+        /*val recyclerView: RecyclerView = findViewById(R.id.rv_alk)
         alkSideEffectsAdapter = AlkSideEffectsAdapter(alkSideEffectsModel)
         recyclerView.layoutManager = LinearLayoutManager(
             this,
             LinearLayoutManager.HORIZONTAL,
             false
         )
-        // val layoutManager = LinearLayoutManager(applicationContext)
-        // recyclerView.layoutManager = layoutManager
         recyclerView.itemAnimator = DefaultItemAnimator()
         recyclerView.adapter = alkSideEffectsAdapter
-        prepareMovieData()
+        prepareMovieData()*/
 
         llSideEffects.setOnClickListener {
             val intent = Intent(this, KnowYourSideEffectsActivity::class.java)
@@ -177,6 +173,13 @@ class DashboardActivity : AppCompatActivity() {
             })
         mGuideView = builder!!.build()
         mGuideView.show()*/
+
+        var size = addAnimals().size / 3
+        if ((addAnimals().size % 3) > 0)
+            size += 1
+
+        pagerAdapter = PageAdapter(supportFragmentManager, size, addAnimals())
+        viewPager.adapter = pagerAdapter
     }
 
     private fun prepareMovieData() {
@@ -228,4 +231,40 @@ class DashboardActivity : AppCompatActivity() {
         bottomIvHamburger.visibility =  View.INVISIBLE
         bottomIvChat.visibility =  View.INVISIBLE
     }
+
+    private fun addAnimals(): ArrayList<String> {
+        val animals = arrayListOf<String>()
+        animals.add("Manage Weight Loss")
+        animals.add("Having Persistent Cough ?")
+        animals.add("Feeling Weak & Tired ?")
+        animals.add("Having Persistent Cough ?")
+        animals.add("Feeling Weak & Tired ?")
+        animals.add("Having Persistent Cough ?")
+        animals.add("Feeling Weak & Tired ?")
+        animals.add("Having Persistent Cough ?")
+        animals.add("Feeling Weak & Tired ?")
+        return animals
+    }
+
+    /*private fun addData(): ArrayList<AlkSideEffectsModel> {
+        var movie = AlkSideEffectsModel("Manage Weight Loss")
+        alkSideEffectsModel.add(movie)
+        movie = AlkSideEffectsModel("Having Persistent Cough ?")
+        alkSideEffectsModel.add(movie)
+        movie = AlkSideEffectsModel("Feeling Weak & Tired ?")
+        alkSideEffectsModel.add(movie)
+        movie = AlkSideEffectsModel("Having Persistent Cough ?")
+        alkSideEffectsModel.add(movie)
+        movie = AlkSideEffectsModel("Feeling Weak & Tired ?")
+        alkSideEffectsModel.add(movie)
+        movie = AlkSideEffectsModel("Having Persistent Cough ?")
+        alkSideEffectsModel.add(movie)
+        movie = AlkSideEffectsModel("Feeling Weak & Tired ?")
+        alkSideEffectsModel.add(movie)
+        movie = AlkSideEffectsModel("Having Persistent Cough ?")
+        alkSideEffectsModel.add(movie)
+        movie = AlkSideEffectsModel("Feeling Weak & Tired ?")
+        alkSideEffectsModel.add(movie)
+        return ArrayList<AlkSideEffectsModel>()
+    }*/
 }

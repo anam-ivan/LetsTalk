@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Let\'s Talk</string>
+    <string name="app_name">LT Chatbot</string>
     <string name="welcome_to">Welcome to</string>
     <string name="enter_cr_number">Enter CR No.</string>
     <string name="help"> <u>Help!</u></string>

@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/drawable/country_code_back.xml" value="0.1945" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/drawable/country_code_focused.xml" value="0.1945" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/drawable/edit_text_border.xml" value="0.1125" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/drawable/edit_text_border_focused.xml" value="0.1945" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/drawable/others_back.xml" value="0.1945" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/drawable/otp_deactivate_back.xml" value="0.1945" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/activity_dashboard.xml" value="0.32472826086956524" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/activity_verify_otpactivity.xml" value="0.32472826086956524" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/alk_side_effects_row.xml" value="0.32472826086956524" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/layout_otp.xml" value="0.32472826086956524" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/page.xml" value="0.32472826086956524" />
         <entry key="..\:/Users/user/.gradle/caches/transforms-3/a10c0a63eb67389ec96e93e492ed6b19/transformed/Collapsible-Calendar-View-Android-v1.0.3/res/drawable/circle_white_solid_background.xml" value="0.1625" />
         <entry key="..\:/Users/user/.gradle/caches/transforms-3/a10c0a63eb67389ec96e93e492ed6b19/transformed/Collapsible-Calendar-View-Android-v1.0.3/res/drawable/circle_white_stroke_background.xml" value="0.1625" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/drawable/bottom_btn_back.xml" value="0.2175" />

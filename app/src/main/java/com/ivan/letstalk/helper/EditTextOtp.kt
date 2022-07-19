@@ -39,7 +39,7 @@ class EditTextOtp @JvmOverloads constructor(
         initFocusListener()
         initTextChangeListener()
         initKeyListener()
-        // initFocusChangeListener()
+        initFocusChangeListener()
     }
 
     private fun initFocusListener() {
@@ -68,6 +68,66 @@ class EditTextOtp @JvmOverloads constructor(
                 )
             } else {
                 layoutOtpBinding.etOtp1.setBackgroundResource(
+                    R.drawable.otp_deactivate_back
+                )
+            }
+        }
+
+        layoutOtpBinding.etOtp2.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                layoutOtpBinding.etOtp2.setBackgroundResource(
+                    R.drawable.otp_active_back
+                )
+            } else {
+                layoutOtpBinding.etOtp2.setBackgroundResource(
+                    R.drawable.otp_deactivate_back
+                )
+            }
+        }
+
+        layoutOtpBinding.etOtp3.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                layoutOtpBinding.etOtp3.setBackgroundResource(
+                    R.drawable.otp_active_back
+                )
+            } else {
+                layoutOtpBinding.etOtp3.setBackgroundResource(
+                    R.drawable.otp_deactivate_back
+                )
+            }
+        }
+
+        layoutOtpBinding.etOtp4.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                layoutOtpBinding.etOtp4.setBackgroundResource(
+                    R.drawable.otp_active_back
+                )
+            } else {
+                layoutOtpBinding.etOtp4.setBackgroundResource(
+                    R.drawable.otp_deactivate_back
+                )
+            }
+        }
+
+        layoutOtpBinding.etOtp5.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                layoutOtpBinding.etOtp5.setBackgroundResource(
+                    R.drawable.otp_active_back
+                )
+            } else {
+                layoutOtpBinding.etOtp5.setBackgroundResource(
+                    R.drawable.otp_deactivate_back
+                )
+            }
+        }
+
+        layoutOtpBinding.etOtp6.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+            if (hasFocus) {
+                layoutOtpBinding.etOtp6.setBackgroundResource(
+                    R.drawable.otp_active_back
+                )
+            } else {
+                layoutOtpBinding.etOtp6.setBackgroundResource(
                     R.drawable.otp_deactivate_back
                 )
             }
