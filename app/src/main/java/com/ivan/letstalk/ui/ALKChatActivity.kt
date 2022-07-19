@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
@@ -16,10 +17,18 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.github.nkzawa.socketio.client.IO
+import com.github.nkzawa.socketio.client.Socket
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.chip.ChipGroup
+import com.google.gson.Gson
 import com.ivan.letstalk.R
+/*import io.socket.client.IO
+import io.socket.client.Socket
+import io.socket.emitter.Emitter*/
+import okhttp3.WebSocket
+import java.net.URISyntaxException
 
 
 class ALKChatActivity : AppCompatActivity() {
@@ -29,6 +38,7 @@ class ALKChatActivity : AppCompatActivity() {
     private lateinit var ivCross: ImageView
     private lateinit var dialog: Dialog
     private var isButtonClicked = false
+    val gson: Gson = Gson()
     // private lateinit var ivHome: AppCompatImageView
     private var existingSideEffectsList = arrayOf(
         "Abdominal Pain", "Constipation", "Dyspepsia", "Dysphagia", "Electrocardiogram QT prlonged",
@@ -36,6 +46,10 @@ class ALKChatActivity : AppCompatActivity() {
         "Nausea", "Vomiting", "Vision Disorder", "Constipation",  "Dyspepsia", "Nausea"
     )
     private var existingSideEffectsChipItems = ArrayList<String>()
+    private lateinit var socket: Socket
+    // private var webSocket: WebSocket? = null
+    // lateinit var mSocket: Socket
+    // private lateinit var nSocket: Socket
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,6 +101,39 @@ class ALKChatActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
         }
+
+        try {
+            // socket = IO.socket("http://192.168.1.89:8000/chat")
+            socket = IO.socket("https://letstalk.dev13.ivantechnology.in/chat")
+            socket.connect()
+            socket.emit("joined", "")
+            Log.d("isSocketCon",socket.connected().toString())
+        } catch (e: URISyntaxException) {
+            Log.d("chat_error",e.toString())
+            e.printStackTrace()
+        }
+
+        /*try {
+            mSocket = IO.socket("http://192.168.1.89:8000/chat")
+            mSocket.connect()
+            mSocket.on(Socket.EVENT_CONNECT, onConnect)
+            // mSocket.emit("joined")
+            Log.d("isCon", mSocket.connected().toString())
+        } catch (e: Exception) {
+            e.printStackTrace()
+            e.message?.let { Log.d("chat_error", it) }
+        }*/
+
+        /*try {
+            nSocket = IO.socket("http://192.168.1.89:8000/chat")
+            nSocket.connect()
+            nSocket.emit("joined", "")
+            Log.d("nSocket", nSocket.isActive.toString())
+        } catch (e: URISyntaxException) {
+            e.message?.let { Log.d("chat_error", it) }
+            e.printStackTrace()
+        }*/
+
 
     }
 
@@ -160,4 +207,10 @@ class ALKChatActivity : AppCompatActivity() {
         /*isButtonClicked = dialog.isShowing
         ivMenu.setBackgroundResource(if (isButtonClicked) R.drawable.ic_menu else R.drawable.ic_cross)*/
     }
+
+    /*var onConnect = Emitter.Listener {
+        //After getting a Socket.EVENT_CONNECT which indicate socket has been connected to server,
+        //send userName and roomName so that they can join the room.
+        mSocket.emit("joined", "")
+    }*/
 }

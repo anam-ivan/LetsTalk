@@ -83,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
         binding.tvTermsConditions.paint?.isUnderlineText = true
         binding.tvUpdateNumber.paint?.isUnderlineText = true
         binding.tvUpdateNumber.paint?.isUnderlineText = true
-
+        binding.otpBox.requestFocus()
         /*binding.otpBox.otpValue.observe(this) {
             it?.let {
                 if (it.isEmpty()) {
@@ -146,6 +146,8 @@ class LoginActivity : AppCompatActivity() {
             )
             binding.rrOthers.visibility = View.GONE
             binding.ivDropdown.rotation = 360f
+            binding.etPhone.hint = "0000000000"
+            binding.etPhone.letterSpacing = 0.3F
         }
 
         /*ivDropdown.setOnClickListener {
@@ -200,16 +202,13 @@ class LoginActivity : AppCompatActivity() {
         }
         binding.btnLogin.setOnClickListener {
             if (binding.otpBox.otpValue.value?.isEmpty() == true || binding.otpBox.otpValue.value!!.length != 6) {
-                /*binding.otpBox.otpValue.observe(this) {
-                    it?.let {
-                        if (it.length == 6) {
-                            binding.etPhone.requestFocus()
-                        }
-                    }
-                }*/
                 showErrorMsg("Please enter CR Number", binding.root)
+            } else if (!isValidUserData()) {
+                showErrorMsg("Please enter mobile number", binding.root)
             } else {
-                if (isValidUserData()) {
+                if (!binding.checkbox.isChecked) {
+                    showErrorMsg("Please accept Terms & Conditions", binding.root)
+                } else {
                     navigateToVerifyOTP()
                 }
             }
@@ -223,6 +222,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
         }*/
+
         binding.etPhone.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 binding.llPhone.setBackgroundResource(R.drawable.edit_text_border_focused)

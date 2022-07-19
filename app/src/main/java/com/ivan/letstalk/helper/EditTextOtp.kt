@@ -39,7 +39,8 @@ class EditTextOtp @JvmOverloads constructor(
         initFocusListener()
         initTextChangeListener()
         initKeyListener()
-        initFocusChangeListener()
+        // layoutOtpBinding.etOtp1.requestFocus()
+        // initFocusChangeListener()
     }
 
     private fun initFocusListener() {
@@ -152,6 +153,46 @@ class EditTextOtp @JvmOverloads constructor(
                 R.drawable.otp_active_back
             ) else
             layoutOtpBinding.etOtp1.setBackgroundResource(
+                R.drawable.otp_deactivate_back
+            )
+        if (hasFocus)
+            v.background = AppCompatResources.getDrawable(
+                context,
+                R.drawable.otp_active_back
+            ) else
+            layoutOtpBinding.etOtp2.setBackgroundResource(
+                R.drawable.otp_deactivate_back
+            )
+        if (hasFocus)
+            v.background = AppCompatResources.getDrawable(
+                context,
+                R.drawable.otp_active_back
+            ) else
+            layoutOtpBinding.etOtp3.setBackgroundResource(
+                R.drawable.otp_deactivate_back
+            )
+        if (hasFocus)
+            v.background = AppCompatResources.getDrawable(
+                context,
+                R.drawable.otp_active_back
+            ) else
+            layoutOtpBinding.etOtp4.setBackgroundResource(
+                R.drawable.otp_deactivate_back
+            )
+        if (hasFocus)
+            v.background = AppCompatResources.getDrawable(
+                context,
+                R.drawable.otp_active_back
+            ) else
+            layoutOtpBinding.etOtp5.setBackgroundResource(
+                R.drawable.otp_deactivate_back
+            )
+        if (hasFocus)
+            v.background = AppCompatResources.getDrawable(
+                context,
+                R.drawable.otp_active_back
+            ) else
+            layoutOtpBinding.etOtp6.setBackgroundResource(
                 R.drawable.otp_deactivate_back
             )
         /*else if (etCurrentFocus.text!!.isNotEmpty())
