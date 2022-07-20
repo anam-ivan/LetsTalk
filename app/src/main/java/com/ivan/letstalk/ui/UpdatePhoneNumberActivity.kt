@@ -99,12 +99,14 @@ class UpdatePhoneNumberActivity : AppCompatActivity() {
                         R.color.greyy
                     )
                 )
-                rrPhone.setBackgroundResource((R.drawable.others_back))
+                // rrPhone.setBackgroundResource((R.drawable.others_back))
+                rrPhone.setBackgroundResource((R.drawable.country_code_focused))
                 rrOthers.visibility = View.VISIBLE
                 ivDropdown.setColorFilter(ContextCompat.getColor(this, R.color.greyy), android.graphics.PorterDuff.Mode.SRC_IN)
             } else {
                 ivDropdown.rotation = 180f
-                rrPhone.setBackgroundResource((R.drawable.others_back))
+                // rrPhone.setBackgroundResource((R.drawable.others_back))
+                rrPhone.setBackgroundResource((R.drawable.country_code_focused))
                 tvCountryCode.setTextColor(
                     ContextCompat.getColor(
                         applicationContext,
@@ -120,6 +122,17 @@ class UpdatePhoneNumberActivity : AppCompatActivity() {
         }
 
         tvCountryCode.setOnClickListener {
+            rrPhone.setBackgroundResource((R.drawable.country_code_back))
+            tvCountryCode.setTextColor(
+                ContextCompat.getColor(
+                    applicationContext,
+                    R.color.white
+                )
+            )
+            ivDropdown.setColorFilter(
+                ContextCompat.getColor(this, R.color.white),
+                android.graphics.PorterDuff.Mode.SRC_IN
+            )
             rrOthers.visibility = View.GONE
             ivDropdown.rotation = 360f
             edtMobile.hint = "0000000000"
@@ -139,12 +152,14 @@ class UpdatePhoneNumberActivity : AppCompatActivity() {
                         R.color.greyy
                     )
                 )
-                rrConfirmPhone.setBackgroundResource((R.drawable.others_back))
+                // rrConfirmPhone.setBackgroundResource((R.drawable.others_back))
+                rrConfirmPhone.setBackgroundResource((R.drawable.country_code_focused))
                 rrOthersTwo.visibility = View.VISIBLE
                 ivSecondDropDown.setColorFilter(ContextCompat.getColor(this, R.color.greyy), android.graphics.PorterDuff.Mode.SRC_IN)
             } else {
                 ivSecondDropDown.rotation = 180f
-                rrConfirmPhone.setBackgroundResource((R.drawable.others_back))
+                // rrConfirmPhone.setBackgroundResource((R.drawable.others_back))
+                rrConfirmPhone.setBackgroundResource((R.drawable.country_code_focused))
                 tvConfirmMobileCountryCode.setTextColor(
                     ContextCompat.getColor(
                         applicationContext,
@@ -178,6 +193,17 @@ class UpdatePhoneNumberActivity : AppCompatActivity() {
         }
 
         tvConfirmMobileCountryCode.setOnClickListener {
+            rrConfirmPhone.setBackgroundResource((R.drawable.country_code_back))
+            tvConfirmMobileCountryCode.setTextColor(
+                ContextCompat.getColor(
+                    applicationContext,
+                    R.color.white
+                )
+            )
+            ivSecondDropDown.setColorFilter(
+                ContextCompat.getColor(this, R.color.white),
+                android.graphics.PorterDuff.Mode.SRC_IN
+            )
             rrOthersTwo.visibility = View.GONE
             ivSecondDropDown.rotation = 360f
             edtConfirmMobile.hint = "0000000000"

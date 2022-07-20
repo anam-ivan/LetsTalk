@@ -13,7 +13,7 @@
     <string name="cancel">Cancel</string>
     <string name="otp_text">OTP has been sent to</string>
     <string name="did_not_receive">Did n\'t Receive ?</string>
-    <string name="edit_mobile_number">Edit Mobile Number</string>
+    <string name="edit_mobile_number">Edit Mobile Number.</string>
     <string name="verify_otp">Verify OTP</string>
     <string name="do_not_have_otp">Don\'t have an OTP?</string>
     <string name="resend_otp">Resend OTP</string>

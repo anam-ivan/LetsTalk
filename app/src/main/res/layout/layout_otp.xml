@@ -12,8 +12,8 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_otp1"
-            android:layout_width="@dimen/dp_72"
-            android:layout_height="@dimen/dp_50"
+            android:layout_width="@dimen/dp_58"
+            android:layout_height="@dimen/dp_60"
             android:layout_marginStart="@dimen/sp_10"
             android:layout_marginTop="@dimen/sp_10"
             android:layout_marginEnd="@dimen/sp_6"
@@ -34,9 +34,9 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_otp2"
-            android:layout_width="@dimen/dp_72"
-            android:layout_height="@dimen/dp_50"
-            android:layout_marginStart="@dimen/sp_4"
+            android:layout_width="@dimen/dp_58"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginStart="@dimen/sp_10"
             android:layout_marginTop="@dimen/sp_10"
             android:layout_marginEnd="@dimen/sp_6"
             android:layout_weight="1"
@@ -55,9 +55,9 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_otp3"
-            android:layout_width="@dimen/dp_72"
-            android:layout_height="@dimen/dp_50"
-            android:layout_marginStart="@dimen/sp_4"
+            android:layout_width="@dimen/dp_58"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginStart="@dimen/sp_10"
             android:layout_marginTop="@dimen/sp_10"
             android:layout_marginEnd="@dimen/sp_6"
             android:layout_weight="1"
@@ -76,9 +76,9 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_otp4"
-            android:layout_width="@dimen/dp_72"
-            android:layout_height="@dimen/dp_50"
-            android:layout_marginStart="@dimen/sp_4"
+            android:layout_width="@dimen/dp_58"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginStart="@dimen/sp_10"
             android:layout_marginTop="@dimen/sp_10"
             android:layout_marginEnd="@dimen/sp_6"
             android:layout_weight="1"
@@ -97,9 +97,9 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_otp5"
-            android:layout_width="@dimen/dp_72"
-            android:layout_height="@dimen/dp_50"
-            android:layout_marginStart="@dimen/sp_4"
+            android:layout_width="@dimen/dp_58"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginStart="@dimen/sp_10"
             android:layout_marginTop="@dimen/sp_10"
             android:layout_marginEnd="@dimen/sp_6"
             android:layout_weight="1"
@@ -118,9 +118,9 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_otp6"
-            android:layout_width="@dimen/dp_72"
-            android:layout_height="@dimen/dp_50"
-            android:layout_marginStart="@dimen/sp_4"
+            android:layout_width="@dimen/dp_58"
+            android:layout_height="@dimen/dp_60"
+            android:layout_marginStart="@dimen/sp_10"
             android:layout_marginTop="@dimen/sp_10"
             android:layout_marginEnd="@dimen/sp_10"
             android:layout_weight="1"

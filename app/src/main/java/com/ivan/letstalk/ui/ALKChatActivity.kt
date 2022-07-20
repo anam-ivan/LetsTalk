@@ -1,5 +1,8 @@
 package com.ivan.letstalk.ui
 
+/*import io.socket.client.IO
+import io.socket.client.Socket
+import io.socket.emitter.Emitter*/
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
@@ -17,6 +20,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.github.nkzawa.emitter.Emitter
 import com.github.nkzawa.socketio.client.IO
 import com.github.nkzawa.socketio.client.Socket
 import com.google.android.material.chip.Chip
@@ -24,10 +28,6 @@ import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.chip.ChipGroup
 import com.google.gson.Gson
 import com.ivan.letstalk.R
-/*import io.socket.client.IO
-import io.socket.client.Socket
-import io.socket.emitter.Emitter*/
-import okhttp3.WebSocket
 import java.net.URISyntaxException
 
 
@@ -104,13 +104,22 @@ class ALKChatActivity : AppCompatActivity() {
 
         try {
             // socket = IO.socket("http://192.168.1.89:8000/chat")
-            socket = IO.socket("https://letstalk.dev13.ivantechnology.in/chat")
+            socket = IO.socket("https://letstalkwebsocket.dev13.ivantechnology.in/chat")
             socket.connect()
-            socket.emit("joined", "")
+            // socket.emit("joined", "")
             Log.d("isSocketCon",socket.connected().toString())
         } catch (e: URISyntaxException) {
             Log.d("chat_error",e.toString())
             e.printStackTrace()
+        }
+
+        socket.on(Socket.EVENT_CONNECT) {
+            Log.d("socketio", "socket connected")
+            socket.emit(
+                "joined",
+                ""
+            )
+            Log.d("isSocketCon",socket.connected().toString())
         }
 
         /*try {

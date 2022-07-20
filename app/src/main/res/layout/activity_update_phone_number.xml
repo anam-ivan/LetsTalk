@@ -133,7 +133,7 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edt_mobile"
                 android:layout_width="0dp"
-                android:layout_weight="0.8"
+                android:layout_weight="0.6"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/sp_2"
@@ -154,8 +154,8 @@
 
         <RelativeLayout
             android:id="@+id/rr_others"
-            android:layout_width="@dimen/_68sdp"
-            android:layout_height="@dimen/_45sdp"
+            android:layout_width="@dimen/_82sdp"
+            android:layout_height="@dimen/_32sdp"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginEnd="@dimen/_16sdp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -259,7 +259,7 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edt_confirm_mobile"
                 android:layout_width="0dp"
-                android:layout_weight="0.8"
+                android:layout_weight="0.6"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginEnd="@dimen/sp_2"
@@ -279,8 +279,8 @@
 
         <RelativeLayout
             android:id="@+id/rr_others_two"
-            android:layout_width="@dimen/_68sdp"
-            android:layout_height="@dimen/_45sdp"
+            android:layout_width="@dimen/_82sdp"
+            android:layout_height="@dimen/_32sdp"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginEnd="@dimen/_16sdp"
             app:layout_constraintLeft_toLeftOf="parent"

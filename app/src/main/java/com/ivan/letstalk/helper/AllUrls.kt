@@ -5,7 +5,8 @@ object AllUrls {
     var loginUrl: String? = null
 
     init {
-        baseUrl = "http://letstalk.dev13.ivantechnology.in/patient/"
+        // baseUrl = "http://letstalk.dev13.ivantechnology.in/patient/"
+        baseUrl = "http://letstalk.dev13.ivantechnology.in/user/"
         loginUrl = "login"
     }
 }

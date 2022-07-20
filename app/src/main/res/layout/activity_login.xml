@@ -187,7 +187,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:clickable="true"
                 android:focusable="true"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@+id/llPhone"
                 android:background="@drawable/others_back">
 
@@ -238,7 +238,7 @@
                 android:layout_marginEnd="@dimen/_16sdp"
                 android:inputType="textEmailAddress"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:padding="@dimen/_8sdp"
+                android:padding="@dimen/_12sdp"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@+id/tv_enter_your_email"
                 android:textCursorDrawable="@drawable/edit_text_black_cursor"
@@ -340,7 +340,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/rr_error_layout"
                 app:layout_constraintStart_toEndOf="@+id/tv_i_accept" />
 
-            <com.google.android.material.button.MaterialButton
+            <!--<com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_login"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="match_parent"
@@ -353,10 +353,46 @@
                 android:text="@string/login"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_13ssp"
                 app:cornerRadius="@dimen/_8sdp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkbox" />
+                app:layout_constraintTop_toBottomOf="@+id/checkbox" />-->
+
+            <RelativeLayout
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/sp_50"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_24sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkbox"
+                android:background="@drawable/btn_back"
+                android:foreground="?attr/selectableItemBackground">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center|center_horizontal"
+                    android:drawablePadding="@dimen/sp_10"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:gravity="center_horizontal"
+                    android:text="@string/login"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13ssp" />
+
+                <ProgressBar
+                    android:id="@+id/pLoader"
+                    android:layout_width="@dimen/sp_24"
+                    android:layout_height="@dimen/sp_24"
+                    android:layout_centerInParent="true"
+                    android:indeterminateTint="@color/white"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_update_number"

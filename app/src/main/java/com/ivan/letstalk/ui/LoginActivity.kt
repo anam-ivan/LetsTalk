@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -16,24 +17,26 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ObservableField
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
 import com.ivan.letstalk.R
 import com.ivan.letstalk.api.ApiHelper
 import com.ivan.letstalk.api.RetrofitBuilder
 import com.ivan.letstalk.databinding.ActivityLoginBinding
+import com.ivan.letstalk.helper.SessionManager
 import com.ivan.letstalk.helper.Status
 import com.ivan.letstalk.helper.ViewModelFactory
 import com.ivan.letstalk.model.login.RequestBodies
 import com.ivan.letstalk.viewModel.LoginViewModel
+import java.util.regex.Pattern
 
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
     private lateinit var viewModel: LoginViewModel
+    private var otp: String = ""
+    private lateinit var sessionManager : SessionManager
     /*private lateinit var tvHelp: TextView
     private lateinit var tvTermsConditions: TextView
     private lateinit var tvUpdateNumber: TextView
@@ -55,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         // setContentView(R.layout.activity_login)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
-
+        sessionManager = SessionManager(this)
         /*tvEnterYourEmail = findViewById(R.id.tv_enter_your_email)
         etEmail = findViewById(R.id.et_email)
         tvCountryCode = findViewById(R.id.tv_country_code)
@@ -197,6 +200,7 @@ class LoginActivity : AppCompatActivity() {
             it?.let {
                 if (it.length == 6) {
                     binding.etPhone.requestFocus()
+                    viewModel.crNo.value = it
                 }
             }
         }
@@ -204,12 +208,28 @@ class LoginActivity : AppCompatActivity() {
             if (binding.otpBox.otpValue.value?.isEmpty() == true || binding.otpBox.otpValue.value!!.length != 6) {
                 showErrorMsg("Please enter CR Number", binding.root)
             } else if (!isValidUserData()) {
-                showErrorMsg("Please enter mobile number", binding.root)
+                showErrorMsg("Please enter Mobile Number", binding.root)
+            } else if (binding.tvCountryCode.text.equals("Others")) {
+                if (binding.etEmail.text?.isEmpty() == true) {
+                    showErrorMsg("Please enter a Email Address", binding.root)
+                } else {
+                    if (!isValidEmailId(binding.etEmail.text.toString())) {
+                        showErrorMsg("Please enter a Valid Email Address", binding.root)
+                    } else {
+                        if (!binding.checkbox.isChecked) {
+                            showErrorMsg("Please accept Terms & Conditions", binding.root)
+                        } else {
+                            // navigateToVerifyOTP()
+                            setupLoginObservers()
+                        }
+                    }
+                }
             } else {
                 if (!binding.checkbox.isChecked) {
                     showErrorMsg("Please accept Terms & Conditions", binding.root)
                 } else {
-                    navigateToVerifyOTP()
+                    // navigateToVerifyOTP()
+                    setupLoginObservers()
                 }
             }
         }
@@ -267,6 +287,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun navigateToVerifyOTP() {
         val intent = Intent(this, VerifyOTPActivity::class.java)
+        intent.putExtra(mobileNumber, binding.etPhone.text.toString())
+        intent.putExtra(crNo, viewModel.crNo.value.toString())
+        intent.putExtra(otpValue, otp)
         startActivity(intent)
         overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
@@ -280,23 +303,51 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupLoginObservers() {
         val body = RequestBodies.LoginBody(
-            email_id = "ivahl4ud7r@yopmail.com",
-            password = "A@123456"
+            email_id = binding.etEmail.text.toString().trim(),
+            // cr_no = binding.otpBox.otpValue.toString(),
+            cr_no = viewModel.crNo.value.toString(),
+            phone_number = "91".plus(binding.etPhone.text.toString().trim())
         )
         viewModel.getLogin(body).observe(this, Observer { it ->
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
                         resource.data?.let {
-                            Toast.makeText(this, it.body()?.message, Toast.LENGTH_LONG).show()
-                            // it.body()?.data!!.Token?.let { it1 -> sessionManager.saveAuthToken(it1) }
+                            binding.pLoader.visibility = View.GONE
+                            binding.tvButton.visibility = View.VISIBLE
+                            binding.btnLogin.isEnabled = true
+                            // Toast.makeText(this, it.body()?.message, Toast.LENGTH_LONG).show()
+                            if (it.body() != null) {
+                                if (it.body()?.status.equals("success")) {
+                                    otp = it.body()!!.data?.otp.toString()
+                                    it.body()!!.data!!.otp?.let { it1 -> Log.d("otp", it1) }
+                                    // viewModel.otp.value = it.body()!!.data!!.otp
+                                    Toast.makeText(this, it.body()?.message.toString(), Toast.LENGTH_LONG).show()
+                                    it.body()?.data!!.token?.let { it1 -> sessionManager.saveAuthToken(it1) }
+                                    navigateToVerifyOTP()
+                                } else if (it.body()?.status.equals("error")){
+                                    Toast.makeText(this, it.body()?.message.toString(), Toast.LENGTH_LONG).show()
+                                    binding.llPhone.setBackgroundResource(R.drawable.edit_text_error_border)
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        binding.rrPhone.setBackgroundResource(R.drawable.country_code_error_back)
+                                    }
+                                    binding.rrErrorLayout.visibility = View.VISIBLE
+                                    binding.ivLoginError.visibility = View.VISIBLE
+                                }
+                            }
                         }
                     }
                     Status.ERROR -> {
+                        binding.pLoader.visibility = View.GONE
+                        binding.tvButton.visibility = View.VISIBLE
+                        binding.btnLogin.isEnabled = true
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                     }
                     Status.LOADING -> {
-                        Toast.makeText(this, "Loading", Toast.LENGTH_LONG).show()
+                        // Toast.makeText(this, "Loading", Toast.LENGTH_LONG).show()
+                        binding.pLoader.visibility = View.VISIBLE
+                        binding.tvButton.visibility = View.GONE
+                        binding.btnLogin.isEnabled = false
                     }
                 }
 
@@ -304,7 +355,7 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    protected fun showErrorMsg(msg: String, view: View) {
+    private fun showErrorMsg(msg: String, view: View) {
         val snackbar = Snackbar.make(
             view,
             msg,
@@ -336,5 +387,22 @@ class LoginActivity : AppCompatActivity() {
             return false
         }
         return true
+    }
+
+    private fun isValidEmailId(email: String): Boolean {
+        return Pattern.compile(
+            "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                    + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                    + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                    + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                    + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                    + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$"
+        ).matcher(email).matches()
+    }
+
+    companion object {
+        const val crNo = "crNo"
+        const val mobileNumber = "mobileNumber"
+        const val otpValue = "otp"
     }
 }

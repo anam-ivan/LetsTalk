@@ -30,16 +30,16 @@
                 android:gravity="center_vertical"
                 android:maxLines="1"
                 android:text="09.00"
-                android:textColor="@color/greyy"
+                android:textColor="@color/dark_grey"
                 android:textSize="@dimen/_12ssp" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_toEndOf="@+id/tv_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:scaleType="fitXY"
                 android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_toEndOf="@+id/tv_time"
+                android:scaleType="fitXY"
                 android:src="@drawable/ic_black_dot" />
 
             <View
@@ -110,10 +110,10 @@
                         android:layout_marginStart="@dimen/_8sdp"
                         android:layout_marginEnd="@dimen/_2sdp"
                         android:layout_marginBottom="@dimen/_2sdp"
-                        android:fontFamily="@font/gilroy_medium"
+                        android:fontFamily="@font/gilroy_semi_bold"
                         android:src="@drawable/ic_add"
                         android:text="Acetaminophen"
-                        android:textColor="@color/black"
+                        android:textColor="@color/mat_black"
                         android:textSize="@dimen/_12ssp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -161,10 +161,10 @@
                         android:layout_marginStart="@dimen/_8sdp"
                         android:layout_marginEnd="@dimen/_2sdp"
                         android:layout_marginBottom="@dimen/_2sdp"
-                        android:fontFamily="@font/gilroy_medium"
+                        android:fontFamily="@font/gilroy_semi_bold"
                         android:src="@drawable/ic_add"
                         android:text="01"
-                        android:textColor="@color/black"
+                        android:textColor="@color/mat_black"
                         android:textSize="@dimen/_12ssp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -212,30 +212,59 @@
                         android:layout_marginStart="@dimen/_8sdp"
                         android:layout_marginEnd="@dimen/_2sdp"
                         android:layout_marginBottom="@dimen/_2sdp"
-                        android:fontFamily="@font/gilroy_medium"
+                        android:fontFamily="@font/gilroy_semi_bold"
                         android:src="@drawable/ic_add"
                         android:text="PC (After Lunch)"
-                        android:textColor="@color/black"
+                        android:textColor="@color/mat_black"
                         android:textSize="@dimen/_12ssp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_below="@+id/ll_dosage"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:weightSum="2">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:alpha="0.8"
                         android:background="@color/red"
                         android:gravity="center">
 
-                        <androidx.appcompat.widget.AppCompatTextView
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/iv_sad"
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_sad"
+                                android:textAllCaps="false" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tv_my_chats"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/_6sdp"
+                                android:layout_toEndOf="@+id/iv_sad"
+                                android:fontFamily="@font/gilroy_semi_bold"
+                                android:gravity="center"
+                                android:text="@string/medicine_skipped"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </RelativeLayout>
+
+                        <!--<androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/btn_delete"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -249,18 +278,18 @@
                             android:text="@string/medicine_skipped"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="@dimen/_10ssp" />-->
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@color/green"
                         android:gravity="center">
 
-                        <androidx.appcompat.widget.AppCompatTextView
+                        <!--<androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/btn_medical_taken"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -274,7 +303,35 @@
                             android:text="@string/medicine_taken"
                             android:textAllCaps="false"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_10ssp" />
+                            android:textSize="@dimen/_10ssp" />-->
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/iv_happy"
+                                android:layout_width="@dimen/_16sdp"
+                                android:layout_height="@dimen/_16sdp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_smiley"
+                                android:textAllCaps="false" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/_6sdp"
+                                android:layout_toEndOf="@+id/iv_happy"
+                                android:fontFamily="@font/gilroy_semi_bold"
+                                android:gravity="center"
+                                android:text="@string/medicine_taken"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_10ssp" />
+
+                        </RelativeLayout>
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
