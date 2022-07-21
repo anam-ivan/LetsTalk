@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -34,16 +36,12 @@ class VerifyOTPActivity : AppCompatActivity() {
     private var otp: String = ""
     private var crNo: String = ""
     private lateinit var sessionManager : SessionManager
-    /*private lateinit var btnVerifyOTP: Button
-    private lateinit var tvEditMobile: TextView*/
+    private var cTimer: CountDownTimer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // setContentView(R.layout.activity_verify_otpactivity)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_verify_otpactivity)
         setupViewModel()
         sessionManager = SessionManager(this)
-        /*btnVerifyOTP = findViewById(R.id.btn_verify_otp)
-        tvEditMobile = findViewById(R.id.tv_edit_mobile)*/
         binding.tvEditMobile.paint?.isUnderlineText = true
 
         val mobileNumber = intent.getStringExtra(LoginActivity.mobileNumber)
@@ -76,13 +74,18 @@ class VerifyOTPActivity : AppCompatActivity() {
             } else {
                 setupVerifyOTPObservers()
             }
-            /*val intent = Intent(this, DashboardActivity::class.java)
-            startActivity(intent)
-            finish()*/
         }
 
         sessionManager.fetchAuthToken()?.let {
             Log.d("saveToken",it)
+        }
+
+        binding.tvResendOtp.setOnClickListener {
+            binding.tvResendOtp.visibility= View.GONE
+            if (!binding.tvSecondsRemaining.isVisible) {
+                binding.tvSecondsRemaining.visibility = View.VISIBLE
+            }
+            startOTPTimer()
         }
     }
 
@@ -166,5 +169,28 @@ class VerifyOTPActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
         overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
+    }
+
+    private fun startOTPTimer() {
+        cTimer = object : CountDownTimer(30000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                binding.tvSecondsRemaining.text =
+                    "Resend Otp in" + " " + millisUntilFinished / 1000 + "s"
+            }
+            override fun onFinish() {
+                binding.tvResendOtp.visibility = View.VISIBLE
+                binding.tvSecondsRemaining.visibility = View.GONE
+            }
+        }
+        (cTimer as CountDownTimer).start()
+    }
+
+    private fun cancelOTPTimer() {
+        if (cTimer != null) cTimer!!.cancel()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cancelOTPTimer()
     }
 }

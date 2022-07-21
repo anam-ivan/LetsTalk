@@ -106,7 +106,7 @@
                                 android:layout_marginStart="@dimen/_10sdp"
                                 android:layout_marginTop="@dimen/_10sdp"
                                 android:src="@drawable/ic_user_img"
-                                app:civ_border_color="#FF7789"
+                                app:civ_border_color="#ff91a0"
                                 app:civ_border_width="@dimen/_2sdp"
                                 tools:ignore="ContentDescription" />
 
@@ -138,13 +138,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/tv_patient_name"
-                                android:layout_marginStart="@dimen/_8sdp"
+                                android:layout_marginStart="@dimen/_6sdp"
                                 android:layout_marginTop="@dimen/_7sdp"
                                 android:layout_marginEnd="@dimen/_8sdp"
                                 android:layout_toEndOf="@+id/iv_call"
                                 android:fontFamily="@font/gilroy_regular"
                                 android:text="(+91) 8860004180, 9711104163"
-                                android:textColor="@color/white"
+                                android:textColor="@color/light_red"
                                 android:textSize="@dimen/_11ssp" />
 
                             <androidx.appcompat.widget.AppCompatImageView
@@ -168,7 +168,7 @@
                                 android:layout_toEndOf="@+id/iv_location"
                                 android:fontFamily="@font/gilroy_regular"
                                 android:text="Capsulation Premises, Opp Tata Institute, Social Science, Sion Trombay Road, Chembur, Mumbai, 400089"
-                                android:textColor="@color/white"
+                                android:textColor="@color/light_red"
                                 android:textSize="@dimen/_11ssp" />
 
 
@@ -190,7 +190,7 @@
                                 android:layout_marginBottom="@dimen/_10sdp"
                                 android:fontFamily="@font/gilroy_regular"
                                 android:text="Date of Diagnosis :"
-                                android:textColor="@color/white"
+                                android:textColor="@color/light_red"
                                 android:textSize="@dimen/_11ssp" />
 
                             <androidx.appcompat.widget.AppCompatTextView

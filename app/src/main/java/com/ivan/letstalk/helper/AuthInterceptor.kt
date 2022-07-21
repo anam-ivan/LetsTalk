@@ -12,7 +12,8 @@ class AuthInterceptor(context: Context) : Interceptor {
 
         // If token has been saved, add it to the request
         sessionManager.fetchAuthToken()?.let {
-            requestBuilder.addHeader("Authorization", "Bearer $it")
+            // requestBuilder.addHeader("Authorization", "Bearer $it")
+            requestBuilder.addHeader("token", it)
         }
 
         return chain.proceed(requestBuilder.build())

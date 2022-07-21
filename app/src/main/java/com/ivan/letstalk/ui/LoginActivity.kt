@@ -6,6 +6,8 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputFilter
+import android.text.InputFilter.LengthFilter
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
@@ -151,6 +153,7 @@ class LoginActivity : AppCompatActivity() {
             binding.ivDropdown.rotation = 360f
             binding.etPhone.hint = "0000000000"
             binding.etPhone.letterSpacing = 0.3F
+            binding.etPhone.filters = arrayOf<InputFilter>(LengthFilter(10))
         }
 
         /*ivDropdown.setOnClickListener {
@@ -174,6 +177,7 @@ class LoginActivity : AppCompatActivity() {
             binding.rrPhone.setBackgroundResource((R.drawable.country_code_back))
             binding.tvEnterYourEmail.visibility = View.VISIBLE
             binding.etEmail.visibility = View.VISIBLE
+            binding.etPhone.filters = arrayOf<InputFilter>(LengthFilter(15))
             binding.ivDropdown.setColorFilter(
                 ContextCompat.getColor(this, R.color.white),
                 android.graphics.PorterDuff.Mode.SRC_IN
@@ -184,6 +188,12 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, UpdatePhoneNumberActivity::class.java)
             startActivity(intent)
         }
+
+        /*binding.tvTermsConditions.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }*/
+
         /*binding.btnLogin.setOnClickListener {
             if (binding.etPhone.text.toString() == "8888888888") {
                 binding.llPhone.setBackgroundResource(R.drawable.edit_text_error_border)

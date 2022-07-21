@@ -16,6 +16,7 @@ class SessionManager (context: Context) {
 
     companion object {
         const val USER_TOKEN = "user_token"
+        const val CR_NO = "cr_no"
     }
 
     init {
@@ -47,6 +48,23 @@ class SessionManager (context: Context) {
      */
     fun fetchAuthToken(): String? {
         return prefs.getString(USER_TOKEN, null)
+    }
+
+    /**
+     * Function to save CR No.
+     */
+    fun saveCRNo(crNo: String) {
+        // val editor = prefs.edit()
+        val editor = sharedPrefsEditor
+        editor.putString(CR_NO, crNo)
+        editor.apply()
+    }
+
+    /**
+     * Function to fetch CR No.
+     */
+    fun fetchCRNo(): String? {
+        return prefs.getString(CR_NO, null)
     }
 
     fun logoutUser() {

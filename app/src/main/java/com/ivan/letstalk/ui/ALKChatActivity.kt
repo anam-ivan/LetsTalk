@@ -20,7 +20,6 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.github.nkzawa.emitter.Emitter
 import com.github.nkzawa.socketio.client.IO
 import com.github.nkzawa.socketio.client.Socket
 import com.google.android.material.chip.Chip
@@ -28,7 +27,9 @@ import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.chip.ChipGroup
 import com.google.gson.Gson
 import com.ivan.letstalk.R
+import com.ivan.letstalk.helper.SocketHandler
 import java.net.URISyntaxException
+import kotlin.collections.ArrayList
 
 
 class ALKChatActivity : AppCompatActivity() {
@@ -47,9 +48,7 @@ class ALKChatActivity : AppCompatActivity() {
     )
     private var existingSideEffectsChipItems = ArrayList<String>()
     private lateinit var socket: Socket
-    // private var webSocket: WebSocket? = null
-    // lateinit var mSocket: Socket
-    // private lateinit var nSocket: Socket
+    private  lateinit var mSocket: io.socket.client.Socket
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,48 +101,45 @@ class ALKChatActivity : AppCompatActivity() {
             }
         }
 
-        try {
-            // socket = IO.socket("http://192.168.1.89:8000/chat")
+
+        /*Timer().scheduleAtFixedRate(object : TimerTask() {
+            override fun run() {
+                try {
+                    socket = IO.socket("https://letstalkwebsocket.dev13.ivantechnology.in/chat")
+                    socket.connect()
+                    socket.emit("joined", {})
+                    Log.d("isSocketCon", socket.connected().toString())
+                } catch (e: URISyntaxException) {
+                    Log.d("chat_error", e.toString())
+                    e.printStackTrace()
+                }
+            }
+        }, 0, 1000)*/
+
+
+        /*try {
             socket = IO.socket("https://letstalkwebsocket.dev13.ivantechnology.in/chat")
             socket.connect()
-            // socket.emit("joined", "")
+            socket.emit("joined", {})
             Log.d("isSocketCon",socket.connected().toString())
         } catch (e: URISyntaxException) {
             Log.d("chat_error",e.toString())
             e.printStackTrace()
-        }
+        }*/
+        SocketHandler.setSocket()
+        SocketHandler.establishConnection()
+        val mSocket = SocketHandler.getSocket()
+        mSocket.emit("joined", {})
+        Log.d("isSocketCon",mSocket.connected().toString())
 
-        socket.on(Socket.EVENT_CONNECT) {
+        /*socket.on(Socket.EVENT_CONNECT) {
             Log.d("socketio", "socket connected")
             socket.emit(
                 "joined",
                 ""
             )
             Log.d("isSocketCon",socket.connected().toString())
-        }
-
-        /*try {
-            mSocket = IO.socket("http://192.168.1.89:8000/chat")
-            mSocket.connect()
-            mSocket.on(Socket.EVENT_CONNECT, onConnect)
-            // mSocket.emit("joined")
-            Log.d("isCon", mSocket.connected().toString())
-        } catch (e: Exception) {
-            e.printStackTrace()
-            e.message?.let { Log.d("chat_error", it) }
         }*/
-
-        /*try {
-            nSocket = IO.socket("http://192.168.1.89:8000/chat")
-            nSocket.connect()
-            nSocket.emit("joined", "")
-            Log.d("nSocket", nSocket.isActive.toString())
-        } catch (e: URISyntaxException) {
-            e.message?.let { Log.d("chat_error", it) }
-            e.printStackTrace()
-        }*/
-
-
     }
 
     private fun initExistingSideEffectsData() {

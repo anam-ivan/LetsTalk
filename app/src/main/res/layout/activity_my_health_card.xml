@@ -6,7 +6,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background"
+            android:background="@drawable/top_to_bottom_gradient"
             tools:context=".ui.MyHealthVitals">
 
             <com.google.android.material.appbar.MaterialToolbar
@@ -55,7 +55,7 @@
 
             </com.google.android.material.appbar.MaterialToolbar>
 
-            <androidx.core.widget.NestedScrollView
+            <!--<androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:overScrollMode="never"
@@ -88,15 +88,16 @@
 
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_patient_name_header"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="@dimen/_12sdp"
+                            android:alpha="0.5"
                             android:fontFamily="@font/gilroy_medium"
                             android:gravity="center_vertical"
                             android:maxLines="1"
-                            android:alpha="0.5"
                             android:text="@string/name"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12ssp" />
@@ -123,6 +124,7 @@
                         app:layout_constraintLeft_toLeftOf="parent">
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_patient_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_8sdp"
@@ -130,9 +132,9 @@
                             android:layout_marginEnd="@dimen/_2sdp"
                             android:layout_marginBottom="@dimen/_2sdp"
                             android:fontFamily="@font/gilroy_medium"
-                            android:textSize="@dimen/_12ssp"
                             android:text="Navin Tendulkar"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12ssp" />
 
                     </RelativeLayout>
 
@@ -194,7 +196,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/tb_header">
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/ivIncrease"
+                            android:id="@+id/tv_dob"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_8sdp"
@@ -264,12 +266,11 @@
                         app:layout_constraintLeft_toLeftOf="parent">
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_gender"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_8sdp"
-                            android:layout_marginTop="@dimen/_4sdp"
                             android:layout_marginEnd="@dimen/_2sdp"
-                            android:layout_marginBottom="@dimen/_2sdp"
                             android:fontFamily="@font/gilroy_medium"
                             android:src="@drawable/ic_add"
                             android:text="Male"
@@ -1204,11 +1205,11 @@
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="@dimen/_12sdp"
+                            android:alpha="0.5"
                             android:fontFamily="@font/gilroy_medium"
                             android:gravity="center_vertical"
                             android:maxLines="1"
                             android:text="@string/cranial_rt"
-                            android:alpha="0.5"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12ssp" />
 
@@ -3601,8 +3602,17 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </androidx.core.widget.NestedScrollView>
+            </androidx.core.widget.NestedScrollView>-->
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_health_card_details"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:padding="@dimen/_8ssp"
+                tools:listitem="@layout/my_health_card_row"
+                android:overScrollMode="never"
+                app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+                app:layout_constraintTop_toBottomOf="@+id/tb_header" />
 
             <RelativeLayout
                 android:id="@+id/btnLogin"
@@ -3621,7 +3631,7 @@
                     android:layout_centerInParent="true"
                     android:layout_gravity="center|center_horizontal"
                     android:drawableStart="@drawable/ic_download"
-                    android:drawablePadding="@dimen/_10sdp"
+                    android:drawablePadding="@dimen/_8sdp"
                     android:drawableTint="@color/white"
                     android:fontFamily="@font/gilroy_medium"
                     android:gravity="center_horizontal"

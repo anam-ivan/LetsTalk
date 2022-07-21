@@ -6,6 +6,7 @@ import androidx.lifecycle.liveData
 import com.ivan.letstalk.helper.Resource
 import com.ivan.letstalk.model.login.RequestBodies
 import com.ivan.letstalk.model.login.VerifyOTPBodies
+import com.ivan.letstalk.model.phonenumberupdate.PhoneNumberChangeBodies
 import com.ivan.letstalk.repo.LoginRepository
 import kotlinx.coroutines.Dispatchers
 
@@ -27,6 +28,24 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         emit(Resource.loading(data = null))
         try {
             emit(Resource.success(data = loginRepository.validateOTP(validateOTP)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+    fun patientProfileDetails() = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = loginRepository.patientProfileDetails()))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+    fun patientPhoneNumberUpdate(phoneNumberUpdate: PhoneNumberChangeBodies.PhoneNumberUpdateBody) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = loginRepository.patientPhoneChangeRequest(phoneNumberUpdate)))
         } catch (exception: Exception) {
             emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
         }

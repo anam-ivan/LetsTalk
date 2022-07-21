@@ -1,20 +1,36 @@
 package com.ivan.letstalk.ui
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.snackbar.Snackbar
 import com.ivan.letstalk.R
+import com.ivan.letstalk.api.ApiHelper
+import com.ivan.letstalk.api.RetrofitBuilder
+import com.ivan.letstalk.databinding.ActivityMyHealthCardBinding
+import com.ivan.letstalk.databinding.ActivityUpdatePhoneNumberBinding
+import com.ivan.letstalk.helper.ViewModelFactory
+import com.ivan.letstalk.viewModel.LoginViewModel
 
 class UpdatePhoneNumberActivity : AppCompatActivity() {
-    private lateinit var tvCancel: TextView
+    private lateinit var binding: ActivityUpdatePhoneNumberBinding
+    private lateinit var viewModel: LoginViewModel
+
+    /*private lateinit var tvCancel: TextView
     private lateinit var btnUpdate: MaterialButton
     private lateinit var edtMobile: AppCompatEditText
     private lateinit var llMobile: LinearLayoutCompat
@@ -28,12 +44,15 @@ class UpdatePhoneNumberActivity : AppCompatActivity() {
     private lateinit var edtConfirmMobile: AppCompatEditText
     private lateinit var tvConfirmMobileCountryCode: TextView
     private lateinit var ivSecondDropDown: ImageView
-    private lateinit var rrConfirmPhone: RelativeLayout
+    private lateinit var rrConfirmPhone: RelativeLayout*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_update_phone_number)
-        rrPhone = findViewById(R.id.rr_phone)
+        // setContentView(R.layout.activity_update_phone_number)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_update_phone_number)
+        setupViewModel()
+
+        /*rrPhone = findViewById(R.id.rr_phone)
         // etPhone = findViewById(R.id.edt_mobile)
         ivDropdown = findViewById(R.id.iv_dropdown)
         rrOthers = findViewById(R.id.rr_others)
@@ -48,166 +67,224 @@ class UpdatePhoneNumberActivity : AppCompatActivity() {
         rrOthersTwo = findViewById(R.id.rr_others_two)
         edtConfirmMobile = findViewById(R.id.edt_confirm_mobile)
         tvConfirmMobileCountryCode = findViewById(R.id.tv_confirm_mobile_country_code)
-        ivSecondDropDown = findViewById(R.id.iv_second_drop_down)
+        ivSecondDropDown = findViewById(R.id.iv_second_drop_down)*/
 
-        tvCancel.setOnClickListener {
+        binding.tvCancel.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
             startActivity(intent)
         }
-        btnUpdate.setOnClickListener {
+        binding.btnUpdate.setOnClickListener {
             val intent = Intent(this, UpdateMobileConfirmationActivity::class.java)
             overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
             startActivity(intent)
         }
 
-        edtMobile.setOnFocusChangeListener { _, hasFocus ->
+        binding.edtMobile.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
-                llMobile.setBackgroundResource(R.drawable.edit_text_border_focused)
+                binding.llPhone.setBackgroundResource(R.drawable.edit_text_border_focused)
             } else {
-                llMobile.setBackgroundResource(R.drawable.edit_text_border)
+                binding.llPhone.setBackgroundResource(R.drawable.edit_text_border)
             }
 
         }
 
-        rrOthers.setOnClickListener {
+        binding.rrOthers.setOnClickListener {
             // ivDropdown.isClickable = true
-            rrOthers.visibility = View.GONE
-            tvCountryCode.setTextColor(
+            binding.rrOthers.visibility = View.GONE
+            binding.tvCountryCode.setTextColor(
                 ContextCompat.getColor(
                     applicationContext,
                     R.color.white
                 )
             )
-            tvCountryCode.text = "Others"
-            ivDropdown.rotation = 360f
-            edtMobile.hint = "Ex.442087599036"
-            edtMobile.letterSpacing = 0.1F
-            rrPhone.setBackgroundResource((R.drawable.country_code_back))
+            binding.tvCountryCode.text = "Others"
+            binding.ivDropdown.rotation = 360f
+            binding.edtMobile.hint = "Ex.442087599036"
+            binding.edtMobile.letterSpacing = 0.1F
+            binding.rrPhone.setBackgroundResource((R.drawable.country_code_back))
             /*tvEnterYourEmail.visibility = View.VISIBLE
             etEmail.visibility = View.VISIBLE*/
-            ivDropdown.setColorFilter(ContextCompat.getColor(this, R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
+            binding.ivDropdown.setColorFilter(ContextCompat.getColor(this, R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
         }
 
-        ivDropdown.setOnClickListener {
-            if (tvCountryCode.text.toString() == "Others") {
-                ivDropdown.rotation = 180f
-                tvCountryCode.text = "+91"
-                tvCountryCode.setTextColor(
+        binding.ivDropdown.setOnClickListener {
+            if (binding.tvCountryCode.text.toString() == "Others") {
+                binding.ivDropdown.rotation = 180f
+                binding.tvCountryCode.text = "+91"
+                binding.tvCountryCode.setTextColor(
                     ContextCompat.getColor(
                         applicationContext,
                         R.color.greyy
                     )
                 )
                 // rrPhone.setBackgroundResource((R.drawable.others_back))
-                rrPhone.setBackgroundResource((R.drawable.country_code_focused))
-                rrOthers.visibility = View.VISIBLE
-                ivDropdown.setColorFilter(ContextCompat.getColor(this, R.color.greyy), android.graphics.PorterDuff.Mode.SRC_IN)
+                binding.rrPhone.setBackgroundResource((R.drawable.country_code_focused))
+                binding.rrOthers.visibility = View.VISIBLE
+                binding.ivDropdown.setColorFilter(ContextCompat.getColor(this, R.color.greyy), android.graphics.PorterDuff.Mode.SRC_IN)
             } else {
-                ivDropdown.rotation = 180f
+                binding.ivDropdown.rotation = 180f
                 // rrPhone.setBackgroundResource((R.drawable.others_back))
-                rrPhone.setBackgroundResource((R.drawable.country_code_focused))
-                tvCountryCode.setTextColor(
+                binding.rrPhone.setBackgroundResource((R.drawable.country_code_focused))
+                binding.tvCountryCode.setTextColor(
                     ContextCompat.getColor(
                         applicationContext,
                         R.color.greyy
                     )
                 )
-                ivDropdown.setColorFilter(
+                binding.ivDropdown.setColorFilter(
                     ContextCompat.getColor(this, R.color.greyy),
                     android.graphics.PorterDuff.Mode.SRC_IN
                 )
-                rrOthers.visibility = View.VISIBLE
+                binding.rrOthers.visibility = View.VISIBLE
             }
         }
 
-        tvCountryCode.setOnClickListener {
-            rrPhone.setBackgroundResource((R.drawable.country_code_back))
-            tvCountryCode.setTextColor(
+        binding.tvCountryCode.setOnClickListener {
+            binding.rrPhone.setBackgroundResource((R.drawable.country_code_back))
+            binding.tvCountryCode.setTextColor(
                 ContextCompat.getColor(
                     applicationContext,
                     R.color.white
                 )
             )
-            ivDropdown.setColorFilter(
+            binding.ivDropdown.setColorFilter(
                 ContextCompat.getColor(this, R.color.white),
                 android.graphics.PorterDuff.Mode.SRC_IN
             )
-            rrOthers.visibility = View.GONE
-            ivDropdown.rotation = 360f
-            edtMobile.hint = "0000000000"
-            edtMobile.letterSpacing = 0.4F
+            binding.rrOthers.visibility = View.GONE
+            binding.ivDropdown.rotation = 360f
+            binding.edtMobile.hint = "0000000000"
+            binding.edtMobile.letterSpacing = 0.4F
         }
 
 
 
 
-        ivSecondDropDown.setOnClickListener {
-            if (tvConfirmMobileCountryCode.text.toString() == "Others") {
-                ivSecondDropDown.rotation = 180f
-                tvConfirmMobileCountryCode.text = "+91"
-                tvConfirmMobileCountryCode.setTextColor(
+        binding.ivSecondDropDown.setOnClickListener {
+            if (binding.tvConfirmMobileCountryCode.text.toString() == "Others") {
+                binding.ivSecondDropDown.rotation = 180f
+                binding.tvConfirmMobileCountryCode.text = "+91"
+                binding.tvConfirmMobileCountryCode.setTextColor(
                     ContextCompat.getColor(
                         applicationContext,
                         R.color.greyy
                     )
                 )
                 // rrConfirmPhone.setBackgroundResource((R.drawable.others_back))
-                rrConfirmPhone.setBackgroundResource((R.drawable.country_code_focused))
-                rrOthersTwo.visibility = View.VISIBLE
-                ivSecondDropDown.setColorFilter(ContextCompat.getColor(this, R.color.greyy), android.graphics.PorterDuff.Mode.SRC_IN)
+                binding.rrConfirmPhone.setBackgroundResource((R.drawable.country_code_focused))
+                binding.rrOthersTwo.visibility = View.VISIBLE
+                binding.ivSecondDropDown.setColorFilter(ContextCompat.getColor(this, R.color.greyy), android.graphics.PorterDuff.Mode.SRC_IN)
             } else {
-                ivSecondDropDown.rotation = 180f
+                binding.ivSecondDropDown.rotation = 180f
                 // rrConfirmPhone.setBackgroundResource((R.drawable.others_back))
-                rrConfirmPhone.setBackgroundResource((R.drawable.country_code_focused))
-                tvConfirmMobileCountryCode.setTextColor(
+                binding.rrConfirmPhone.setBackgroundResource((R.drawable.country_code_focused))
+                binding.tvConfirmMobileCountryCode.setTextColor(
                     ContextCompat.getColor(
                         applicationContext,
                         R.color.greyy
                     )
                 )
-                ivSecondDropDown.setColorFilter(
+                binding.ivSecondDropDown.setColorFilter(
                     ContextCompat.getColor(this, R.color.greyy),
                     android.graphics.PorterDuff.Mode.SRC_IN
                 )
-                rrOthersTwo.visibility = View.VISIBLE
+                binding.rrOthersTwo.visibility = View.VISIBLE
             }
         }
 
 
 
-        rrOthersTwo.setOnClickListener {
-            rrOthersTwo.visibility = View.GONE
-            tvConfirmMobileCountryCode.setTextColor(
+        binding.rrOthersTwo.setOnClickListener {
+            binding.rrOthersTwo.visibility = View.GONE
+            binding.tvConfirmMobileCountryCode.setTextColor(
                 ContextCompat.getColor(
                     applicationContext,
                     R.color.white
                 )
             )
-            tvConfirmMobileCountryCode.text = "Others"
-            ivSecondDropDown.rotation = 360f
-            edtConfirmMobile.hint = "Ex.442087599036"
-            edtConfirmMobile.letterSpacing = 0.1F
-            rrConfirmPhone.setBackgroundResource((R.drawable.country_code_back))
-            ivSecondDropDown.setColorFilter(ContextCompat.getColor(this, R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
+            binding.tvConfirmMobileCountryCode.text = "Others"
+            binding.ivSecondDropDown.rotation = 360f
+            binding.edtConfirmMobile.hint = "Ex.442087599036"
+            binding.edtConfirmMobile.letterSpacing = 0.1F
+            binding.rrConfirmPhone.setBackgroundResource((R.drawable.country_code_back))
+            binding.ivSecondDropDown.setColorFilter(ContextCompat.getColor(this, R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
         }
 
-        tvConfirmMobileCountryCode.setOnClickListener {
-            rrConfirmPhone.setBackgroundResource((R.drawable.country_code_back))
-            tvConfirmMobileCountryCode.setTextColor(
+        binding.tvConfirmMobileCountryCode.setOnClickListener {
+            binding.rrConfirmPhone.setBackgroundResource((R.drawable.country_code_back))
+            binding.tvConfirmMobileCountryCode.setTextColor(
                 ContextCompat.getColor(
                     applicationContext,
                     R.color.white
                 )
             )
-            ivSecondDropDown.setColorFilter(
+            binding.ivSecondDropDown.setColorFilter(
                 ContextCompat.getColor(this, R.color.white),
                 android.graphics.PorterDuff.Mode.SRC_IN
             )
-            rrOthersTwo.visibility = View.GONE
-            ivSecondDropDown.rotation = 360f
-            edtConfirmMobile.hint = "0000000000"
-            edtConfirmMobile.letterSpacing = 0.4F
+            binding.rrOthersTwo.visibility = View.GONE
+            binding.ivSecondDropDown.rotation = 360f
+            binding.edtConfirmMobile.hint = "0000000000"
+            binding.edtConfirmMobile.letterSpacing = 0.4F
         }
+
+        binding.otpBox.otpValue.observe(this) {
+            it?.let {
+                if (it.length == 6) {
+                    binding.edtMobile.requestFocus()
+                    viewModel.crNo.value = it
+                }
+            }
+        }
+
+        binding.btnUpdate.setOnClickListener {
+            if (binding.otpBox.otpValue.value?.isEmpty() == true || binding.otpBox.otpValue.value!!.length != 6) {
+                showErrorMsg("Please enter CR Number", binding.root)
+            } else if (!isValidUserData()) {
+                // showErrorMsg("Please enter Mobile Number", binding.root)
+            } else {
+
+            }
+        }
+    }
+
+    private fun setupViewModel() {
+        viewModel = ViewModelProviders.of(
+            this,
+            ViewModelFactory(ApiHelper(RetrofitBuilder.apiService))
+        ).get(LoginViewModel::class.java)
+    }
+
+    private fun showErrorMsg(msg: String, view: View) {
+        val snackbar = Snackbar.make(
+            view,
+            msg,
+            Snackbar.LENGTH_LONG
+        )
+        val snack_root_view = snackbar.view
+        snackbar.view.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+        val snack_text_view = snack_root_view
+            .findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+        snack_root_view.setBackgroundColor(ContextCompat.getColor(this, R.color.chat_answer_select))
+        snack_text_view.setTextColor(Color.WHITE)
+        snack_text_view.textSize = 12.2f
+        val tf = ResourcesCompat.getFont(this, R.font.gilroy_medium)
+        snack_text_view.typeface = tf
+        snackbar.show()
+    }
+
+    private fun isValidUserData(): Boolean {
+        if (TextUtils.isEmpty(binding.edtMobile.text.toString().trim())) {
+            showErrorMsg("Please enter Mobile Number", binding.root)
+            return false
+        } else if (TextUtils.isEmpty(binding.edtConfirmMobile.text.toString().trim())) {
+            showErrorMsg("Please enter Confirm Mobile Number", binding.root)
+            return false
+        } else if (binding.edtMobile.text.toString().trim() != binding.edtConfirmMobile.text.toString().trim()) {
+            showErrorMsg("Mobile Number & Confirm Mobile Number does not matched", binding.root)
+            return false
+        }
+        return true
     }
 }

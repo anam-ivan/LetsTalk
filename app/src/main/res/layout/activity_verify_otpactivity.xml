@@ -2,6 +2,7 @@
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
 <ScrollView
     android:fillViewport="true"
     android:layout_width="match_parent"
@@ -10,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@drawable/gradient"
         tools:context=".ui.VerifyOTPActivity">
 
         <ImageView
@@ -205,9 +206,26 @@
                 android:layout_marginTop="@dimen/_4sdp"
                 android:layout_marginEnd="@dimen/_4sdp"
                 android:layout_marginBottom="@dimen/_4sdp"
+                android:clickable="true"
+                android:focusable="true"
                 android:layout_toEndOf="@+id/tv_not_have_otp"
                 android:fontFamily="@font/gilroy_semi_bold"
                 android:text="@string/resend_otp"
+                android:textColor="@color/navy_blue"
+                android:textSize="@dimen/_11ssp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_seconds_remaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:visibility="gone"
+                android:layout_toEndOf="@+id/tv_not_have_otp"
+                android:fontFamily="@font/gilroy_semi_bold"
+                android:text="Seconds Remaining"
                 android:textColor="@color/navy_blue"
                 android:textSize="@dimen/_11ssp" />
         </RelativeLayout>
