@@ -19,6 +19,6 @@ interface ApiService {
     @POST("user_details")
     suspend fun patientProfileDetails(): Response<PatientProfileResponse>
 
-    @POST("VerifyPhoneChangeRequest")
+    @POST("userphonechangerequest")
     suspend fun patientPhoneChangeRequest(@Body body: PhoneNumberChangeBodies.PhoneNumberUpdateBody): Response<LoginResponse>
 }

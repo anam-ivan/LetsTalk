@@ -2,19 +2,23 @@ package com.ivan.letstalk.ui
 
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
@@ -23,7 +27,10 @@ import com.ivan.letstalk.api.ApiHelper
 import com.ivan.letstalk.api.RetrofitBuilder
 import com.ivan.letstalk.databinding.ActivityMyHealthCardBinding
 import com.ivan.letstalk.databinding.ActivityUpdatePhoneNumberBinding
+import com.ivan.letstalk.helper.Status
 import com.ivan.letstalk.helper.ViewModelFactory
+import com.ivan.letstalk.model.login.RequestBodies
+import com.ivan.letstalk.model.phonenumberupdate.PhoneNumberChangeBodies
 import com.ivan.letstalk.viewModel.LoginViewModel
 
 class UpdatePhoneNumberActivity : AppCompatActivity() {
@@ -51,7 +58,6 @@ class UpdatePhoneNumberActivity : AppCompatActivity() {
         // setContentView(R.layout.activity_update_phone_number)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_update_phone_number)
         setupViewModel()
-
         /*rrPhone = findViewById(R.id.rr_phone)
         // etPhone = findViewById(R.id.edt_mobile)
         ivDropdown = findViewById(R.id.iv_dropdown)
@@ -244,7 +250,7 @@ class UpdatePhoneNumberActivity : AppCompatActivity() {
             } else if (!isValidUserData()) {
                 // showErrorMsg("Please enter Mobile Number", binding.root)
             } else {
-
+                setupPhoneNumberUpdateObservers()
             }
         }
     }
@@ -286,5 +292,75 @@ class UpdatePhoneNumberActivity : AppCompatActivity() {
             return false
         }
         return true
+    }
+
+    private fun setupPhoneNumberUpdateObservers() {
+        val body = PhoneNumberChangeBodies.PhoneNumberUpdateBody(
+            cr_no = viewModel.crNo.value.toString(),
+            phone_no = binding.edtMobile.text.toString().trim(),
+            confirm_phone_no = binding.edtConfirmMobile.text.toString().trim()
+        )
+        viewModel.patientPhoneNumberUpdate(body).observe(this, Observer { it ->
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        resource.data?.let {
+                            binding.pLoader.visibility = View.GONE
+                            binding.tvButton.visibility = View.VISIBLE
+                            binding.btnUpdate.isEnabled = true
+                            // Toast.makeText(this, it.body()?.message, Toast.LENGTH_LONG).show()
+                            showSuccessMsg(it.body()?.message.toString(), binding.root)
+                            navigateToUpdateMobileConfirmationActivity()
+                        }
+                    }
+                    Status.ERROR -> {
+                        binding.pLoader.visibility = View.GONE
+                        binding.tvButton.visibility = View.VISIBLE
+                        binding.btnUpdate.isEnabled = true
+                        showErrorMsg(it.message.toString(), binding.root)
+                        // Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+                    }
+                    Status.LOADING -> {
+                        // Toast.makeText(this, "Loading", Toast.LENGTH_LONG).show()
+                        binding.pLoader.visibility = View.VISIBLE
+                        binding.tvButton.visibility = View.GONE
+                        binding.btnUpdate.isEnabled = false
+                    }
+                }
+
+            }
+        })
+    }
+
+    private fun showSuccessMsg(msg: String, view: View) {
+        val snackbar = Snackbar.make(
+            view,
+            msg,
+            Snackbar.LENGTH_LONG
+        )
+
+        val snack_root_view = snackbar.view
+        snackbar.view.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+        val snack_text_view = snack_root_view
+            .findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+        //val snack_action_view = snack_root_view
+        // .findViewById<Button>(com.google.android.material.R.id.snackbar_action)
+        snack_root_view.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+        snack_text_view.setTextColor(Color.WHITE)
+        snack_text_view.textSize = 12.2f
+        val tf = ResourcesCompat.getFont(this, R.font.gilroy_medium)
+        snack_text_view.typeface = tf
+//    snack_action_view.typeface = tf
+//    snack_action_view.setTextColor(ContextCompat.getColor(this, R.color.Sunglow))
+//    snackbar.setAction("Retry") {
+//
+//    }
+        snackbar.show()
+    }
+
+    private fun navigateToUpdateMobileConfirmationActivity() {
+        val intent = Intent(this, UpdateMobileConfirmationActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 }

@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
 import com.ivan.letstalk.R
@@ -38,6 +39,9 @@ class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
     private lateinit var viewModel: LoginViewModel
     private var otp: String = ""
+    private var phoneNumber: String = ""
+    private var userId: String = ""
+    private var isOthersPhoneNumber: Boolean = false
     private lateinit var sessionManager : SessionManager
     /*private lateinit var tvHelp: TextView
     private lateinit var tvTermsConditions: TextView
@@ -154,6 +158,8 @@ class LoginActivity : AppCompatActivity() {
             binding.etPhone.hint = "0000000000"
             binding.etPhone.letterSpacing = 0.3F
             binding.etPhone.filters = arrayOf<InputFilter>(LengthFilter(10))
+            isOthersPhoneNumber = false
+            Log.d("isOthers",isOthersPhoneNumber.toString())
         }
 
         /*ivDropdown.setOnClickListener {
@@ -182,6 +188,8 @@ class LoginActivity : AppCompatActivity() {
                 ContextCompat.getColor(this, R.color.white),
                 android.graphics.PorterDuff.Mode.SRC_IN
             )
+            isOthersPhoneNumber = true
+            Log.d("isOthers",isOthersPhoneNumber.toString())
         }
 
         binding.tvUpdateNumber.setOnClickListener {
@@ -250,14 +258,15 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 llPhone.setBackgroundResource(R.drawable.edit_text_border)
             }
-
         }*/
 
         binding.etPhone.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 binding.llPhone.setBackgroundResource(R.drawable.edit_text_border_focused)
+                binding.rrPhone.setBackgroundResource(R.drawable.country_code_blue_focused)
             } else {
                 binding.llPhone.setBackgroundResource(R.drawable.edit_text_border)
+                binding.rrPhone.setBackgroundResource(R.drawable.country_code_back)
             }
         }
         binding.tvUpdateNumber.setOnClickListener {
@@ -300,7 +309,9 @@ class LoginActivity : AppCompatActivity() {
         intent.putExtra(mobileNumber, binding.etPhone.text.toString())
         intent.putExtra(crNo, viewModel.crNo.value.toString())
         intent.putExtra(otpValue, otp)
+        intent.putExtra(userID, userId)
         startActivity(intent)
+        finish()
         overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
@@ -309,14 +320,22 @@ class LoginActivity : AppCompatActivity() {
             this,
             ViewModelFactory(ApiHelper(RetrofitBuilder.apiService))
         ).get(LoginViewModel::class.java)
+        /*viewModel =
+            ViewModelProvider(this,ViewModelFactory(ApiHelper(RetrofitBuilder.apiService))).get(LoginViewModel::class.java)*/
     }
 
     private fun setupLoginObservers() {
+        if (isOthersPhoneNumber) {
+            phoneNumber = (binding.etPhone.text.toString().trim())
+        } else {
+            phoneNumber = "91".plus(binding.etPhone.text.toString().trim())
+        }
         val body = RequestBodies.LoginBody(
             email_id = binding.etEmail.text.toString().trim(),
             // cr_no = binding.otpBox.otpValue.toString(),
             cr_no = viewModel.crNo.value.toString(),
-            phone_number = "91".plus(binding.etPhone.text.toString().trim())
+            // phone_number = "91".plus(binding.etPhone.text.toString().trim())
+            phone_number = phoneNumber
         )
         viewModel.getLogin(body).observe(this, Observer { it ->
             it?.let { resource ->
@@ -330,9 +349,11 @@ class LoginActivity : AppCompatActivity() {
                             if (it.body() != null) {
                                 if (it.body()?.status.equals("success")) {
                                     otp = it.body()!!.data?.otp.toString()
+                                    userId = it.body()!!.data?.Id.toString()
                                     it.body()!!.data!!.otp?.let { it1 -> Log.d("otp", it1) }
                                     // viewModel.otp.value = it.body()!!.data!!.otp
-                                    Toast.makeText(this, it.body()?.message.toString(), Toast.LENGTH_LONG).show()
+                                    // Toast.makeText(this, it.body()?.message.toString(), Toast.LENGTH_LONG).show()
+                                    showSuccessMsg(it.body()?.message.toString(),binding.root)
                                     it.body()?.data!!.token?.let { it1 -> sessionManager.saveAuthToken(it1) }
                                     navigateToVerifyOTP()
                                 } else if (it.body()?.status.equals("error")){
@@ -351,10 +372,10 @@ class LoginActivity : AppCompatActivity() {
                         binding.pLoader.visibility = View.GONE
                         binding.tvButton.visibility = View.VISIBLE
                         binding.btnLogin.isEnabled = true
-                        Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+                        showErrorMsg(it.message.toString(),binding.root)
+                        // Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                     }
                     Status.LOADING -> {
-                        // Toast.makeText(this, "Loading", Toast.LENGTH_LONG).show()
                         binding.pLoader.visibility = View.VISIBLE
                         binding.tvButton.visibility = View.GONE
                         binding.btnLogin.isEnabled = false
@@ -391,6 +412,32 @@ class LoginActivity : AppCompatActivity() {
         snackbar.show()
     }
 
+    private fun showSuccessMsg(msg: String, view: View) {
+        val snackbar = Snackbar.make(
+            view,
+            msg,
+            Snackbar.LENGTH_LONG
+        )
+
+        val snack_root_view = snackbar.view
+        snackbar.view.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+        val snack_text_view = snack_root_view
+            .findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+        //val snack_action_view = snack_root_view
+        // .findViewById<Button>(com.google.android.material.R.id.snackbar_action)
+        snack_root_view.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+        snack_text_view.setTextColor(Color.WHITE)
+        snack_text_view.textSize = 12.2f
+        val tf = ResourcesCompat.getFont(this, R.font.gilroy_medium)
+        snack_text_view.typeface = tf
+//    snack_action_view.typeface = tf
+//    snack_action_view.setTextColor(ContextCompat.getColor(this, R.color.Sunglow))
+//    snackbar.setAction("Retry") {
+//
+//    }
+        snackbar.show()
+    }
+
     private fun isValidUserData(): Boolean {
         if (TextUtils.isEmpty(binding.etPhone.text.toString().trim())) {
             showErrorMsg("Please enter Mobile Number",binding.root)
@@ -414,5 +461,6 @@ class LoginActivity : AppCompatActivity() {
         const val crNo = "crNo"
         const val mobileNumber = "mobileNumber"
         const val otpValue = "otp"
+        const val userID = "user_id"
     }
 }

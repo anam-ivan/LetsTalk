@@ -25,6 +25,9 @@ object RetrofitBuilder {
             .addInterceptor(httpLoggingInterceptor())
             .addNetworkInterceptor(NetworkInterceptor())
             .addInterceptor(OfflineInterceptor())
+            .connectTimeout(30, TimeUnit.SECONDS) // connect timeout
+            .writeTimeout(30, TimeUnit.SECONDS) // write timeout
+            .readTimeout(30, TimeUnit.SECONDS) // read timeout
             .addInterceptor(AuthInterceptor(MyApplication.instance.applicationContext))
 
 
@@ -53,13 +56,13 @@ object RetrofitBuilder {
     class NetworkInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             val response = chain.proceed(chain.request())
-            val cacheControl = CacheControl.Builder()
+            /*val cacheControl = CacheControl.Builder()
                 .maxAge(5, TimeUnit.SECONDS)
-                .build()
+                .build()*/
             return response.newBuilder()
                 .removeHeader(HEADER_PRAGMA)
                 .removeHeader(HEADER_CACHE_CONTROL)
-                .header(HEADER_CACHE_CONTROL, cacheControl.toString())
+                //.header(HEADER_CACHE_CONTROL, cacheControl.toString())
                 .build()
         }
     }
@@ -74,7 +77,7 @@ object RetrofitBuilder {
                 request.newBuilder()
                     .removeHeader(HEADER_PRAGMA)
                     .removeHeader(HEADER_CACHE_CONTROL)
-                    .cacheControl(cacheControl)
+                    //.cacheControl(cacheControl)
                     .build();
             }
             return chain.proceed(request)

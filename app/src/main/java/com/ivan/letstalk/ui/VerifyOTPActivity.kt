@@ -34,7 +34,10 @@ class VerifyOTPActivity : AppCompatActivity() {
     lateinit var binding: ActivityVerifyOtpactivityBinding
     private lateinit var viewModel: LoginViewModel
     private var otp: String = ""
+    private var getOtp: String = ""
     private var crNo: String = ""
+    private var phoneNumber: String = ""
+    private var userId: String = ""
     private lateinit var sessionManager : SessionManager
     private var cTimer: CountDownTimer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,18 +47,22 @@ class VerifyOTPActivity : AppCompatActivity() {
         sessionManager = SessionManager(this)
         binding.tvEditMobile.paint?.isUnderlineText = true
 
-        val mobileNumber = intent.getStringExtra(LoginActivity.mobileNumber)
-        binding.tvMobile.text = "+91".plus(" ").plus(mobileNumber)
+        phoneNumber = intent.getStringExtra(LoginActivity.mobileNumber).toString()
+        binding.tvMobile.text = "+91".plus(" ").plus(phoneNumber)
         crNo = intent.getStringExtra(LoginActivity.crNo).toString()
         Log.d("crNo",crNo.toString())
 
         otp = intent.getStringExtra(LoginActivity.otpValue).toString()
         Log.d("otp",otp.toString())
 
+        userId = intent.getStringExtra(LoginActivity.userID).toString()
+        Log.d("userId",userId)
+
 
         binding.tvEditMobile.setOnClickListener {
-            val intent = Intent(this, UpdateMobileConfirmationActivity::class.java)
+            val intent = Intent(this, UpdatePhoneNumberActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
         }
 
 
@@ -63,8 +70,9 @@ class VerifyOTPActivity : AppCompatActivity() {
         binding.otpBox.otpValue.observe(this) {
             it?.let {
                 if (it.length == 6) {
+                    getOtp = it
                     // Toast.makeText(applicationContext,it.length.toString(),Toast.LENGTH_SHORT).show()
-                    Toast.makeText(applicationContext, it, Toast.LENGTH_SHORT).show()
+                    // Toast.makeText(applicationContext, it, Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -81,6 +89,7 @@ class VerifyOTPActivity : AppCompatActivity() {
         }
 
         binding.tvResendOtp.setOnClickListener {
+            setupResendOTPObservers()
             binding.tvResendOtp.visibility= View.GONE
             if (!binding.tvSecondsRemaining.isVisible) {
                 binding.tvSecondsRemaining.visibility = View.VISIBLE
@@ -122,10 +131,30 @@ class VerifyOTPActivity : AppCompatActivity() {
         snackbar.show()
     }
 
+    private fun showSuccessMsg(msg: String, view: View) {
+        val snackbar = Snackbar.make(
+            view,
+            msg,
+            Snackbar.LENGTH_LONG
+        )
+
+        val snack_root_view = snackbar.view
+        snackbar.view.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+        val snack_text_view = snack_root_view
+            .findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+        snack_root_view.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+        snack_text_view.setTextColor(Color.WHITE)
+        snack_text_view.textSize = 12.2f
+        val tf = ResourcesCompat.getFont(this, R.font.gilroy_medium)
+        snack_text_view.typeface = tf
+        snackbar.show()
+    }
+
     private fun setupVerifyOTPObservers() {
         val body = VerifyOTPBodies.OTPLoginBody(
-            cr_no = crNo,
-            otp = otp
+            user_id = userId,
+            // otp = otp
+            otp = getOtp
         )
         viewModel.validateOTP(body).observe(this, Observer { it ->
             it?.let { resource ->
@@ -138,10 +167,12 @@ class VerifyOTPActivity : AppCompatActivity() {
                             // Toast.makeText(this, it.body()?.message, Toast.LENGTH_LONG).show()
                             if (it.body() != null) {
                                 if (it.body()?.status.equals("success")) {
-                                    Toast.makeText(this, it.body()?.message.toString(), Toast.LENGTH_LONG).show()
+                                    // Toast.makeText(this, it.body()?.message.toString(), Toast.LENGTH_LONG).show()
+                                    showSuccessMsg(it.body()?.message.toString(),binding.root)
                                     navigateToDashboard()
                                 } else if (it.body()?.status.equals("error")){
-                                    Toast.makeText(this, it.body()?.message.toString(), Toast.LENGTH_LONG).show()
+                                    // Toast.makeText(this, it.body()?.message.toString(), Toast.LENGTH_LONG).show()
+                                    showSuccessMsg(it.body()?.message.toString(),binding.root)
                                 }
                             }
                         }
@@ -150,13 +181,40 @@ class VerifyOTPActivity : AppCompatActivity() {
                         binding.pLoader.visibility = View.GONE
                         binding.tvButton.visibility = View.VISIBLE
                         binding.btnVerifyOtp.isEnabled = true
-                        Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+                        // Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+                        showErrorMsg(it.message.toString(),binding.root)
                     }
                     Status.LOADING -> {
-                        // Toast.makeText(this, "Loading", Toast.LENGTH_LONG).show()
                         binding.pLoader.visibility = View.VISIBLE
                         binding.tvButton.visibility = View.GONE
                         binding.btnVerifyOtp.isEnabled = false
+                    }
+                }
+
+            }
+        })
+    }
+
+    private fun setupResendOTPObservers() {
+        val body = RequestBodies.LoginBody(
+            email_id = "",
+            cr_no = crNo,
+            phone_number = "91".plus(phoneNumber)
+        )
+        viewModel.getLogin(body).observe(this, Observer { it ->
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        resource.data?.let {
+                            // Toast.makeText(this, it.body()?.message, Toast.LENGTH_LONG).show()
+                            showSuccessMsg(it.body()?.message.toString(),binding.root)
+                        }
+                    }
+                    Status.ERROR -> {
+                        showErrorMsg(it.message.toString(),binding.root)
+                    }
+                    Status.LOADING -> {
+
                     }
                 }
 

@@ -6,7 +6,9 @@
         <entry key="..\:/Users/ivan/.gradle/caches/transforms-3/0117e65873704548cb8f6e2ad1cf8f57/transformed/jetified-Collapsible-Calendar-View-Android-v1.0.3/res/drawable/circle_white_solid_background.xml" value="0.2325" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/drawable/btn_back.xml" value="0.2325" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/drawable/button_color_login.xml" value="0.2325" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/drawable/circle_shape.xml" value="0.2325" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/drawable/country_code_back.xml" value="0.1945" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/drawable/country_code_blue_focused.xml" value="0.2325" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/drawable/country_code_focused.xml" value="0.1945" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/drawable/edit_text_border.xml" value="0.1125" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/drawable/edit_text_border_focused.xml" value="0.1945" />
@@ -26,10 +28,12 @@
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/activity_my_health_card.xml" value="0.33" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/activity_profile.xml" value="0.33" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/activity_splash.xml" value="0.3061594202898551" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/activity_update_mobile_confirmation.xml" value="0.3061594202898551" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/activity_update_phone_number.xml" value="0.33" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/activity_verify_otpactivity.xml" value="0.32472826086956524" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/alk_side_effects_row.xml" value="0.32472826086956524" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/faq_row.xml" value="0.3061594202898551" />
+        <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/fragment_single_chat.xml" value="0.33" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/layout_otp.xml" value="0.32472826086956524" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/medicine_scheduled_row.xml" value="0.33" />
         <entry key="..\:/Users/ivan/StudioProjects/LetsTalk/app/src/main/res/layout/my_health_card_row.xml" value="0.5" />
