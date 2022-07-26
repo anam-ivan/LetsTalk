@@ -35,6 +35,7 @@ class ALKChatActivity : AppCompatActivity() {
     private lateinit var ivMenu: ImageView
     private lateinit var ivCross: ImageView*/
     private lateinit var dialog: Dialog
+    // private var chatId: String = ""
     val gson: Gson = Gson()
     private var existingSideEffectsList = arrayOf(
         "Abdominal Pain",
@@ -63,7 +64,7 @@ class ALKChatActivity : AppCompatActivity() {
     private var existingSideEffectsChipItems = ArrayList<String>()
 
     private var webSocket: WebSocket? = null
-    private val SERVER_PATH = "ws://0.tcp.in.ngrok.io:14344"
+    private val SERVER_PATH = "ws://0.tcp.in.ngrok.io:14632"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,54 +113,19 @@ class ALKChatActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
         }
-
-
-        /*Timer().scheduleAtFixedRate(object : TimerTask() {
-            override fun run() {
-                try {
-                    socket = IO.socket("https://letstalkwebsocket.dev13.ivantechnology.in/chat")
-                    socket.connect()
-                    socket.emit("joined", {})
-                    Log.d("isSocketCon", socket.connected().toString())
-                } catch (e: URISyntaxException) {
-                    Log.d("chat_error", e.toString())
-                    e.printStackTrace()
-                }
-            }
-        }, 0, 1000)*/
-
-
-        /*try {
-            socket = IO.socket("https://letstalkwebsocket.dev13.ivantechnology.in/chat")
-            socket.connect()
-            socket.emit("joined", {})
-            Log.d("isSocketCon",socket.connected().toString())
-        } catch (e: URISyntaxException) {
-            Log.d("chat_error",e.toString())
-            e.printStackTrace()
-        }*/
-
-        /*SocketHandler.setSocket()
-        SocketHandler.establishConnection()
-        val mSocket = SocketHandler.getSocket()
-        mSocket.emit("joined", {})
-        Log.d("isSocketCon",mSocket.connected().toString())*/
-
         initiateSocketConnection()
-
-        binding.btnSendMessage.setOnClickListener(View.OnClickListener { v: View? ->
+        joinChatWithToken()
+        emitUserMessage()
+        /*binding.btnSendMessage.setOnClickListener(View.OnClickListener { v: View? ->
             val jsonObject = JSONObject()
             try {
                 jsonObject.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwYXNzd29yZCI6dHJ1ZSwiZW1haWxfaWQiOiJsZXRzdGFsa3BhdGllbnQxQHlvcG1haWwuY29tIiwicm9sZV9pZCI6IjMiLCJfaWQiOiI2MmQ1MDI2ZjM4ZDM2OWVhNWY1ODkzYjgiLCJleHAiOjE2NTkyNTIxMDYsIm1vYmlsZSI6IjcyNDk5OTk4MDkifQ.RgFYade3DEG0r1isTvUTAjJIGZCfzIupiqZi-_XKW2U")
                 webSocket!!.send(jsonObject.toString())
                 jsonObject.put("isSent", true)
-                /*messageAdapter.addItem(jsonObject)
-                recyclerView.smoothScrollToPosition(messageAdapter.getItemCount() - 1)
-                resetMessageEdit()*/
             } catch (e: JSONException) {
                 e.printStackTrace()
             }
-        })
+        })*/
     }
 
     private fun initExistingSideEffectsData() {
@@ -169,7 +135,7 @@ class ALKChatActivity : AppCompatActivity() {
             entryChip2.id = i
             //set default selected language
             //entryChip2.setChecked(true);
-            binding.chipExistingSideEffects.addView(entryChip2)
+            // binding.chipExistingSideEffects.addView(entryChip2)
         }
     }
 
@@ -229,33 +195,24 @@ class ALKChatActivity : AppCompatActivity() {
     private class SocketListener : WebSocketListener() {
         override fun onOpen(webSocket: WebSocket, response: Response) {
             super.onOpen(webSocket, response)
-            /*this@ALKChatActivity.runOnUiThread(Runnable {
-                Toast.makeText(
-                    this@ALKChatActivity,
-                    "Socket Connection Successful!",
-                    Toast.LENGTH_SHORT
-                ).show()
-                // initializeView()
-            })*/
             Handler(Looper.getMainLooper()).post {
-                // Log.v("WSS", text!!)
+                // Log.v("WSS", response.body.toString())
             }
         }
 
         override fun onMessage(webSocket: WebSocket, text: String) {
             super.onMessage(webSocket, text)
-            /*this@ALKChatActivity.runOnUiThread(Runnable {
-                try {
-                    val jsonObject = JSONObject(text)
-                    jsonObject.put("isSent", false)
-                    *//*messageAdapter.addItem(jsonObject)
-                    recyclerView.smoothScrollToPosition(messageAdapter.getItemCount() - 1)*//*
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
-            })*/
             Handler(Looper.getMainLooper()).post {
                 Log.v("WSS", text)
+                val jsonObject = JSONObject(text)
+                val dataJsonObject = jsonObject.getJSONObject("data")
+                if (dataJsonObject.has("chatid")) {
+                    val chatID = dataJsonObject.getString("chatid")
+                    chatId = chatID
+                    Log.v("chatID", chatId)
+                } else {
+                    Log.v("WSS", text)
+                }
             }
         }
     }
@@ -269,8 +226,36 @@ class ALKChatActivity : AppCompatActivity() {
         webSocket = client.newWebSocket(request, wsListener)
     }
 
-    public fun output(txt: String) {
-        Log.v("WSS", txt)
+    private fun joinChatWithToken() {
+        val jsonObject = JSONObject()
+        try {
+            jsonObject.put(
+                "token",
+                "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwYXNzd29yZCI6dHJ1ZSwiZW1haWxfaWQiOiJsZXRzdGFsa3BhdGllbnQxQHlvcG1haWwuY29tIiwicm9sZV9pZCI6IjMiLCJfaWQiOiI2MmQ1MDI2ZjM4ZDM2OWVhNWY1ODkzYjgiLCJleHAiOjE2NTkyNTIxMDYsIm1vYmlsZSI6IjcyNDk5OTk4MDkifQ.RgFYade3DEG0r1isTvUTAjJIGZCfzIupiqZi-_XKW2U"
+            )
+            webSocket!!.send(jsonObject.toString())
+            // jsonObject.put("isSent", true)
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun emitUserMessage(){
+        binding.btnSendMessage.setOnClickListener(View.OnClickListener { v: View? ->
+            val jsonObject = JSONObject()
+            try {
+                jsonObject.put("user", binding.edtSendMessage.text.toString().trim())
+                jsonObject.put("chatid", chatId)
+                webSocket!!.send(jsonObject.toString())
+                // jsonObject.put("isSent", true)
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+        })
+    }
+
+    companion object {
+        private var chatId = ""
     }
 
 }

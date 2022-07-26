@@ -93,7 +93,7 @@
             </com.google.android.material.appbar.MaterialToolbar>
 
 
-    <androidx.core.widget.NestedScrollView
+   <!-- <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -1341,7 +1341,15 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChat"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+        app:layout_constraintTop_toBottomOf="@+id/tb_header" />
 
 
     <androidx.cardview.widget.CardView
@@ -1353,7 +1361,7 @@
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_8sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scrollView">
+        app:layout_constraintTop_toBottomOf="@id/rvChat">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -1395,7 +1403,7 @@
                 android:weightSum="1">
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/tvSearch"
+                    android:id="@+id/edt_send_message"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/sp_44"
                     android:layout_gravity="center_vertical"
