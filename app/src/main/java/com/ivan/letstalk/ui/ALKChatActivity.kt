@@ -18,11 +18,14 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.google.gson.Gson
 import com.ivan.letstalk.R
+import com.ivan.letstalk.adapter.ChatAdapter
 import com.ivan.letstalk.databinding.ActivityAlkchatBinding
+import com.ivan.letstalk.model.FaqModel
 import okhttp3.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -35,8 +38,9 @@ class ALKChatActivity : AppCompatActivity() {
     private lateinit var ivMenu: ImageView
     private lateinit var ivCross: ImageView*/
     private lateinit var dialog: Dialog
-    // private var chatId: String = ""
     val gson: Gson = Gson()
+    private var messageAdapter: ChatAdapter? = null
+    var chatList: List<FaqModel>? = null
     private var existingSideEffectsList = arrayOf(
         "Abdominal Pain",
         "Constipation",
@@ -113,9 +117,18 @@ class ALKChatActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
         }
+
+       /* messageAdapter = ChatAdapter(layoutInflater)
+        binding.rvChat.adapter = messageAdapter
+        binding.rvChat.layoutManager = LinearLayoutManager(this)*/
+
         initiateSocketConnection()
         joinChatWithToken()
+        /*if (isConnect()) {
+            emitUserMessage()
+        }*/
         emitUserMessage()
+
         /*binding.btnSendMessage.setOnClickListener(View.OnClickListener { v: View? ->
             val jsonObject = JSONObject()
             try {
@@ -192,11 +205,18 @@ class ALKChatActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private class SocketListener : WebSocketListener() {
+    class SocketListener(_context: ALKChatActivity) : WebSocketListener() {
+        var context: ALKChatActivity? = _context
+
         override fun onOpen(webSocket: WebSocket, response: Response) {
             super.onOpen(webSocket, response)
             Handler(Looper.getMainLooper()).post {
-                // Log.v("WSS", response.body.toString())
+                Log.v("WSS", response.body.toString())
+                context!!.messageAdapter = ChatAdapter(context!!.layoutInflater)
+                context!!.binding.rvChat.adapter = context!!.messageAdapter
+                context!!.binding.rvChat.layoutManager = LinearLayoutManager(context)
+                isConnect = response.code == 101
+                Log.v("response_code", response.code.toString())
             }
         }
 
@@ -212,6 +232,23 @@ class ALKChatActivity : AppCompatActivity() {
                     Log.v("chatID", chatId)
                 } else {
                     Log.v("WSS", text)
+                    jsonObject.put("isSent", true)
+                    // context!!.messageAdapter?.addItem(dataJsonObject)
+                    context!!.messageAdapter?.addItem(jsonObject)
+                    context!!.binding.rvChat.smoothScrollToPosition(context!!.messageAdapter!!.itemCount - 1)
+
+                    /*if (dataJsonObject.has("response_text")){
+                        Log.v("response_text", "response_text")
+                        jsonObject.put("isSent", false)
+                        context!!.messageAdapter?.addItem(jsonObject)
+                        context!!.binding.rvChat.smoothScrollToPosition(context!!.messageAdapter!!.itemCount - 1)
+                    } else {
+                        Log.v("WSS", text)
+                        jsonObject.put("isSent", true)
+                        // context!!.messageAdapter?.addItem(dataJsonObject)
+                        context!!.messageAdapter?.addItem(jsonObject)
+                        context!!.binding.rvChat.smoothScrollToPosition(context!!.messageAdapter!!.itemCount - 1)
+                    }*/
                 }
             }
         }
@@ -222,7 +259,7 @@ class ALKChatActivity : AppCompatActivity() {
         val request = Request.Builder()
             .url(SERVER_PATH)
             .build()
-        val wsListener = SocketListener()
+        val wsListener = SocketListener(this)
         webSocket = client.newWebSocket(request, wsListener)
     }
 
@@ -234,7 +271,6 @@ class ALKChatActivity : AppCompatActivity() {
                 "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwYXNzd29yZCI6dHJ1ZSwiZW1haWxfaWQiOiJsZXRzdGFsa3BhdGllbnQxQHlvcG1haWwuY29tIiwicm9sZV9pZCI6IjMiLCJfaWQiOiI2MmQ1MDI2ZjM4ZDM2OWVhNWY1ODkzYjgiLCJleHAiOjE2NTkyNTIxMDYsIm1vYmlsZSI6IjcyNDk5OTk4MDkifQ.RgFYade3DEG0r1isTvUTAjJIGZCfzIupiqZi-_XKW2U"
             )
             webSocket!!.send(jsonObject.toString())
-            // jsonObject.put("isSent", true)
         } catch (e: JSONException) {
             e.printStackTrace()
         }
@@ -247,7 +283,10 @@ class ALKChatActivity : AppCompatActivity() {
                 jsonObject.put("user", binding.edtSendMessage.text.toString().trim())
                 jsonObject.put("chatid", chatId)
                 webSocket!!.send(jsonObject.toString())
-                // jsonObject.put("isSent", true)
+                binding.edtSendMessage.setText("")
+                /*jsonObject.put("isSent", true)
+                messageAdapter!!.addItem(jsonObject)
+                binding.rvChat.smoothScrollToPosition(messageAdapter!!.itemCount - 1)*/
             } catch (e: JSONException) {
                 e.printStackTrace()
             }
@@ -256,6 +295,13 @@ class ALKChatActivity : AppCompatActivity() {
 
     companion object {
         private var chatId = ""
+        private var isConnect = false
+        /*private var messageAdapter: ChatAdapter? = null
+        private var recyclerView: RecyclerView? = null*/
+    }
+
+    fun isConnect(): Boolean {
+        return isConnect
     }
 
 }

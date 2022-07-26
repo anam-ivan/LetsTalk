@@ -34,13 +34,13 @@
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/btn_edit"
+        android:id="@+id/tv_time_stamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginStart="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_4sdp"
-        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginEnd="@dimen/_18sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:drawableStart="@drawable/ic_read_tick"
         android:drawablePadding="@dimen/_6ssp"
