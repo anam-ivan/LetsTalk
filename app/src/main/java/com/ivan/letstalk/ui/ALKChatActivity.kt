@@ -1,8 +1,4 @@
 package com.ivan.letstalk.ui
-
-/*import io.socket.client.IO
-import io.socket.client.Socket
-import io.socket.emitter.Emitter*/
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
@@ -10,6 +6,8 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
@@ -17,68 +15,82 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageView
-import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.github.nkzawa.socketio.client.IO
-import com.github.nkzawa.socketio.client.Socket
+import androidx.databinding.DataBindingUtil
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
-import com.google.android.material.chip.ChipGroup
 import com.google.gson.Gson
 import com.ivan.letstalk.R
-import com.ivan.letstalk.helper.SocketHandler
-import java.net.URISyntaxException
-import kotlin.collections.ArrayList
+import com.ivan.letstalk.databinding.ActivityAlkchatBinding
+import okhttp3.*
+import org.json.JSONException
+import org.json.JSONObject
 
 
 class ALKChatActivity : AppCompatActivity() {
-    private lateinit var cgExistingSideEffects: ChipGroup
+    lateinit var binding: ActivityAlkchatBinding
+    /*private lateinit var cgExistingSideEffects: ChipGroup
     private lateinit var rrMyChats: RelativeLayout
     private lateinit var ivMenu: ImageView
-    private lateinit var ivCross: ImageView
+    private lateinit var ivCross: ImageView*/
     private lateinit var dialog: Dialog
-    private var isButtonClicked = false
     val gson: Gson = Gson()
-    // private lateinit var ivHome: AppCompatImageView
     private var existingSideEffectsList = arrayOf(
-        "Abdominal Pain", "Constipation", "Dyspepsia", "Dysphagia", "Electrocardiogram QT prlonged",
-        "Nausea", "Vomiting", "Vision Disorder", "Constipation",  "Dyspepsia", "Nausea", "Abdominal Pain", "Constipation", "Dyspepsia", "Dysphagia", "Electrocardiogram QT prlonged",
-        "Nausea", "Vomiting", "Vision Disorder", "Constipation",  "Dyspepsia", "Nausea"
+        "Abdominal Pain",
+        "Constipation",
+        "Dyspepsia",
+        "Dysphagia",
+        "Electrocardiogram QT prlonged",
+        "Nausea",
+        "Vomiting",
+        "Vision Disorder",
+        "Constipation",
+        "Dyspepsia",
+        "Nausea",
+        "Abdominal Pain",
+        "Constipation",
+        "Dyspepsia",
+        "Dysphagia",
+        "Electrocardiogram QT prlonged",
+        "Nausea",
+        "Vomiting",
+        "Vision Disorder",
+        "Constipation",
+        "Dyspepsia",
+        "Nausea"
     )
     private var existingSideEffectsChipItems = ArrayList<String>()
-    private lateinit var socket: Socket
-    private  lateinit var mSocket: io.socket.client.Socket
+
+    private var webSocket: WebSocket? = null
+    private val SERVER_PATH = "ws://0.tcp.in.ngrok.io:14344"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_alkchat)
-        rrMyChats = findViewById(R.id.rr_my_chats)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_alkchat)
+        /*rrMyChats = findViewById(R.id.rr_my_chats)
         ivMenu = findViewById(R.id.iv_menu)
         ivCross = findViewById(R.id.iv_cross)
-        /*ivHome = findViewById(R.id.iv_home)
-        ivHome.setBackgroundResource(R.drawable.ic_home)*/
-
-        cgExistingSideEffects = findViewById(R.id.chip_existing_side_effects)
+        cgExistingSideEffects = findViewById(R.id.chip_existing_side_effects)*/
         initExistingSideEffectsData()
-        rrMyChats.setOnClickListener{
+        binding.rrMyChats.setOnClickListener {
             navigateToMyChats()
         }
-        findViewById<ImageView>(R.id.btn_back).setOnClickListener {
+        binding.btnBack.setOnClickListener {
             onBackPressed()
         }
 
         dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setOnCancelListener(DialogInterface.OnCancelListener {
-            ivMenu.visibility = View.VISIBLE
-            ivCross.visibility = View.INVISIBLE
+            binding.ivMenu.visibility = View.VISIBLE
+            binding.ivCross.visibility = View.INVISIBLE
         })
 
-        ivMenu.setOnClickListener {
+        binding.ivMenu.setOnClickListener {
             showChatDialog()
-            ivMenu.visibility = View.INVISIBLE
-            ivCross.visibility = View.VISIBLE
+            binding.ivMenu.visibility = View.INVISIBLE
+            binding.ivCross.visibility = View.VISIBLE
         }
 
         findViewById<ImageView>(R.id.btn_back).setOnClickListener {
@@ -93,8 +105,8 @@ class ALKChatActivity : AppCompatActivity() {
             }
         }*/
 
-        if (ivCross.visibility == View.VISIBLE) {
-            ivCross.setOnClickListener {
+        if (binding.ivCross.visibility == View.VISIBLE) {
+            binding.ivCross.setOnClickListener {
                 // ivCross.visibility = View.INVISIBLE
                 // ivMenu.visibility = View.VISIBLE
                 dialog.dismiss()
@@ -126,30 +138,38 @@ class ALKChatActivity : AppCompatActivity() {
             Log.d("chat_error",e.toString())
             e.printStackTrace()
         }*/
-        SocketHandler.setSocket()
+
+        /*SocketHandler.setSocket()
         SocketHandler.establishConnection()
         val mSocket = SocketHandler.getSocket()
         mSocket.emit("joined", {})
-        Log.d("isSocketCon",mSocket.connected().toString())
+        Log.d("isSocketCon",mSocket.connected().toString())*/
 
-        /*socket.on(Socket.EVENT_CONNECT) {
-            Log.d("socketio", "socket connected")
-            socket.emit(
-                "joined",
-                ""
-            )
-            Log.d("isSocketCon",socket.connected().toString())
-        }*/
+        initiateSocketConnection()
+
+        binding.btnSendMessage.setOnClickListener(View.OnClickListener { v: View? ->
+            val jsonObject = JSONObject()
+            try {
+                jsonObject.put("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwYXNzd29yZCI6dHJ1ZSwiZW1haWxfaWQiOiJsZXRzdGFsa3BhdGllbnQxQHlvcG1haWwuY29tIiwicm9sZV9pZCI6IjMiLCJfaWQiOiI2MmQ1MDI2ZjM4ZDM2OWVhNWY1ODkzYjgiLCJleHAiOjE2NTkyNTIxMDYsIm1vYmlsZSI6IjcyNDk5OTk4MDkifQ.RgFYade3DEG0r1isTvUTAjJIGZCfzIupiqZi-_XKW2U")
+                webSocket!!.send(jsonObject.toString())
+                jsonObject.put("isSent", true)
+                /*messageAdapter.addItem(jsonObject)
+                recyclerView.smoothScrollToPosition(messageAdapter.getItemCount() - 1)
+                resetMessageEdit()*/
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+        })
     }
 
     private fun initExistingSideEffectsData() {
         for (i in existingSideEffectsList.indices) {
-            cgExistingSideEffects = findViewById(R.id.chip_existing_side_effects)
+            // cgExistingSideEffects = findViewById(R.id.chip_existing_side_effects)
             val entryChip2: Chip = getChip(existingSideEffectsList[i])
             entryChip2.id = i
             //set default selected language
             //entryChip2.setChecked(true);
-            cgExistingSideEffects.addView(entryChip2)
+            binding.chipExistingSideEffects.addView(entryChip2)
         }
     }
 
@@ -192,11 +212,6 @@ class ALKChatActivity : AppCompatActivity() {
     }
 
     private fun showChatDialog() {
-        /*dialog = Dialog(this)
-        dialog.setOnCancelListener(DialogInterface.OnCancelListener {
-
-        })*/
-        // dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.window?.setGravity(Gravity.BOTTOM)
         dialog.window?.setGravity(Gravity.LEFT)
         dialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
@@ -209,13 +224,53 @@ class ALKChatActivity : AppCompatActivity() {
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setContentView(R.layout.chat_dialog)
         dialog.show()
-        /*isButtonClicked = dialog.isShowing
-        ivMenu.setBackgroundResource(if (isButtonClicked) R.drawable.ic_menu else R.drawable.ic_cross)*/
     }
 
-    /*var onConnect = Emitter.Listener {
-        //After getting a Socket.EVENT_CONNECT which indicate socket has been connected to server,
-        //send userName and roomName so that they can join the room.
-        mSocket.emit("joined", "")
-    }*/
+    private class SocketListener : WebSocketListener() {
+        override fun onOpen(webSocket: WebSocket, response: Response) {
+            super.onOpen(webSocket, response)
+            /*this@ALKChatActivity.runOnUiThread(Runnable {
+                Toast.makeText(
+                    this@ALKChatActivity,
+                    "Socket Connection Successful!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                // initializeView()
+            })*/
+            Handler(Looper.getMainLooper()).post {
+                // Log.v("WSS", text!!)
+            }
+        }
+
+        override fun onMessage(webSocket: WebSocket, text: String) {
+            super.onMessage(webSocket, text)
+            /*this@ALKChatActivity.runOnUiThread(Runnable {
+                try {
+                    val jsonObject = JSONObject(text)
+                    jsonObject.put("isSent", false)
+                    *//*messageAdapter.addItem(jsonObject)
+                    recyclerView.smoothScrollToPosition(messageAdapter.getItemCount() - 1)*//*
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            })*/
+            Handler(Looper.getMainLooper()).post {
+                Log.v("WSS", text)
+            }
+        }
+    }
+
+    private fun initiateSocketConnection() {
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url(SERVER_PATH)
+            .build()
+        val wsListener = SocketListener()
+        webSocket = client.newWebSocket(request, wsListener)
+    }
+
+    public fun output(txt: String) {
+        Log.v("WSS", txt)
+    }
+
 }

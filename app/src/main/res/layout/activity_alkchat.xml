@@ -1413,6 +1413,7 @@
                     android:textSize="@dimen/_13ssp" />
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_send_message"
                     android:layout_width="@dimen/_10sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_gravity="center_vertical"

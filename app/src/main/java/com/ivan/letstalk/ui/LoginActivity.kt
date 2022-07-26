@@ -197,10 +197,11 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        /*binding.tvTermsConditions.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
+        binding.tvTermsConditions.setOnClickListener {
+            val intent = Intent(this, ALKChatActivity::class.java)
             startActivity(intent)
-        }*/
+            overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
+        }
 
         /*binding.btnLogin.setOnClickListener {
             if (binding.etPhone.text.toString() == "8888888888") {
