@@ -1,21 +1,25 @@
 package com.ivan.letstalk.adapter
+
 import android.annotation.SuppressLint
-import android.util.Log
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
+import com.google.android.material.card.MaterialCardView
 import com.ivan.letstalk.R
 import org.json.JSONException
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
-class ChatAdapter(private val inflater: LayoutInflater) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+class ChatAdapter(applicationContext: Context, private val inflater: LayoutInflater) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val messages: MutableList<JSONObject> = ArrayList()
+    var context: Context = applicationContext
 
     private inner class SentMessageHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
@@ -31,11 +35,15 @@ class ChatAdapter(private val inflater: LayoutInflater) : RecyclerView.Adapter<R
     private inner class ReceivedMessageHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         var tvGreetings: TextView
-        var messageTxt: TextView
+        var tvReceiveTimeStamp: TextView
+        // var messageTxt: TextView
+        var rootView: MaterialCardView
 
         init {
             tvGreetings = itemView.findViewById(R.id.tv_greetings)
-            messageTxt = itemView.findViewById(R.id.iv_body_weight_header)
+            tvReceiveTimeStamp = itemView.findViewById(R.id.tv_receive_time_stamp)
+            // messageTxt = itemView.findViewById(R.id.iv_body_weight_header)
+            rootView = itemView.findViewById(R.id.cv_first_chat)
         }
     }
 
@@ -67,6 +75,7 @@ class ChatAdapter(private val inflater: LayoutInflater) : RecyclerView.Adapter<R
         }
         return view
     }*/
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: View
         when (viewType) {
@@ -121,22 +130,31 @@ class ChatAdapter(private val inflater: LayoutInflater) : RecyclerView.Adapter<R
     @SuppressLint("SimpleDateFormat")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val message = messages[position]
-        Log.d("adapter_response", Gson().toJson(message))
+        // Log.d("adapter_response", Gson().toJson(message))
         try {
             if (message.getBoolean("isSent")) {
                 val simpleDateFormat = SimpleDateFormat("hh:mm a")
                 val currentDateAndTime: String = simpleDateFormat.format(Date())
                 val messageHolder = holder as SentMessageHolder
-                messageHolder.messageTxt.text = message.getString("message")
+                // messageHolder.messageTxt.text = message.getString("message")
                 messageHolder.tvTimeStamp.text = currentDateAndTime
             } else {
                 val messageHolder = holder as ReceivedMessageHolder
                 val dataJsonObject = message.getJSONObject("data")
                 val responseText = dataJsonObject.getJSONArray("response_text")
                 val greetingsMsg = responseText.getJSONObject(0).getString("0")
-                Log.d("dataJsonObject", Gson().toJson(dataJsonObject))
-                Log.d("firstValue", greetingsMsg)
+                /*Log.d("dataJsonObject", Gson().toJson(dataJsonObject))
+                Log.d("firstValue", greetingsMsg)*/
+                val simpleDateFormat = SimpleDateFormat("hh:mm a")
+                val currentDateAndTime: String = simpleDateFormat.format(Date())
                 messageHolder.tvGreetings.text = greetingsMsg
+                messageHolder.tvReceiveTimeStamp.text = currentDateAndTime
+                /*val anim: Animation = AnimationUtils.loadAnimation(
+                    context,
+                    android.R.anim.slide_out_right
+                )
+                anim.duration = 300
+                messageHolder.rootView.startAnimation(anim)*/
                 // messageHolder.messageTxt.text = message.getString("response_text")
             }
         } catch (e: JSONException) {
