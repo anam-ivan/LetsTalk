@@ -215,7 +215,6 @@ class ALKChatActivity : AppCompatActivity() {
         override fun onMessage(webSocket: WebSocket, text: String) {
             super.onMessage(webSocket, text)
             Handler(Looper.getMainLooper()).post {
-                Log.v("WSS", text)
                 if (text.isNotEmpty()) {
                     val jsonObject = JSONObject(text)
                     val dataJsonObject = jsonObject.getJSONObject("data")
@@ -228,12 +227,17 @@ class ALKChatActivity : AppCompatActivity() {
                         Log.v("WSS",Gson().toJson(jsonObject))
                         context!!.messageAdapter?.addItem(jsonObject)
                         context!!.binding.rvChat.smoothScrollToPosition(context!!.messageAdapter!!.itemCount - 1)*/
-
                         if (dataJsonObject.has("response_text")) {
                             Log.v("response_text", "response_text")
                             jsonObject.put("isSent", false)
                             context!!.messageAdapter?.addItem(jsonObject)
                             context!!.binding.rvChat.smoothScrollToPosition(context!!.messageAdapter!!.itemCount - 1)
+                            val option = dataJsonObject.getString("option")
+                            // Log.d("option",option)
+                            /*Handler(Looper.getMainLooper()).postDelayed({
+                                context!!emitUserMessageOption("next&1")
+                                Log.v("health_options", text)
+                            }, 1000)*/
                         } else {
                             /*Log.v("WS2", text)
                             jsonObject.put("isSent", true)
@@ -241,31 +245,11 @@ class ALKChatActivity : AppCompatActivity() {
                             context!!.binding.rvChat.smoothScrollToPosition(context!!.messageAdapter!!.itemCount - 1)*/
                         }
                     }
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        context!!emitUserMessageOption("next&1")
+                        Log.v("health_options", text)
+                    }, 1000)
                 }
-                /*val jsonObject = JSONObject(text)
-                val dataJsonObject = jsonObject.getJSONObject("data")
-                if (dataJsonObject.has("chatid")) {
-                    val chatID = dataJsonObject.getString("chatid")
-                    chatId = chatID
-                    Log.v("chatID", chatId)
-                } else {
-                    *//*jsonObject.put("isSent", true)
-                    Log.v("WSS",Gson().toJson(jsonObject))
-                    context!!.messageAdapter?.addItem(jsonObject)
-                    context!!.binding.rvChat.smoothScrollToPosition(context!!.messageAdapter!!.itemCount - 1)*//*
-
-                    if (dataJsonObject.has("response_text")){
-                        Log.v("response_text", "response_text")
-                        jsonObject.put("isSent", false)
-                        context!!.messageAdapter?.addItem(jsonObject)
-                        context!!.binding.rvChat.smoothScrollToPosition(context!!.messageAdapter!!.itemCount - 1)
-                    } else {
-                        Log.v("WS2", text)
-                        jsonObject.put("isSent", true)
-                        context!!.messageAdapter?.addItem(jsonObject)
-                        context!!.binding.rvChat.smoothScrollToPosition(context!!.messageAdapter!!.itemCount - 1)
-                    }
-                }*/
             }
         }
     }
@@ -302,6 +286,25 @@ class ALKChatActivity : AppCompatActivity() {
                 binding.edtSendMessage.setText("")
                 hideSoftKeyboard(binding.edtSendMessage)
                 jsonObject.put("isSent", true)
+                messageAdapter!!.addItem(jsonObject)
+                binding.rvChat.smoothScrollToPosition(messageAdapter!!.itemCount - 1)
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+        })
+    }
+
+    private infix fun emitUserMessageOption(option: String){
+        binding.btnSendMessage.setOnClickListener(View.OnClickListener { v: View? ->
+            val jsonObject = JSONObject()
+            try {
+                jsonObject.put("user", option)
+                jsonObject.put("chatid", chatId)
+                webSocket!!.send(jsonObject.toString())
+                Log.d("next",Gson().toJson(jsonObject))
+                binding.edtSendMessage.setText("")
+                hideSoftKeyboard(binding.edtSendMessage)
+                jsonObject.put("isSent", false)
                 messageAdapter!!.addItem(jsonObject)
                 binding.rvChat.smoothScrollToPosition(messageAdapter!!.itemCount - 1)
             } catch (e: JSONException) {

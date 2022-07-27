@@ -2,6 +2,7 @@ package com.ivan.letstalk.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,14 +37,16 @@ class ChatAdapter(applicationContext: Context, private val inflater: LayoutInfla
         RecyclerView.ViewHolder(itemView) {
         var tvGreetings: TextView
         var tvReceiveTimeStamp: TextView
-        // var messageTxt: TextView
-        var rootView: MaterialCardView
+        // var rootView: MaterialCardView
+        var cvHelp: MaterialCardView
+        var cvGreetings: MaterialCardView
 
         init {
             tvGreetings = itemView.findViewById(R.id.tv_greetings)
             tvReceiveTimeStamp = itemView.findViewById(R.id.tv_receive_time_stamp)
-            // messageTxt = itemView.findViewById(R.id.iv_body_weight_header)
-            rootView = itemView.findViewById(R.id.cv_first_chat)
+            // rootView = itemView.findViewById(R.id.cv_greetings)
+            cvHelp = itemView.findViewById(R.id.cv_help)
+            cvGreetings = itemView.findViewById(R.id.cv_greetings)
         }
     }
 
@@ -143,19 +146,25 @@ class ChatAdapter(applicationContext: Context, private val inflater: LayoutInfla
                 val dataJsonObject = message.getJSONObject("data")
                 val responseText = dataJsonObject.getJSONArray("response_text")
                 val greetingsMsg = responseText.getJSONObject(0).getString("0")
-                /*Log.d("dataJsonObject", Gson().toJson(dataJsonObject))
-                Log.d("firstValue", greetingsMsg)*/
                 val simpleDateFormat = SimpleDateFormat("hh:mm a")
                 val currentDateAndTime: String = simpleDateFormat.format(Date())
                 messageHolder.tvGreetings.text = greetingsMsg
                 messageHolder.tvReceiveTimeStamp.text = currentDateAndTime
+                val option = dataJsonObject.getString("option")
+                // Log.d("option",option)
+
                 /*val anim: Animation = AnimationUtils.loadAnimation(
                     context,
                     android.R.anim.slide_out_right
                 )
                 anim.duration = 300
                 messageHolder.rootView.startAnimation(anim)*/
-                // messageHolder.messageTxt.text = message.getString("response_text")
+
+                /*if (option.isNotEmpty()|| option.toString() == "next&1"){
+                    messageHolder.cvHelp.visibility = View.VISIBLE
+                    messageHolder.cvGreetings.visibility = View.GONE
+                    messageHolder.tvReceiveTimeStamp.visibility = View.GONE
+                }*/
             }
         } catch (e: JSONException) {
             e.printStackTrace()
