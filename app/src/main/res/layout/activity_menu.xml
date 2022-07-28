@@ -499,7 +499,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:id="@+id/btnLogin"
+                        android:id="@+id/btn_logout"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_48sdp"
                         android:layout_marginStart="@dimen/_20sdp"

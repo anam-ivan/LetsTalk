@@ -205,7 +205,7 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="120dp"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:overScrollMode="never"
@@ -222,10 +222,10 @@
                 app:piv_dynamicCount="true"
                 app:piv_interactiveAnimation="true"
                 app:piv_radius="3dp"
-                app:piv_selectedColor="#000000"
+                app:piv_selectedColor="@color/blue"
                 app:piv_unselectedColor="#999999"
                 app:piv_viewPager="@id/view_pager"
-                attrs:piv_padding="8dp" />
+                attrs:piv_padding="8dp"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_doctor_say"
@@ -313,7 +313,6 @@
                             android:padding="2dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/ic_doctor" />
-
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
             </androidx.appcompat.widget.LinearLayoutCompat>

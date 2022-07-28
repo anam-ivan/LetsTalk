@@ -35,13 +35,13 @@
                     android:layout_marginEnd="@dimen/_8sdp"
                     android:layout_marginBottom="@dimen/_8sdp"
                     android:fontFamily="@font/gilroy_medium"
-                    android:text="fdsadssaasdasd"
+                    android:text="Demo"
                     android:textAlignment="textStart"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/tv_patient_health_details"
+                    android:id="@+id/ll_patient_health_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_greetings"
@@ -52,6 +52,20 @@
                     android:layout_marginBottom="@dimen/_8sdp"
                     android:background="@drawable/layout_blue_back"
                     android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_health_details"
+                        android:layout_width="@dimen/_165sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:text="Body Weight"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12ssp" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </RelativeLayout>
@@ -83,9 +97,9 @@
                 style="@style/CustomCardViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:layout_marginStart="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_16sdp"
+                android:visibility="gone"
                 app:cardBackgroundColor="@color/white">
 
                 <RelativeLayout
@@ -143,6 +157,7 @@
                             android:padding="@dimen/_8sdp">
 
                             <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tv_patient_health_details"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
@@ -235,6 +250,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/cv_help"
                 android:layout_marginStart="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
@@ -242,8 +258,7 @@
                 android:fontFamily="@font/gilroy_semi_bold"
                 android:text="5:40 PM"
                 android:textColor="@color/m_grey"
-                android:textSize="@dimen/_10ssp"
-                android:layout_below="@+id/cv_help" />
+                android:textSize="@dimen/_10ssp" />
         </RelativeLayout>
     </RelativeLayout>
 

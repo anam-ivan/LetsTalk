@@ -51,7 +51,7 @@ class MyHealthCard : AppCompatActivity() {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         resource.data?.let {
-                            Toast.makeText(this, it.body()?.message, Toast.LENGTH_LONG).show()
+                            // Toast.makeText(this, it.body()?.message, Toast.LENGTH_LONG).show()
                             /*binding.tvPatientName.text = it.body()?.data!![0].basicDetails!!.name
                             binding.tvDob.text = it.body()?.data!![0].basicDetails!!.dob
                             binding.tvGender.text = it.body()?.data!![0].healthCard[4].valueDetails*/

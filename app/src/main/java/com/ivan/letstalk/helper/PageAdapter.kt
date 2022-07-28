@@ -14,7 +14,7 @@ class PageAdapter(fragmentManager: FragmentManager, private val size: Int, priva
         val itemSet = arrayListOf<String>()
         for (i in firstItem..lastItem) {
             if (i <= items.size)
-                itemSet.add(items[i - 1])
+                itemSet.add(items[i - 1].toString())
         }
         return ItemFragment.newInstance(itemSet)
     }

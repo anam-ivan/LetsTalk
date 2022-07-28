@@ -101,11 +101,13 @@ class DashboardActivity : AppCompatActivity() {
         llSideEffects.setOnClickListener {
             val intent = Intent(this, KnowYourSideEffectsActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
         }
 
         llGlossary.setOnClickListener {
             val intent = Intent(this, GlossaryActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
         }
 
         /*bottomNavHome.setOnClickListener{
@@ -207,21 +209,25 @@ class DashboardActivity : AppCompatActivity() {
     private fun navigateToProfile() {
         val intent = Intent(this, ProfileActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToMenu() {
         val intent = Intent(this, MenuActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToChat() {
         val intent = Intent(this, ALKChatActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToNotifications() {
         val intent = Intent(this, NotificationsActivity::class.java)
         startActivity(intent)
+
     }
 
     override fun onRestart() {

@@ -1,11 +1,14 @@
 package com.ivan.letstalk.helper
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import com.ivan.letstalk.BuildConfig
+import com.ivan.letstalk.MyApplication
 import com.ivan.letstalk.R
+import com.ivan.letstalk.ui.LoginActivity
 
 class SessionManager (context: Context) {
     private var prefs: SharedPreferences = context.getSharedPreferences(context.getString(R.string.app_name), Context.MODE_PRIVATE)
@@ -17,6 +20,7 @@ class SessionManager (context: Context) {
     companion object {
         const val USER_TOKEN = "user_token"
         const val CR_NO = "cr_no"
+        const val IS_LOGIN = "isLogIn"
     }
 
     init {
@@ -67,17 +71,29 @@ class SessionManager (context: Context) {
         return prefs.getString(CR_NO, null)
     }
 
+    fun checkLogIn(): Boolean {
+        return prefs.getBoolean(IS_LOGIN, false)
+    }
+
+    fun saveUserLoginStatus(isLogin: Boolean?) {
+        val editor = sharedPrefsEditor
+        if (isLogin != null) {
+            editor.putBoolean(IS_LOGIN, isLogin)
+        }
+        editor.apply()
+    }
+
     fun logoutUser() {
         // Clearing all data from Shared Preferences
         sharedPrefsEditor.clear()
         sharedPrefsEditor.commit()
-        /*// After logout redirect user to Login Activity
+        // After logout redirect user to Login Activity
         val intent = Intent(MyApplication.instance.applicationContext, LoginActivity::class.java)
         // Closing all the Activities
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-        MyApplication.instance.applicationContext.startActivity(intent)*/
+        MyApplication.instance.applicationContext.startActivity(intent)
     }
 }

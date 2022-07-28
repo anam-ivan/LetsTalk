@@ -168,6 +168,7 @@ class VerifyOTPActivity : AppCompatActivity() {
                             if (it.body() != null) {
                                 if (it.body()?.status.equals("success")) {
                                     // Toast.makeText(this, it.body()?.message.toString(), Toast.LENGTH_LONG).show()
+                                    sessionManager.saveUserLoginStatus(true)
                                     showSuccessMsg(it.body()?.message.toString(),binding.root)
                                     navigateToDashboard()
                                 } else if (it.body()?.status.equals("error")){

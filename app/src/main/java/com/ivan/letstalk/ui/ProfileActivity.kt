@@ -136,26 +136,31 @@ class ProfileActivity : AppCompatActivity() {
     private fun navigateToMyHealthVitals() {
         val intent = Intent(this, MyHealthVitals::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToSideEffects() {
         val intent = Intent(this, MySideEffectHistory::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToMedicineReminder() {
         val intent = Intent(this, MedicineReminderActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToMyDocuments() {
         val intent = Intent(this, MyDocumentsActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToMyHealthCard() {
         val intent = Intent(this, MyHealthCard::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToProfile() {
@@ -166,16 +171,19 @@ class ProfileActivity : AppCompatActivity() {
     private fun navigateToMenu() {
         val intent = Intent(this, MenuActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToChat() {
         val intent = Intent(this, ALKChatActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToDashboard() {
         val intent = Intent(this, DashboardActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     override fun onRestart() {

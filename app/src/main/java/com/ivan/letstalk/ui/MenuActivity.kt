@@ -1,15 +1,22 @@
 package com.ivan.letstalk.ui
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.core.content.ContextCompat
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ivan.letstalk.R
+import com.ivan.letstalk.helper.SessionManager
 
 class MenuActivity : AppCompatActivity() {
     private lateinit var  bottomNavHome : LinearLayoutCompat
@@ -32,10 +39,13 @@ class MenuActivity : AppCompatActivity() {
     private lateinit var rrGlossary : RelativeLayout
     private lateinit var rrFaq : RelativeLayout
     private lateinit var  btnStartChat : MaterialButton
+    private lateinit var  btnLogout : RelativeLayout
+    private lateinit var sessionManager : SessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
+        sessionManager = SessionManager(this)
         btnStartChat = findViewById(R.id.btn_start_chat)
         rrProfile = findViewById(R.id.rr_profile)
         rrHealthVitals = findViewById(R.id.rr_health_vitals)
@@ -45,6 +55,7 @@ class MenuActivity : AppCompatActivity() {
         rrKnowSideEffects = findViewById(R.id.rr_know_side_effects)
         rrGlossary = findViewById(R.id.rr_glossary)
         rrFaq = findViewById(R.id.rr_faq)
+        btnLogout = findViewById(R.id.btn_logout)
 
         bottomNavHome =  findViewById(R.id.bottom_nav_home)
         bottomNavChat =  findViewById(R.id.bottom_nav_chat)
@@ -120,6 +131,34 @@ class MenuActivity : AppCompatActivity() {
         btnStartChat.setOnClickListener {
             navigateToChat()
         }
+
+        btnLogout.setOnClickListener {
+            val builder = MaterialAlertDialogBuilder(this,R.style.Body_ThemeOverlay_MaterialComponents_MaterialAlertDialog)
+            builder.setTitle("Logout")
+            builder.setMessage("Are you sure you want to Logout?")
+            // val customFont = Typeface.createFromAsset(assets, "font/gilroy_medium.ttf")
+            builder.setPositiveButton("Yes"){ dialog,which->
+                sessionManager.logoutUser()
+            }
+            builder.setNegativeButton("No"){dialog,which->
+                dialog.dismiss()
+            }
+            /*builder.setNeutralButton("Cancel"){dialog,which->
+
+            }*/
+            builder.setOnCancelListener {
+
+            }
+            builder.setOnDismissListener {
+
+            }
+            builder.setCancelable(false)
+            val dialog = builder.create()
+            dialog.window?.setBackgroundDrawableResource(R.drawable.alert_dialog_back)
+            dialog.show()
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, R.color.blue))
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.blue))
+        }
     }
 
     private fun navigateToProfile() {
@@ -130,50 +169,60 @@ class MenuActivity : AppCompatActivity() {
     private fun navigateToMenu() {
         val intent = Intent(this, MenuActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToChat() {
         val intent = Intent(this, ALKChatActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToDashboard() {
         val intent = Intent(this, DashboardActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToMyHealthVitals() {
         val intent = Intent(this, MyHealthVitals::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToMySideEffectHistory() {
         val intent = Intent(this, MySideEffectHistory::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToMyDocuments() {
         val intent = Intent(this, MyDocumentsActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToMedicineReminder() {
         val intent = Intent(this, MedicineReminderActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToKnowYourSideEffects() {
         val intent = Intent(this, KnowYourSideEffectsActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToGlossary() {
         val intent = Intent(this, GlossaryActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 
     private fun navigateToFaq() {
         val intent = Intent(this, FaqActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 }
