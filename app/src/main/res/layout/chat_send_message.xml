@@ -27,7 +27,7 @@
             android:layout_marginEnd="@dimen/_8sdp"
             android:layout_marginBottom="@dimen/_8sdp"
             android:fontFamily="@font/gilroy_medium"
-            android:text="Hello"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="@dimen/_11ssp" />
 
@@ -45,7 +45,7 @@
         android:drawableStart="@drawable/ic_read_tick"
         android:drawablePadding="@dimen/_6ssp"
         android:fontFamily="@font/gilroy_semi_bold"
-        android:text="5:39 PM"
+        android:text=""
         android:textAllCaps="false"
         android:textColor="@color/m_grey"
         android:textSize="@dimen/_10ssp"

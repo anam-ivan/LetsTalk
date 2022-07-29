@@ -15,7 +15,7 @@ class DemoChatAdapter(var faqList: List<FaqModel>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieVH {
         context  = parent.context
         val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.chat_message_received_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.chat_message_greetings_item, parent, false)
         return MovieVH(view)
     }
 

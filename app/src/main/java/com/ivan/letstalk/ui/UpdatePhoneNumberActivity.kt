@@ -262,24 +262,6 @@ class UpdatePhoneNumberActivity : AppCompatActivity() {
         ).get(LoginViewModel::class.java)
     }
 
-    private fun showErrorMsg(msg: String, view: View) {
-        val snackbar = Snackbar.make(
-            view,
-            msg,
-            Snackbar.LENGTH_LONG
-        )
-        val snack_root_view = snackbar.view
-        snackbar.view.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
-        val snack_text_view = snack_root_view
-            .findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
-        snack_root_view.setBackgroundColor(ContextCompat.getColor(this, R.color.chat_answer_select))
-        snack_text_view.setTextColor(Color.WHITE)
-        snack_text_view.textSize = 12.2f
-        val tf = ResourcesCompat.getFont(this, R.font.gilroy_medium)
-        snack_text_view.typeface = tf
-        snackbar.show()
-    }
-
     private fun isValidUserData(): Boolean {
         if (TextUtils.isEmpty(binding.edtMobile.text.toString().trim())) {
             showErrorMsg("Please enter Mobile Number", binding.root)
@@ -308,9 +290,16 @@ class UpdatePhoneNumberActivity : AppCompatActivity() {
                             binding.pLoader.visibility = View.GONE
                             binding.tvButton.visibility = View.VISIBLE
                             binding.btnUpdate.isEnabled = true
-                            // Toast.makeText(this, it.body()?.message, Toast.LENGTH_LONG).show()
                             showSuccessMsg(it.body()?.message.toString(), binding.root)
-                            navigateToUpdateMobileConfirmationActivity()
+                            if (it.body() != null) {
+                                if (it.body()?.status.equals("success")) {
+                                    navigateToUpdateMobileConfirmationActivity()
+                                } else if (it.body()?.status.equals("val_error")) {
+                                    // Toast.makeText(this, it.body()?.message.toString(), Toast.LENGTH_LONG).show()
+                                    showErrorMsg(it.body()?.message.toString(), binding.root)
+                                }
+                            }
+                            // navigateToUpdateMobileConfirmationActivity()
                         }
                     }
                     Status.ERROR -> {
@@ -346,6 +335,32 @@ class UpdatePhoneNumberActivity : AppCompatActivity() {
         //val snack_action_view = snack_root_view
         // .findViewById<Button>(com.google.android.material.R.id.snackbar_action)
         snack_root_view.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+        snack_text_view.setTextColor(Color.WHITE)
+        snack_text_view.textSize = 12.2f
+        val tf = ResourcesCompat.getFont(this, R.font.gilroy_medium)
+        snack_text_view.typeface = tf
+//    snack_action_view.typeface = tf
+//    snack_action_view.setTextColor(ContextCompat.getColor(this, R.color.Sunglow))
+//    snackbar.setAction("Retry") {
+//
+//    }
+        snackbar.show()
+    }
+
+    private fun showErrorMsg(msg: String, view: View) {
+        val snackbar = Snackbar.make(
+            view,
+            msg,
+            Snackbar.LENGTH_LONG
+        )
+
+        val snack_root_view = snackbar.view
+        snackbar.view.layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+        val snack_text_view = snack_root_view
+            .findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+        //val snack_action_view = snack_root_view
+        // .findViewById<Button>(com.google.android.material.R.id.snackbar_action)
+        snack_root_view.setBackgroundColor(ContextCompat.getColor(this, R.color.chat_answer_select))
         snack_text_view.setTextColor(Color.WHITE)
         snack_text_view.textSize = 12.2f
         val tf = ResourcesCompat.getFont(this, R.font.gilroy_medium)

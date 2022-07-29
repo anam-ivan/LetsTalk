@@ -68,7 +68,7 @@ class ALKChatActivity : AppCompatActivity() {
     private var existingSideEffectsChipItems = ArrayList<String>()
 
     private var webSocket: WebSocket? = null
-    private val SERVER_PATH = "ws://0.tcp.in.ngrok.io:16024"
+    private val SERVER_PATH = "ws://0.tcp.in.ngrok.io:19336"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -227,13 +227,13 @@ class ALKChatActivity : AppCompatActivity() {
                         Log.v("webSocketResponse", text)
                         if (dataJsonObject.has("response_text")) {
                             Log.v("response_text", text)
-                            jsonObject.put("isSent", false)
+                            // jsonObject.put("isSent", false)
                             context!!.messageAdapter?.addItem(jsonObject)
                             context!!.binding.rvChat.smoothScrollToPosition(context!!.messageAdapter!!.itemCount - 1)
                             val option = dataJsonObject.getString("option")
                             Log.d("option",option)
                             if (option.isNotEmpty() && option.toString() == "next&2&") {
-                                context!! emitUserMessageOption ("next&2&")
+                                context!!.emitUserMessageOption("next&2&")
                                 Log.v("health_options", text)
                             }
                         } else {
@@ -281,8 +281,8 @@ class ALKChatActivity : AppCompatActivity() {
                 webSocket!!.send(jsonObject.toString())
                 binding.edtSendMessage.setText("")
                 hideSoftKeyboard(binding.edtSendMessage)
-                jsonObject.put("isSent", true)
-                // jsonObject.put("message_type","greetings")
+                // jsonObject.put("isSent", true)
+                jsonObject.put("message_type","patient_request")
                 messageAdapter!!.addItem(jsonObject)
                 binding.rvChat.smoothScrollToPosition(messageAdapter!!.itemCount - 1)
             } catch (e: JSONException) {
@@ -291,7 +291,7 @@ class ALKChatActivity : AppCompatActivity() {
         })
     }
 
-    private infix fun emitUserMessageOption(option: String){
+    private fun emitUserMessageOption(option: String){
             val jsonObject = JSONObject()
             try {
                 jsonObject.put("user", option)
@@ -300,6 +300,8 @@ class ALKChatActivity : AppCompatActivity() {
                 Log.d("next",Gson().toJson(jsonObject))
                 binding.edtSendMessage.setText("")
                 hideSoftKeyboard(binding.edtSendMessage)
+                jsonObject.put("message_type","greetings")
+                messageAdapter!!.addItem(jsonObject)
                 /*jsonObject.put("isSent", false)
                 messageAdapter!!.addItem(jsonObject)
                 binding.rvChat.smoothScrollToPosition(messageAdapter!!.itemCount - 1)*/

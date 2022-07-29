@@ -3,6 +3,7 @@ package com.ivan.letstalk.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import com.ivan.letstalk.R
 
@@ -20,5 +21,12 @@ class UpdateMobileConfirmationActivity : AppCompatActivity() {
             val intent = Intent(this, VerifyOTPActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left)
     }
 }

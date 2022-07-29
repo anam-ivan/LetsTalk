@@ -130,8 +130,11 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/alk_side_effects_row.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/alk_side_effetcs_row.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/chat_dialog.xml" value="0.16" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/chat_message_greetings_item.xml" value="0.21920289855072464" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/chat_message_received_item.xml" value="0.21920289855072464" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/chat_patient_issue.xml" value="0.334375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/chat_send_back.xml" value="0.13317479191438764" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/chat_send_message.xml" value="0.334375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/chat_send_message_item.xml" value="0.334375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/custom_spinner_item.xml" value="0.2556480380499406" />
         <entry key="..\:/Users/user/AndroidStudioProjects/LetsTalk/app/src/main/res/layout/faq_row.xml" value="0.25" />
